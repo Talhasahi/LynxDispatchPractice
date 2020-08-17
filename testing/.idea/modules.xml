@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/LynxDispatch.iml" filepath="$PROJECT_DIR$/.idea/modules/LynxDispatch.iml" group="LynxDispatch" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/LynxDispatch-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/LynxDispatch-app.iml" group="LynxDispatch/app" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="LynxDispatch/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/testing-LynxDispatch.iml" filepath="$PROJECT_DIR$/.idea/modules/testing-LynxDispatch.iml" group="LynxDispatch" />
     </modules>
   </component>
 </project>
