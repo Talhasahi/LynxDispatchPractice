@@ -6,13 +6,18 @@
     </shared>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25b353f6-b7bc-4b81-93fe-a9fe090fe03d" name="Default Changelist" comment="" />
+    <list default="true" id="25b353f6-b7bc-4b81-93fe-a9fe090fe03d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/lynxdispatch/FareParameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/lynxdispatch/FareParameters.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_3a_XL_API_29" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="52007617eab265b3" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -35,9 +40,10 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1gDya4WpZFfO6SUj3QkSBKwiW1q" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -47,6 +53,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="show.migrate.to.gradle.popup" value="false" />
+    <property name="last_opened_file_path" value="E:/BackupCopy  8-17-2020/LynxDispatch" />
   </component>
   <component name="RecentsManager">
     <key name="android.template.-1672765536">
@@ -182,6 +189,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="380" y="185" key="AndroidCreateResourceFileDialog/0.0.1600.860@0.0.1600.860" timestamp="1597669915281" />
+    <state x="580" y="185" key="FileChooserDialogImpl" timestamp="1597672281365">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="580" y="185" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1597672281365" />
     <state x="496" y="254" key="com.intellij.ide.util.TipDialog" timestamp="1597670573987">
       <screen x="0" y="0" width="1600" height="860" />
     </state>

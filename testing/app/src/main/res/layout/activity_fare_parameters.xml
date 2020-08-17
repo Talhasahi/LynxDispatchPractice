@@ -40,9 +40,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10"
-        app:startIconDrawable="@drawable/localization">
+        app:startIconDrawable="@drawable/ic_baseline_location_24">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:clickable="true"
+            android:focusableInTouchMode="false"
             android:id="@+id/base_location"
             android:layout_width="320dp"
             android:layout_height="45dp"
@@ -100,16 +102,16 @@
         android:hint="Per Mile($)"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/perMile"
-        android:layout_width="320dp"
-        android:layout_height="45dp"
-        android:inputType="text"
-        android:maxLines="1"
-        android:padding="10dp" />
-</com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/perMile"
+            android:layout_width="320dp"
+            android:layout_height="45dp"
+            android:inputType="text"
+            android:maxLines="1"
+            android:padding="10dp" />
+    </com.google.android.material.textfield.TextInputLayout>
     <Button
         android:id="@+id/update_fareparameter"
         android:layout_width="320dp"

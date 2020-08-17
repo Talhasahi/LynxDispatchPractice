@@ -1,28 +1,66 @@
 package com.example.lynxdispatch;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlacePicker;
+import com.google.android.material.textfield.TextInputEditText;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
+
 public class FareParameters extends AppCompatActivity {
     private Button backButton,updateButton;
     private SharedPreferences sharedpreferences;
     private SharedPreferences.Editor editor;
-    private EditText baseLocation,baseFare,perMinute,perMile;
+    private TextInputEditText baseLocation,baseFare,perMinute,perMile;
+    private int PLACE_PICKER_REQUEST = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fare_parameters);
 
         initialization();
+
+        baseLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
+                try {
+                    startActivityForResult(builder.build(FareParameters.this), PLACE_PICKER_REQUEST);
+
+                } catch (GooglePlayServicesRepairableException e) {
+                    e.printStackTrace();
+                } catch (GooglePlayServicesNotAvailableException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
+
+
+
+
+
+
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,7 +82,7 @@ public class FareParameters extends AppCompatActivity {
                 if (fieldsOK) {
                     editor.putString("baselocation", baselocation);
                     editor.putString("basefare", basefare);
-                   editor.putString("permnute", permnute);
+                    editor.putString("permnute", permnute);
                     editor.putString("permile", permile);
                     editor.apply();
                     AlertDialog.Builder builder1 = new AlertDialog.Builder(FareParameters.this);
@@ -72,6 +110,7 @@ public class FareParameters extends AppCompatActivity {
 
             }
         });
+
     }
     private void initialization() {
         backButton = findViewById(R.id.backButton_fareparameter);
@@ -102,5 +141,31 @@ public class FareParameters extends AppCompatActivity {
             }
         }
         return true;
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PLACE_PICKER_REQUEST) {
+            if (resultCode == RESULT_OK) {
+                Place place = PlacePicker.getPlace(data, this);
+                String s=convertLatitudeLongitudetoAddress(place.getLatLng().latitude, place.getLatLng().longitude);
+                baseLocation.setText(s);
+            }
+        }
+
+    }
+    private String convertLatitudeLongitudetoAddress(double latitude, double longitude) {
+        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+        try {
+            List<Address> addressList = geocoder.getFromLocation(
+                    latitude, longitude, 1);
+            if (addressList != null && addressList.size() > 0) {
+                Address address = addressList.get(0);
+                return address.getAddressLine(0);
+            }
+        } catch (IOException e) {
+            Log.e("tag", "Unable connect to Geocoder", e);
+        }
+        return null;
     }
 }
