@@ -50,7 +50,9 @@ public class DashboardDispatcherActivity extends AppCompatActivity {
         todayStatus_b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(DashboardDispatcherActivity.this, "Today Status", Toast.LENGTH_SHORT).show();
+                intent = new Intent(DashboardDispatcherActivity.this, TripStatusActivity.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
             }
         });
         activeTrips_b.setOnClickListener(new View.OnClickListener() {
