@@ -16,8 +16,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_3a_XL_API_29" />
-  <component name="ExecutionTargetManager" SELECTED_TARGET="52007617eab265b3" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="e8339e2c" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -50,12 +49,16 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="e8339e2c" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-08-17T14:02:27.652Z" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="show.migrate.to.gradle.popup" value="false" />
     <property name="last_opened_file_path" value="E:/BackupCopy  8-17-2020/LynxDispatch" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="android.template.1099350977">
+      <recent name="com.example.lynxdispatch" />
+    </key>
     <key name="android.template.-1672765536">
       <recent name="com.example.lynxdispatch" />
     </key>
@@ -181,6 +184,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="275" y="42" key="#Notifications" timestamp="1597673242957">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="275" y="42" key="#Notifications/0.0.1366.768@0.0.1366.768" timestamp="1597673242957" />
     <state x="803" y="362" width="408" height="290" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1597666610024">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
