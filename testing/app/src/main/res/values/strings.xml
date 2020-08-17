@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">LynxDispatch</string>
+    <string name="home">Home</string>
+    <string name="assigned_trips">Assigned Trips</string>
+    <string name="trip_history">Trip History</string>
+    <string name="earnings">Earnings</string>
+    <string name="helping_material">Helping Material</string>
+    <string name="vehicle_expense">Vehicle Expense</string>
+    <string name="support">Support</string>
+    <string name="payment">Payment</string>
+    <string name="settings">Settings</string>
+    <string name="logout">Logout</string>
+    <string name="navigation_open">Navigation Drawer Open</string>
+    <string name="navigation_close">Navigation Drawer Close</string>
+</resources>

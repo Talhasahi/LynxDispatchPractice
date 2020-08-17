@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/fleet_avatar_singlten"
+            android:layout_width="70dp"
+            android:padding="10dp"
+            android:layout_height="70dp"
+            android:layout_centerHorizontal="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/cariconpng"
+            app:civ_border_color="#11000000"
+            app:civ_border_width="2dp" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:layout_width="150dp"
+            android:layout_height="70dp">
+
+            <TextView
+                android:id="@+id/fleet_car_singlten"
+                android:textColor="#000000"
+                android:textSize="17dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:text="Car Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+
+            <TextView
+                android:id="@+id/fleet_assign_singlten"
+                android:textSize="14dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:text="Assigned To :"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/fleet_reg_singlten"
+            android:textColor="#000000"
+            android:textSize="17dp"
+            android:maxLines="1"
+            android:padding="10dp"
+            android:layout_gravity="center"
+            android:ellipsize="end"
+            android:text="Reg No"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</LinearLayout>

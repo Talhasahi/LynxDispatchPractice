@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <ScrollView
+            android:fillViewport="true"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="49dp">
+
+
+                <fragment
+                    android:id="@+id/mapAPIDispatcher"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                </fragment>
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar_dispatcher"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@null"
+                    app:layout_constraintTop_toTopOf="@+id/mapAPIDispatcher"
+                    tools:layout_editor_absoluteX="13dp" />
+
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/myLocationButtonDispatcher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:backgroundTint="#FFFFFF"
+                    android:src="@drawable/localization"
+                    app:borderWidth="0dp"
+                    app:elevation="6dp"
+                    app:fabSize="normal"
+                    app:layout_constraintBottom_toBottomOf="@+id/mapAPIDispatcher"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:pressedTranslationZ="12dp" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/phoneCallDispatcher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginBottom="16dp"
+                    android:backgroundTint="#FFFFFF"
+                    android:src="@drawable/phone"
+                    app:borderWidth="0dp"
+                    app:elevation="6dp"
+                    app:fabSize="normal"
+                    app:layout_constraintBottom_toTopOf="@+id/calculatorDispatcher"
+                    app:layout_constraintEnd_toEndOf="@+id/calculatorDispatcher"
+                    app:layout_constraintStart_toStartOf="@+id/calculatorDispatcher"
+                    app:pressedTranslationZ="12dp" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/filterDispatcher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginBottom="16dp"
+                    android:backgroundTint="#FFFFFF"
+                    android:src="@drawable/filter"
+                    app:borderWidth="0dp"
+                    app:elevation="6dp"
+                    app:fabSize="normal"
+                    app:layout_constraintBottom_toTopOf="@+id/phoneCallDispatcher"
+                    app:layout_constraintEnd_toEndOf="@+id/phoneCallDispatcher"
+                    app:layout_constraintStart_toStartOf="@+id/phoneCallDispatcher"
+                    app:pressedTranslationZ="12dp" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/assistantDispatcher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginBottom="16dp"
+                    android:backgroundTint="#FFFFFF"
+                    android:src="@drawable/support"
+                    app:borderWidth="0dp"
+                    app:elevation="6dp"
+                    app:fabSize="normal"
+                    app:layout_constraintBottom_toTopOf="@+id/filterDispatcher"
+                    app:layout_constraintEnd_toEndOf="@+id/filterDispatcher"
+                    app:layout_constraintStart_toStartOf="@+id/filterDispatcher"
+                    app:pressedTranslationZ="12dp" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/calculatorDispatcher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginBottom="16dp"
+                    android:backgroundTint="#FFFFFF"
+                    android:src="@drawable/calculator"
+                    app:borderWidth="0dp"
+                    app:elevation="6dp"
+                    app:fabSize="normal"
+                    app:layout_constraintBottom_toTopOf="@+id/myLocationButtonDispatcher"
+                    app:layout_constraintEnd_toEndOf="@+id/myLocationButtonDispatcher"
+                    app:layout_constraintStart_toStartOf="@+id/myLocationButtonDispatcher"
+                    app:pressedTranslationZ="12dp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

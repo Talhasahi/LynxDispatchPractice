@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/dispatch_item1"
+        android:icon="@drawable/ic_outline_home_24"
+        android:title="@string/home" />
+
+    <item
+        android:id="@+id/dispatch_item2"
+        android:icon="@drawable/ic_outline_assigned_trips_24"
+        android:title="@string/assigned_trips" />
+
+    <item
+        android:id="@+id/dispatch_item3"
+        android:icon="@drawable/ic_baseline_history_24"
+        android:title="@string/trip_history" />
+
+    <item
+        android:id="@+id/dispatch_item4"
+        android:icon="@drawable/ic_baseline_attach_money_24"
+        android:title="@string/earnings" />
+
+    <item
+        android:id="@+id/dispatch_item5"
+        android:icon="@drawable/ic_outline_helping_material_24"
+        android:title="@string/helping_material" />
+
+    <item
+        android:id="@+id/dispatch_item6"
+        android:icon="@drawable/ic_outline_directions_car_24"
+        android:title="@string/vehicle_expense" />
+
+    <item
+        android:id="@+id/dispatch_item7"
+        android:icon="@drawable/ic_baseline_help_outline_24"
+        android:title="@string/support" />
+
+    <item
+        android:id="@+id/dispatch_item8"
+        android:icon="@drawable/ic_outline_payment_24"
+        android:title="@string/payment" />
+
+    <item
+        android:id="@+id/dispatch_item9"
+        android:icon="@drawable/ic_outline_settings_24"
+        android:title="@string/settings" />
+
+    <item
+        android:id="@+id/dispatch_item10"
+        android:icon="@drawable/ic_outline_exit_to_app_24"
+        android:title="@string/logout" />
+
+</menu>

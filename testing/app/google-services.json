@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "109289674643",
+    "firebase_url": "https://lynxdispatch001-2af5d.firebaseio.com",
+    "project_id": "lynxdispatch001-2af5d",
+    "storage_bucket": "lynxdispatch001-2af5d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:109289674643:android:251b9e1c722e7b377eba66",
+        "android_client_info": {
+          "package_name": "com.example.lynxdispatch"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "109289674643-53kjgg4v992gf61g00t2abpiftp20um4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQFV0eJ411ObQSy7maM5-1NI6ktTXCzYk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "109289674643-53kjgg4v992gf61g00t2abpiftp20um4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

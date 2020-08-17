@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/driver_avatar_singlten"
+            android:layout_width="100dp"
+            android:padding="10dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/avatar"
+            app:civ_border_color="#11000000"
+            app:civ_border_width="2dp" />
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/driver_name_singlten"
+                android:textColor="#000000"
+                android:textSize="17dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:text="Driver Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/driver_name1_singlten"
+                android:textColor="#000000"
+                android:textSize="17dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:text="Driver Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/driver_name2_singlten"
+                android:textSize="14dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:text="Driver Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/driver_name3_singlten"
+                android:textSize="14dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:text="Driver Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:gravity="center"
+            android:padding="10dp"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/driver_msg_singlten"
+                android:layout_width="50dp"
+                android:padding="10dp"
+                android:src="@drawable/ic_baseline_message_24"
+                android:layout_height="60dp"/>
+
+            <ImageView
+                android:id="@+id/driver_call_singlten"
+                android:padding="10dp"
+                android:layout_width="50dp"
+                android:src="@drawable/ic_baseline_call_24"
+                android:layout_height="60dp"/>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

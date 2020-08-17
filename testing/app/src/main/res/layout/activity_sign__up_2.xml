@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="20dp"
+        tools:context=".Sign_Up_2">
+
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/ic_baseline_arrow_back_24"
+            android:elevation="10dp"
+            android:text=""
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <Button
+            android:id="@+id/signUp_button"
+            android:layout_width="320dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/loginbutton"
+            android:elevation="10dp"
+            android:text="Sign Up"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="@+id/textInputLayout6_2"
+            app:layout_constraintStart_toStartOf="@+id/textInputLayout6_2"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout6_2" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout2_2"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="320dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="24dp"
+
+            android:hint="Country"
+            app:layout_constraintEnd_toEndOf="@+id/textInputLayout1_2"
+            app:layout_constraintStart_toStartOf="@+id/textInputLayout1_2"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout1_2"
+            app:startIconDrawable="@drawable/ic_baselin_country_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/country"
+                android:layout_width="320dp"
+                android:layout_height="45dp"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:padding="10dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout3_2"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="320dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="24dp"
+
+            android:hint="State"
+            app:layout_constraintEnd_toEndOf="@+id/textInputLayout2_2"
+            app:layout_constraintStart_toStartOf="@+id/textInputLayout2_2"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout2_2"
+            app:startIconDrawable="@drawable/ic_baselin_country_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/state"
+                android:layout_width="320dp"
+                android:layout_height="45dp"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:padding="10dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout4_2"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="320dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="24dp"
+
+            android:hint="City"
+            app:layout_constraintEnd_toEndOf="@+id/textInputLayout3_2"
+            app:layout_constraintStart_toStartOf="@+id/textInputLayout3_2"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout3_2"
+            app:startIconDrawable="@drawable/ic_baseline_location_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/city"
+                android:layout_width="320dp"
+                android:layout_height="45dp"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:padding="10dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout5_2"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="320dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="24dp"
+
+            android:hint="Address"
+            app:layout_constraintEnd_toEndOf="@+id/textInputLayout4_2"
+            app:layout_constraintStart_toStartOf="@+id/textInputLayout4_2"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout4_2"
+            app:startIconDrawable="@drawable/ic_baseline_location_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/id_address_signUp"
+                android:layout_width="320dp"
+                android:layout_height="45dp"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:padding="10dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout6_2"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="320dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="24dp"
+
+            android:hint="Zip Code"
+            app:layout_constraintEnd_toEndOf="@+id/textInputLayout5_2"
+            app:layout_constraintStart_toStartOf="@+id/textInputLayout5_2"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout5_2"
+            app:startIconDrawable="@drawable/ic_outline_email_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/zip_Code"
+                android:layout_width="320dp"
+                android:layout_height="45dp"
+                android:inputType="number"
+                android:maxLines="1"
+                android:padding="10dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout1_2"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="320dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="100dp"
+            android:hint="Contact No"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:startIconDrawable="@drawable/ic_baseline_phone_no__end_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/contact_No"
+                android:layout_width="320dp"
+                android:layout_height="45dp"
+                android:inputType="number|textEmailAddress"
+                android:maxLines="1"
+                android:padding="10dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
