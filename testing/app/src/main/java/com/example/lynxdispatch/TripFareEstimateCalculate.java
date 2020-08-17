@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.kunzisoft.switchdatetime.SwitchDateTimeDialogFragment;
 
 import java.text.SimpleDateFormat;
@@ -23,6 +24,7 @@ public class TripFareEstimateCalculate extends AppCompatActivity {
 
     TextInputEditText pickUpTime,PickUpTime_base_to_base;
     TextView es;
+    TextInputLayout t1,t2;
     LinearLayout ll1,ll2,ll3,ll4,ll5,ll6,ll7,ll8,ll9,ll10;
     private SingltenLoadedMiles  adp,adp2;
     Integer NoOfPasanger;
@@ -49,12 +51,18 @@ public class TripFareEstimateCalculate extends AppCompatActivity {
         loadedmile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                PickUpTime_base_to_base.setVisibility(View.VISIBLE);
+                ll2.setVisibility(View.VISIBLE);
+                ll3.setVisibility(View.VISIBLE);
+                ll4.setVisibility(View.VISIBLE);
+                baseTobaseListView.setVisibility(View.VISIBLE);
+             t2.setVisibility(View.VISIBLE);
             }
         });
         baseTobase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                t1.setVisibility(View.VISIBLE);
                 ll1.setVisibility(View.INVISIBLE);
                 es.setVisibility(View.INVISIBLE);
                 pickUpTime.setVisibility(View.INVISIBLE);
@@ -83,6 +91,11 @@ public class TripFareEstimateCalculate extends AppCompatActivity {
     }
 
     private void initialization() {
+        t1 = findViewById(R.id.textInputLayout);
+        t2 = findViewById(R.id.textInputLayout3);
+        ll4 = findViewById(R.id.linearLayout3);
+        ll3 = findViewById(R.id.linearLayout2);
+        ll2 = findViewById(R.id.linearLayout);
         es = findViewById(R.id.textView11);
         ll1 = findViewById(R.id.linearLayout15);
         PickUpTime_base_to_base = findViewById(R.id.PickUpTime_base_to_base);
