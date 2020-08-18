@@ -53,6 +53,8 @@ public class NewTripEstimate extends AppCompatActivity {
         calculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean fieldsOK = validate(new EditText[]{baseLocation, pickUpAddress, dropoFFAddress});
+                if (fieldsOK) {
                 int No_Of_pasanger = quantityView.getQuantity();
                 String  pickUp  = pickUpAddress.getText().toString();
                 String DropOff = dropoFFAddress.getText().toString();
@@ -63,7 +65,10 @@ public class NewTripEstimate extends AppCompatActivity {
                 intent.putExtra("DropOff", DropOff);
                 intent.putExtra("base_Location", base_Location);
                 startActivity(intent);
-                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);}
+                else {
+
+                }
             }
         });
         baseLocation.setOnClickListener(new View.OnClickListener() {
@@ -185,7 +190,7 @@ public class NewTripEstimate extends AppCompatActivity {
         for (int i = 0; i < fields.length; i++) {
             EditText currentField = fields[i];
             if (currentField.getText().toString().length() <= 0) {
-                currentField.setError("Do not leave empty");
+                Toast.makeText(this, "Please set the Locations", Toast.LENGTH_SHORT).show();
                 return false;
             }
         }
@@ -230,4 +235,5 @@ public class NewTripEstimate extends AppCompatActivity {
         }
         return null;
     }
+
 }

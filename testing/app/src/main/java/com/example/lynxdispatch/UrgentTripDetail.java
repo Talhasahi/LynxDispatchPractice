@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
@@ -72,7 +73,7 @@ public class UrgentTripDetail extends AppCompatActivity {
                 String  contacts_no = contact_no.getText().toString();
                 boolean fieldsOK = validate(new EditText[]{pickupTime, PickUpAddress, name,contact_no});
                 if (fieldsOK) {
-
+                    Toast.makeText(UrgentTripDetail.this, "Save", Toast.LENGTH_SHORT).show();
 
                 }
                 else {
@@ -153,7 +154,7 @@ public class UrgentTripDetail extends AppCompatActivity {
         for (int i = 0; i < fields.length; i++) {
             EditText currentField = fields[i];
             if (currentField.getText().toString().length() <= 0) {
-                currentField.setError("Do not leave empty");
+                Toast.makeText(this, "Please fill the Fields", Toast.LENGTH_SHORT).show();
                 return false;
             }
         }

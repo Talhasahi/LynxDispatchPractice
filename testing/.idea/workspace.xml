@@ -7,7 +7,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="25b353f6-b7bc-4b81-93fe-a9fe090fe03d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_volley_volley_1_1_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_volley_volley_1_1_1_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_Kunzisoft_Android_SwitchDateTimePicker_2_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_Kunzisoft_Android_SwitchDateTimePicker_2_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_gifdecoder_4_8_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_gifdecoder_4_8_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_glide_4_8_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_glide_4_8_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_prolificinteractive_material_calendarview_1_5_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_prolificinteractive_material_calendarview_1_5_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_maps_16_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_maps_16_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_places_16_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_places_16_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__me_himanshusoni_quantityview_quantity_view_1_2_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__me_himanshusoni_quantityview_quantity_view_1_2_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/lynxdispatch/FareParameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/lynxdispatch/FareParameters.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/lynxdispatch/NewTripEstimate.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/lynxdispatch/NewTripEstimate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/lynxdispatch/TripFareEstimateCalculate.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/lynxdispatch/TripFareEstimateCalculate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/lynxdispatch/UrgentTripDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/lynxdispatch/UrgentTripDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/lynxdispatch/createNewTripDispatcherActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/lynxdispatch/createNewTripDispatcherActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_new_trip_estimate.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_new_trip_estimate.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_trip_fare_estimate_calculate.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_trip_fare_estimate_calculate.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_urgent_trip_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_urgent_trip_detail.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,23 +65,24 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Pixel_3a_XL_API_30" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-08-17T14:04:40.870Z" />
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="e8339e2c" />
     <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-08-17T14:02:27.652Z" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="E:/BackupCopy  8-17-2020/LynxDispatch" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="android.template.1099350977">
       <recent name="com.example.lynxdispatch" />
     </key>
+    <key name="android.template.-809039096">
+      <recent name="com.example.lynxdispatch" />
+    </key>
     <key name="android.template.-1672765536">
       <recent name="com.example.lynxdispatch" />
     </key>
   </component>
-  <component name="RunManager" selected="Android App.LynxDispatch-app">
+  <component name="RunManager" selected="Android App.app">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -188,6 +207,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="519" y="74" key="#LynxDispatch-app" timestamp="1597674475217">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="519" y="74" key="#LynxDispatch-app/0.0.1600.860@0.0.1600.860" timestamp="1597674475217" />
     <state x="275" y="42" key="#Notifications" timestamp="1597673242957">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -204,25 +227,25 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="580" y="185" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1597672281365" />
-    <state width="1540" height="2" key="GridCell.Tab.0.bottom" timestamp="1597673991720">
+    <state width="1540" height="2" key="GridCell.Tab.0.bottom" timestamp="1597674369208">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1540" height="2" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1597673991720" />
-    <state width="1540" height="2" key="GridCell.Tab.0.center" timestamp="1597673991720">
+    <state width="1540" height="2" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1597674369208" />
+    <state width="1540" height="2" key="GridCell.Tab.0.center" timestamp="1597674369208">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1540" height="2" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1597673991720" />
-    <state width="1540" height="2" key="GridCell.Tab.0.left" timestamp="1597673991720">
+    <state width="1540" height="2" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1597674369208" />
+    <state width="1540" height="2" key="GridCell.Tab.0.left" timestamp="1597674369208">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1540" height="2" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1597673991720" />
-    <state width="1540" height="2" key="GridCell.Tab.0.right" timestamp="1597673991720">
+    <state width="1540" height="2" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1597674369208" />
+    <state width="1540" height="2" key="GridCell.Tab.0.right" timestamp="1597674369208">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1540" height="2" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1597673991720" />
-    <state x="496" y="254" key="com.intellij.ide.util.TipDialog" timestamp="1597670573987">
+    <state width="1540" height="2" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1597674369208" />
+    <state x="496" y="254" key="com.intellij.ide.util.TipDialog" timestamp="1597731558067">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="496" y="254" key="com.intellij.ide.util.TipDialog/0.0.1600.860@0.0.1600.860" timestamp="1597670573987" />
+    <state x="496" y="254" key="com.intellij.ide.util.TipDialog/0.0.1600.860@0.0.1600.860" timestamp="1597731558067" />
   </component>
 </project>
