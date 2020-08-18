@@ -38,7 +38,7 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.8.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
     implementation 'de.hdodenhof:circleimageview:3.0.0'
-     //For Calander
+    //For Calander
     implementation 'com.github.prolificinteractive:material-calendarview:1.5.0'
 
     //For Min Plus Button
