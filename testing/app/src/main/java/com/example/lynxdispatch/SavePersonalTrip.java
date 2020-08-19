@@ -2,6 +2,7 @@ package com.example.lynxdispatch;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -19,19 +20,22 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class SavePersonalTrip extends AppCompatActivity {
+    SQLite_Helper_Save_Trip save_trip_in_sqlLite;
     private AutoCompleteTextView  spinner_vehicle;
     private Button backButton, saveForLater,startTrip,makeTriplive;
     private TextInputEditText name,  contactNo,   pickupTime,
             dropoffTime, dispatcherNote;
     private SwitchDateTimeDialogFragment dateTimeDialogFragment, dateTimeDialogFragment1;
     private static final String TAG_DATETIME_FRAGMENT = "TAG_DATETIME_FRAGMENT";
-    String pickupTimes;
 
+    Integer NoOfPasanger;
+    String pickPickup,dropOff,baseLocation,pickupTimes;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_save_personal_trip);
         getTextFromPriviousActivity();
+
         inialization();
         pickupTime.setText(pickupTimes);
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -49,9 +53,29 @@ public class SavePersonalTrip extends AppCompatActivity {
 
             private void savePersonalTrip() {
                 String spinner_vehicle_String = spinner_vehicle.getText().toString();
+                String name_String = name.getText().toString();
+                String contactNo_String = contactNo.getText().toString();
+                String pickupTime_String = pickupTime.getText().toString();
+                String dropoffTime_String = dropoffTime.getText().toString();
+                String dispatcherNote_String = dispatcherNote.getText().toString();
                 boolean fieldsOK = validate(new EditText[]{name, contactNo, pickupTime,dropoffTime,dispatcherNote});
                 if (fieldsOK &&  !spinner_vehicle_String.equals("Select Vehicle")) {
-                    Toast.makeText(SavePersonalTrip.this, "Save Trip", Toast.LENGTH_SHORT).show();
+                    boolean b = save_trip_in_sqlLite.insertData("user_Id",name_String,contactNo_String,pickupTime_String,pickPickup,dropOff,NoOfPasanger);
+                    if (b){
+
+                        Toast.makeText(SavePersonalTrip.this, "Saved", Toast.LENGTH_SHORT).show();
+
+                        Intent newIntent = new Intent(SavePersonalTrip.this,CalculateTripActivity.class);
+                        newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        newIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(newIntent);
+                        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+
+                    }
+                    else {
+                        Toast.makeText(SavePersonalTrip.this, "Not Saved", Toast.LENGTH_SHORT).show();
+                    }
+
                 }
                 else {
                     Toast.makeText(SavePersonalTrip.this, "Please Select Vehicle", Toast.LENGTH_SHORT).show();
@@ -81,6 +105,10 @@ public class SavePersonalTrip extends AppCompatActivity {
     private void getTextFromPriviousActivity() {
         Bundle b = getIntent().getExtras();
         pickupTimes = b.getString("pickupTime");
+        pickPickup = b.getString("pickupAddress");
+        dropOff = b.getString("dropOff");
+        baseLocation = b.getString("baseLocation");
+        NoOfPasanger = b.getInt("NoOfPasanger");
 
     }
 
@@ -91,6 +119,9 @@ public class SavePersonalTrip extends AppCompatActivity {
         ArrayAdapter<String> adapter1 = new ArrayAdapter<>(SavePersonalTrip.this,
                 R.layout.list_item,
                 vehicles);
+        //For SQL
+        save_trip_in_sqlLite  = new SQLite_Helper_Save_Trip(SavePersonalTrip.this);
+
         spinner_vehicle.setText("Select Vehicle");
         spinner_vehicle.setAdapter(adapter1);
         backButton = findViewById(R.id.backButton_save_personal_trip);
@@ -123,7 +154,7 @@ public class SavePersonalTrip extends AppCompatActivity {
             );
         }
         // Init format
-        final SimpleDateFormat myDateFormat = new SimpleDateFormat("d MMM yyyy HH:mm", java.util.Locale.getDefault());
+        final SimpleDateFormat myDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", java.util.Locale.getDefault());
         dateTimeDialogFragment.setOnButtonClickListener(new SwitchDateTimeDialogFragment.OnButtonWithNeutralClickListener() {
             @Override
             public void onPositiveButtonClick(Date date) {

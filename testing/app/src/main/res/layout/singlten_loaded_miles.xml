@@ -82,5 +82,4 @@
         android:layout_height="wrap_content"
         android:text="Lahore"></TextView>
 
-
 </LinearLayout>

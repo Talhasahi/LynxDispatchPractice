@@ -100,6 +100,10 @@ public class TripFareEstimateCalculate extends AppCompatActivity {
                 if (fieldsOK ) {
                     Intent intent = new Intent(TripFareEstimateCalculate.this, SavePersonalTrip.class);
                     intent.putExtra("pickupTime", pickUpTimes_String);
+                    intent.putExtra("pickupAddress", pickPickup);
+                    intent.putExtra("dropOff", dropOff);
+                    intent.putExtra("baseLocation", baseLocation);
+                    intent.putExtra("NoOfPasanger", NoOfPasanger);
                     startActivity(intent);
                     overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                 }
@@ -139,7 +143,7 @@ public class TripFareEstimateCalculate extends AppCompatActivity {
         }
 
         // Init format
-        final SimpleDateFormat myDateFormat = new SimpleDateFormat("d MMM yyyy HH:mm", java.util.Locale.getDefault());
+        final SimpleDateFormat myDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", java.util.Locale.getDefault());
         dateTimeDialogFragment.setOnButtonClickListener(new SwitchDateTimeDialogFragment.OnButtonWithNeutralClickListener() {
             @Override
             public void onPositiveButtonClick(Date date) {

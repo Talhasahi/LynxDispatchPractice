@@ -68,7 +68,7 @@
             android:id="@+id/base_fare"
             android:layout_width="320dp"
             android:layout_height="45dp"
-            android:inputType="text"
+            android:inputType="number"
             android:maxLines="1"
             android:padding="10dp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -85,10 +85,11 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
+
             android:id="@+id/per_minute"
             android:layout_width="320dp"
             android:layout_height="45dp"
-            android:inputType="text"
+            android:inputType="number"
             android:maxLines="1"
             android:padding="10dp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -108,7 +109,7 @@
             android:id="@+id/perMile"
             android:layout_width="320dp"
             android:layout_height="45dp"
-            android:inputType="text"
+            android:inputType="number"
             android:maxLines="1"
             android:padding="10dp" />
     </com.google.android.material.textfield.TextInputLayout>

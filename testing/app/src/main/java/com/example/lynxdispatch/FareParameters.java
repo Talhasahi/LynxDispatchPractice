@@ -38,7 +38,7 @@ public class FareParameters extends AppCompatActivity {
         setContentView(R.layout.activity_fare_parameters);
 
         initialization();
-
+        setSaveText();
         baseLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,6 +105,10 @@ public class FareParameters extends AppCompatActivity {
         });
 
     }
+
+    private void setSaveText() {
+    }
+
     private void initialization() {
         backButton = findViewById(R.id.backButton_fareparameter);
         updateButton = findViewById(R.id.update_fareparameter);
