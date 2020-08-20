@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
@@ -33,6 +35,7 @@ public class UrgentTripDetail extends AppCompatActivity {
     private int PLACE_PICKER_REQUEST = 1;
     private static final String TAG_DATETIME_FRAGMENT = "TAG_DATETIME_FRAGMENT";
     private SwitchDateTimeDialogFragment dateTimeDialogFragment, dateTimeDialogFragment1;
+    SQLite_Helper_Save_Trip save_trip_in_sqlLite;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,7 +75,20 @@ public class UrgentTripDetail extends AppCompatActivity {
                 String  contacts_no = contact_no.getText().toString();
                 boolean fieldsOK = validate(new EditText[]{pickupTime, PickUpAddress, name,contact_no});
                 if (fieldsOK) {
+                    boolean b = save_trip_in_sqlLite.insertData("user_Id",name_,contacts_no,pickup_Time,PickUp_Address,"",null);
+                    if (b){
 
+                        Toast.makeText(UrgentTripDetail.this, "Saved", Toast.LENGTH_SHORT).show();
+                        finish();
+                        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+                        //Cursor res =  save_trip_in_sqlLite.getAllData();
+//      while (res.moveToNext()){
+//          Toast.makeText(UrgentTripDetail.this, res.getString(4), Toast.LENGTH_SHORT).show();
+//     }
+                    }
+                    else {
+                        Toast.makeText(UrgentTripDetail.this, "Not Saved", Toast.LENGTH_SHORT).show();
+                    }
 
                 }
                 else {
@@ -94,6 +110,7 @@ public class UrgentTripDetail extends AppCompatActivity {
     }
 
     private void initialization() {
+        save_trip_in_sqlLite  = new SQLite_Helper_Save_Trip(UrgentTripDetail.this);
         backButton = findViewById(R.id.backButton_urgentTripDetail);
         saveTrip = findViewById(R.id.save_trip);
         makeTripLive = findViewById(R.id.make_Trip_live);
@@ -122,7 +139,7 @@ public class UrgentTripDetail extends AppCompatActivity {
             );
         }
         // Init format
-        final SimpleDateFormat myDateFormat = new SimpleDateFormat("d MMM yyyy HH:mm", java.util.Locale.getDefault());
+        final SimpleDateFormat myDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", java.util.Locale.getDefault());
         dateTimeDialogFragment.setOnButtonClickListener(new SwitchDateTimeDialogFragment.OnButtonWithNeutralClickListener() {
             @Override
             public void onPositiveButtonClick(Date date) {
@@ -153,7 +170,7 @@ public class UrgentTripDetail extends AppCompatActivity {
         for (int i = 0; i < fields.length; i++) {
             EditText currentField = fields[i];
             if (currentField.getText().toString().length() <= 0) {
-                currentField.setError("Do not leave empty");
+                Toast.makeText(this, "Please fill the Fields", Toast.LENGTH_SHORT).show();
                 return false;
             }
         }

@@ -61,17 +61,22 @@
         app:mcv_selectionColor="@color/colorAccent"
         app:mcv_showOtherDates="all" />
 
-    <TextView
-        android:id="@+id/nodata_save"
-        android:textSize="50dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="No Save Data"
-        app:layout_constraintBottom_toTopOf="@+id/newTripEstimatebtn"
-        app:layout_constraintEnd_toEndOf="@+id/newTripEstimatebtn"
-        app:layout_constraintStart_toStartOf="@+id/newTripEstimatebtn"
+
+
+    <ListView
+        android:animateLayoutChanges="true"
+        android:elevation="20dp"
+        android:padding="10dp"
+        android:layout_weight="9"
+        android:id="@+id/listViewSave_Trip"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/calendarView">
-        android:text="Save Trips"</TextView>
+
+    </ListView>
 
     <Button
         android:id="@+id/newTripEstimatebtn"

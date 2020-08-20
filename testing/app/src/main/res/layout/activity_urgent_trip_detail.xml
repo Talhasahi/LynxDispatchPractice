@@ -110,7 +110,7 @@
             android:id="@+id/contact_No_urgentTrip"
             android:layout_width="320dp"
             android:layout_height="45dp"
-            android:inputType="text"
+            android:inputType="number"
             android:maxLines="1"
             android:padding="10dp" />
     </com.google.android.material.textfield.TextInputLayout>

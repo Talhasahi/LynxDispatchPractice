@@ -47,11 +47,11 @@
         android:layout_height="70dp"
         android:background="@drawable/background_linear_items"
         android:elevation="20dp"
-        android:gravity="center_horizontal"
+        android:gravity="center"
         android:orientation="vertical"
         android:outlineSpotShadowColor="@color/colorPrimaryDark"
 
-        android:padding="10dp"
+
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout3"
         app:layout_constraintEnd_toStartOf="@+id/linearLayout14"
         app:layout_constraintHorizontal_bias="0.5"
@@ -102,11 +102,11 @@
         android:layout_marginTop="30dp"
         android:background="@drawable/background_linear_items"
         android:elevation="20dp"
-        android:gravity="center_horizontal"
+        android:gravity="center"
         android:orientation="vertical"
 
         android:outlineSpotShadowColor="@color/colorPrimaryDark"
-        android:padding="10dp"
+
         app:layout_constraintEnd_toStartOf="@+id/linearLayout13"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -154,11 +154,11 @@
         android:layout_height="70dp"
         android:background="@drawable/background_linear_items"
         android:elevation="20dp"
-        android:gravity="center_horizontal"
+        android:gravity="center"
         android:orientation="vertical"
         android:outlineSpotShadowColor="@color/colorPrimaryDark"
 
-        android:padding="10dp"
+
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout13"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

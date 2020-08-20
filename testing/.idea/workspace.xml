@@ -5,16 +5,29 @@
       <config />
     </shared>
   </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="25b353f6-b7bc-4b81-93fe-a9fe090fe03d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/lynxdispatch/CalculateTripActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/lynxdispatch/CalculateTripActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/lynxdispatch/FareParameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/lynxdispatch/FareParameters.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/lynxdispatch/SavePersonalTrip.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/lynxdispatch/SavePersonalTrip.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/lynxdispatch/TripFareEstimateCalculate.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/lynxdispatch/TripFareEstimateCalculate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/lynxdispatch/UrgentTripDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/lynxdispatch/UrgentTripDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_calculate_trip.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_calculate_trip.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_fare_parameters.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_fare_parameters.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/singlten_loaded_miles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/singlten_loaded_miles.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_3a_XL_API_29" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_3a_XL_API_30" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -30,9 +43,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
-        <option value="layoutResourceFile" />
         <option value="resourceFile" />
+        <option value="layoutResourceFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -51,17 +64,24 @@
     <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-08-17T14:02:27.652Z" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$/temp/Attendance" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="52007617eab265b3" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-08-19T11:46:54.709Z" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="android.template.1099350977">
       <recent name="com.example.lynxdispatch" />
     </key>
+    <key name="android.template.-809039096">
+      <recent name="com.example.lynxdispatch" />
+    </key>
     <key name="android.template.-1672765536">
       <recent name="com.example.lynxdispatch" />
     </key>
   </component>
-  <component name="RunManager" selected="Android App.LynxDispatch-app">
+  <component name="RunManager" selected="Android App.app">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -84,6 +104,8 @@
       <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
       <option name="FORCE_STOP_RUNNING_APP" value="true" />
       <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
       <option name="DEBUGGER_TYPE" value="Auto" />
       <Auto>
         <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
@@ -133,6 +155,8 @@
       <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
       <option name="FORCE_STOP_RUNNING_APP" value="true" />
       <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
       <option name="DEBUGGER_TYPE" value="Auto" />
       <Auto>
         <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
@@ -182,10 +206,18 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="519" y="74" key="#LynxDispatch-app" timestamp="1597674475217">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="519" y="74" key="#LynxDispatch-app/0.0.1600.860@0.0.1600.860" timestamp="1597674475217" />
     <state x="275" y="42" key="#Notifications" timestamp="1597673242957">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="275" y="42" key="#Notifications/0.0.1366.768@0.0.1366.768" timestamp="1597673242957" />
+    <state x="519" y="74" key="#app" timestamp="1597816320012">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="519" y="74" key="#app/0.0.1600.860@0.0.1600.860" timestamp="1597816320012" />
     <state x="363" y="112" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1597735872856">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -194,7 +226,7 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="803" y="362" width="408" height="290" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1600.860@0.0.1600.860" timestamp="1597666610024" />
-    <state x="380" y="185" key="AndroidCreateResourceFileDialog" timestamp="1597669915281">
+    <state x="530" y="177" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1597840987513">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="380" y="185" key="AndroidCreateResourceFileDialog/0.0.1600.860@0.0.1600.860" timestamp="1597669915281" />
@@ -204,18 +236,24 @@
     <state x="495" y="165" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1597838477038" />
     <state x="580" y="185" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1597672281365" />
     <state width="1540" height="2" key="GridCell.Tab.0.bottom" timestamp="1597673991720">
+    <state x="530" y="177" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1600.860@0.0.1600.860" timestamp="1597840987512" />
+    <state x="380" y="185" key="AndroidCreateResourceFileDialog" timestamp="1597766668640">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1540" height="2" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1597673991720" />
-    <state width="1540" height="2" key="GridCell.Tab.0.center" timestamp="1597673991720">
+    <state x="380" y="185" key="AndroidCreateResourceFileDialog/0.0.1600.860@0.0.1600.860" timestamp="1597766668640" />
+    <state x="580" y="185" key="FileChooserDialogImpl" timestamp="1597748647718">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1540" height="2" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1597673991720" />
-    <state width="1540" height="2" key="GridCell.Tab.0.left" timestamp="1597673991720">
+    <state x="580" y="185" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1597748647718" />
+    <state width="1557" height="123" key="GridCell.Tab.0.bottom" timestamp="1597850510813">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1540" height="2" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1597673991720" />
-    <state width="1540" height="2" key="GridCell.Tab.0.right" timestamp="1597673991720">
+    <state width="1557" height="123" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1597850510813" />
+    <state width="1557" height="123" key="GridCell.Tab.0.center" timestamp="1597850510813">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1557" height="123" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1597850510813" />
+    <state width="1557" height="123" key="GridCell.Tab.0.left" timestamp="1597850510811">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="1540" height="2" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1597673991720" />
@@ -224,5 +262,43 @@
     </state>
     <state x="423" y="227" key="com.intellij.ide.util.TipDialog/0.0.1366.768@0.0.1366.768" timestamp="1597924252143" />
     <state x="496" y="254" key="com.intellij.ide.util.TipDialog/0.0.1600.860@0.0.1600.860" timestamp="1597670573987" />
+    <state width="1557" height="123" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1597850510811" />
+    <state width="1557" height="123" key="GridCell.Tab.0.right" timestamp="1597850510813">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1557" height="123" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1597850510813" />
+    <state width="1557" height="275" key="GridCell.Tab.1.bottom" timestamp="1597840465471">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1557" height="275" key="GridCell.Tab.1.bottom/0.0.1600.860@0.0.1600.860" timestamp="1597840465471" />
+    <state width="1557" height="275" key="GridCell.Tab.1.center" timestamp="1597840465471">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1557" height="275" key="GridCell.Tab.1.center/0.0.1600.860@0.0.1600.860" timestamp="1597840465471" />
+    <state width="1557" height="275" key="GridCell.Tab.1.left" timestamp="1597840465470">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1557" height="275" key="GridCell.Tab.1.left/0.0.1600.860@0.0.1600.860" timestamp="1597840465470" />
+    <state width="1557" height="275" key="GridCell.Tab.1.right" timestamp="1597840465471">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1557" height="275" key="GridCell.Tab.1.right/0.0.1600.860@0.0.1600.860" timestamp="1597840465471" />
+    <state x="496" y="254" key="com.intellij.ide.util.TipDialog" timestamp="1597837586278">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="423" y="227" key="com.intellij.ide.util.TipDialog/0.0.1366.768@0.0.1366.768" timestamp="1597736274201" />
+    <state x="496" y="254" key="com.intellij.ide.util.TipDialog/0.0.1600.860@0.0.1600.860" timestamp="1597837586278" />
+    <state x="542" y="58" key="refactoring.ChangeSignatureDialog" timestamp="1597821216867">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="542" y="58" key="refactoring.ChangeSignatureDialog/0.0.1600.860@0.0.1600.860" timestamp="1597821216867" />
+    <state x="456" y="197" key="run.anything.popup" timestamp="1597764151959">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="456" y="197" key="run.anything.popup/0.0.1600.860@0.0.1600.860" timestamp="1597764151959" />
+    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1597820084369">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1597820084369" />
   </component>
 </project>

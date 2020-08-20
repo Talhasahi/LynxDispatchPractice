@@ -31,7 +31,6 @@ import java.util.List;
 import java.util.Locale;
 
 public class createNewTripDispatcherActivity extends AppCompatActivity {
-
     private AutoCompleteTextView spinner_broker, spinner_vehicle;
     private Button backButton, createTrip;
     private TextInputEditText name, tripId, contactNo, picupAddress, dropoffAddress, pickupTime,

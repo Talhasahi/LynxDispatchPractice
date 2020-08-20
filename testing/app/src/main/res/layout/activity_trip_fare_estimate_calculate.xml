@@ -37,8 +37,8 @@
         android:background="@drawable/control_switch_background_border"
         android:checkedButton="@+id/calm"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="@+id/next_signin_step"
-        app:layout_constraintStart_toStartOf="@+id/next_signin_step"
+        app:layout_constraintEnd_toEndOf="@+id/prcceed_further"
+        app:layout_constraintStart_toStartOf="@+id/prcceed_further"
         app:layout_constraintTop_toBottomOf="@+id/textView10">
 
         <RadioButton
@@ -79,11 +79,12 @@
     </RadioGroup>
 
     <ListView
+        android:padding="10dp"
         android:id="@+id/listview_loaded_miles"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="20dp"
         android:layout_weight="9"
+        android:animateLayoutChanges="true"
         android:elevation="20dp"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
@@ -95,6 +96,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:animateLayoutChanges="true"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -127,6 +129,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="7dp"
         android:text="Estimated Fare"
+        android:animateLayoutChanges="true"
         android:textColor="#000000"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
@@ -136,16 +139,18 @@
     </TextView>
 
     <com.google.android.material.textfield.TextInputLayout
+        app:startIconDrawable="@drawable/ic_baseline_access_alarm_24"
         android:id="@+id/textInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="320dp"
         android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:hint="PicK Up time"
+        android:layout_marginBottom="40dp"
+        android:animateLayoutChanges="true"
+        android:hint="Pickup Time"
         android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="@+id/next_signin_step"
-        app:layout_constraintStart_toStartOf="@+id/next_signin_step"
-        app:layout_constraintTop_toBottomOf="@+id/textView11">
+        app:layout_constraintBottom_toTopOf="@+id/prcceed_further"
+        app:layout_constraintEnd_toEndOf="@+id/prcceed_further"
+        app:layout_constraintStart_toStartOf="@+id/prcceed_further">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/pickup_time_trip_fare_Estimate"
@@ -165,6 +170,7 @@
         android:layout_width="match_parent"
         android:layout_height="350dp"
         android:layout_weight="9"
+        android:animateLayoutChanges="true"
         android:elevation="20dp"
         android:padding="10dp"
         android:visibility="invisible"
@@ -180,7 +186,7 @@
         android:background="@drawable/background_linear_items"
         android:elevation="20dp"
         android:gravity="center_horizontal"
-
+        android:animateLayoutChanges="true"
         android:orientation="vertical"
         android:outlineSpotShadowColor="@color/colorPrimaryDark"
         android:padding="10dp"
@@ -310,34 +316,11 @@
             android:text="Miles"></TextView>
     </LinearLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:visibility="invisible"
-        android:id="@+id/textInputLayout3"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:layout_width="320dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:hint="Pickup Time"
-        app:layout_constraintEnd_toEndOf="@+id/next_signin_step"
-        app:layout_constraintStart_toStartOf="@+id/next_signin_step"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:startIconDrawable="@drawable/ic_baseline_access_alarm_24">
 
-        <com.google.android.material.textfield.TextInputEditText
-
-            android:id="@+id/PickUpTime_base_to_base"
-            android:layout_width="320dp"
-            android:layout_height="45dp"
-            android:clickable="true"
-            android:focusableInTouchMode="false"
-            android:inputType="text"
-            android:maxLines="1"
-            android:padding="10dp" />
-    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
 
-        android:id="@+id/next_signin_step"
+        android:id="@+id/prcceed_further"
         android:layout_width="320dp"
         android:layout_height="45dp"
         android:layout_marginBottom="20dp"
