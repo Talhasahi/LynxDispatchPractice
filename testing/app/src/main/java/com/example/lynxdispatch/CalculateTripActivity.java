@@ -24,6 +24,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -38,7 +39,6 @@ public class CalculateTripActivity extends AppCompatActivity {
     private List<Integer> savetripId;
     private SingltenSaveTripListAdapter adp;
     SQLite_Helper_Save_Trip save_trip_in_sqlLite;
-    String string_date;
     private CalendarDay d;
 
     @Override
@@ -117,7 +117,7 @@ public class CalculateTripActivity extends AppCompatActivity {
         Cursor res = save_trip_in_sqlLite.getAllData();
 
         if (res.getCount() == 0) {
-            Toast.makeText(this, "NO data Found", Toast.LENGTH_SHORT).show();
+
         } else {
             name.clear();
             contctNo.clear();
@@ -148,6 +148,8 @@ public class CalculateTripActivity extends AppCompatActivity {
         save_trip_in_sqlLite = new SQLite_Helper_Save_Trip(CalculateTripActivity.this);
         listView = findViewById(R.id.listViewSave_Trip);
         calendarView = findViewById(R.id.calendarView);
+        Date currentDate = Calendar.getInstance().getTime();
+        calendarView.setSelectedDate(currentDate);
         marqueeText = findViewById(R.id.text);
         newTripEstimatebtn = findViewById(R.id.newTripEstimatebtn);
         backButton = findViewById(R.id.backButton_calculater);

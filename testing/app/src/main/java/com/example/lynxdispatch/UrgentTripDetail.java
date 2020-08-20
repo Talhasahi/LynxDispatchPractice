@@ -62,7 +62,7 @@ public class UrgentTripDetail extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dateTimeDialogFragment.startAtCalendarView();
-                dateTimeDialogFragment.setDefaultDateTime(new GregorianCalendar(2020, Calendar.JANUARY, 4, 6, 20).getTime());
+                dateTimeDialogFragment.setDefaultDateTime(new GregorianCalendar(2020, Calendar.AUGUST, 4, 6, 20).getTime());
                 dateTimeDialogFragment.show(getSupportFragmentManager(), TAG_DATETIME_FRAGMENT);
             }
         });
