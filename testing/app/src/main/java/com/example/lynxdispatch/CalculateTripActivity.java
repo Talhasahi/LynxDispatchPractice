@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -30,7 +31,7 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 public class CalculateTripActivity extends AppCompatActivity {
-    private TextView marqueeText, nodata_save;
+    private TextView marqueeText;
     private Button newTripEstimatebtn, backButton;
     private MaterialCalendarView calendarView;
     private ListView listView;
@@ -38,7 +39,6 @@ public class CalculateTripActivity extends AppCompatActivity {
     private List<Integer> savetripId;
     private SingltenSaveTripListAdapter adp;
     SQLite_Helper_Save_Trip save_trip_in_sqlLite;
-    String string_date;
     private CalendarDay d;
 
     @Override
@@ -76,7 +76,16 @@ public class CalculateTripActivity extends AppCompatActivity {
                 getAllDataWithDate();
             }
         });
+         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+             @Override
+             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                 Intent intent = new Intent(CalculateTripActivity.this, UrgentTripDetail_Saved.class);
+                 startActivity(intent);
+                 overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
 
+
+             }
+         });
 
     }
 

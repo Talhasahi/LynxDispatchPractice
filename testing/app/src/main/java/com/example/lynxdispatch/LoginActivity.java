@@ -54,7 +54,8 @@ public class LoginActivity extends AppCompatActivity {
     private SharedPreferences.Editor editor;
     private RequestQueue requestQueue;
     private String FullName, AccessToken, TokenType, UserProfileAddress;
-    private int RoleId, UserId, Id;
+    private int RoleId, Id;
+    private long UserId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,7 +129,7 @@ public class LoginActivity extends AppCompatActivity {
                             FullName = response.getJSONObject("user").getString("firstname") + ' ' +
                                     response.getJSONObject("user").getString("lastname");
                             Id = response.getJSONObject("user").getInt("id");
-                            UserId = response.getJSONObject("user").getInt("userId");
+                            UserId = response.getJSONObject("user").getLong("userId");
                             RoleId = response.getJSONObject("user").getJSONArray("roles").
                                     getJSONObject(0).getInt("id");
                             TokenType = response.getJSONObject("user").getString("tokenType");
@@ -138,7 +139,7 @@ public class LoginActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
 
-                        Toast.makeText(LoginActivity.this, "Welcome " + FullName, Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginActivity.this, "Welcome", Toast.LENGTH_LONG).show();
                         if (RoleId == 1) {
                             Intent intent = new Intent(LoginActivity.this, DriverHomeActivity.class);
                             startActivity(intent);
@@ -147,7 +148,7 @@ public class LoginActivity extends AppCompatActivity {
 
                             editor.putInt("flagLogin", 1);
                             editor.putString("FullName", FullName);
-                            editor.putInt("UserId", UserId);
+                            editor.putLong("UserId", UserId);
                             editor.putInt("RoleId", RoleId);
                             editor.putString("AccessToken", AccessToken);
                             editor.putString("TokenType", TokenType);
@@ -161,7 +162,7 @@ public class LoginActivity extends AppCompatActivity {
 
                             editor.putInt("flagLogin", 2);
                             editor.putString("FullName", FullName);
-                            editor.putInt("UserId", UserId);
+                            editor.putLong("UserId", UserId);
                             editor.putInt("RoleId", RoleId);
                             editor.putString("AccessToken", AccessToken);
                             editor.putString("UserProfile", UserProfileAddress);

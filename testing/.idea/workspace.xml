@@ -13,14 +13,13 @@
     <list default="true" id="25b353f6-b7bc-4b81-93fe-a9fe090fe03d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/lynxdispatch/CalculateTripActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/lynxdispatch/CalculateTripActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/lynxdispatch/FareParameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/lynxdispatch/FareParameters.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/lynxdispatch/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/lynxdispatch/LoginActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/lynxdispatch/NewTripEstimate.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/lynxdispatch/NewTripEstimate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/lynxdispatch/SQLite_Helper_Save_Trip.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/lynxdispatch/SQLite_Helper_Save_Trip.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/lynxdispatch/SavePersonalTrip.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/lynxdispatch/SavePersonalTrip.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/lynxdispatch/TripFareEstimateCalculate.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/lynxdispatch/TripFareEstimateCalculate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/lynxdispatch/UrgentTripDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/lynxdispatch/UrgentTripDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_calculate_trip.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_calculate_trip.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_fare_parameters.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_fare_parameters.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/singlten_loaded_miles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/singlten_loaded_miles.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,11 +62,14 @@
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="52007617eab265b3" />
     <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-08-19T11:46:54.709Z" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="E:/Projects/PinNews" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="android.template.1099350977">
+      <recent name="com.example.lynxdispatch" />
+    </key>
+    <key name="android.template.106160436">
       <recent name="com.example.lynxdispatch" />
     </key>
     <key name="android.template.-809039096">
@@ -230,47 +232,47 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="380" y="185" key="AndroidCreateResourceFileDialog/0.0.1600.860@0.0.1600.860" timestamp="1597766668640" />
-    <state x="580" y="185" key="FileChooserDialogImpl" timestamp="1597748647718">
+    <state x="580" y="185" key="FileChooserDialogImpl" timestamp="1597913908276">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="580" y="185" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1597748647718" />
-    <state width="1557" height="123" key="GridCell.Tab.0.bottom" timestamp="1597850510813">
+    <state x="580" y="185" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1597913908276" />
+    <state width="1557" height="-40" key="GridCell.Tab.0.bottom" timestamp="1597905996623">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="123" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1597850510813" />
-    <state width="1557" height="123" key="GridCell.Tab.0.center" timestamp="1597850510813">
+    <state width="1557" height="-40" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1597905996623" />
+    <state width="1557" height="-40" key="GridCell.Tab.0.center" timestamp="1597905996623">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="123" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1597850510813" />
-    <state width="1557" height="123" key="GridCell.Tab.0.left" timestamp="1597850510811">
+    <state width="1557" height="-40" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1597905996623" />
+    <state width="1557" height="-40" key="GridCell.Tab.0.left" timestamp="1597905996623">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="123" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1597850510811" />
-    <state width="1557" height="123" key="GridCell.Tab.0.right" timestamp="1597850510813">
+    <state width="1557" height="-40" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1597905996623" />
+    <state width="1557" height="-40" key="GridCell.Tab.0.right" timestamp="1597905996623">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="123" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1597850510813" />
-    <state width="1557" height="275" key="GridCell.Tab.1.bottom" timestamp="1597840465471">
+    <state width="1557" height="-40" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1597905996623" />
+    <state width="1557" height="275" key="GridCell.Tab.1.bottom" timestamp="1597905965304">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="275" key="GridCell.Tab.1.bottom/0.0.1600.860@0.0.1600.860" timestamp="1597840465471" />
-    <state width="1557" height="275" key="GridCell.Tab.1.center" timestamp="1597840465471">
+    <state width="1557" height="275" key="GridCell.Tab.1.bottom/0.0.1600.860@0.0.1600.860" timestamp="1597905965304" />
+    <state width="1557" height="275" key="GridCell.Tab.1.center" timestamp="1597905965303">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="275" key="GridCell.Tab.1.center/0.0.1600.860@0.0.1600.860" timestamp="1597840465471" />
-    <state width="1557" height="275" key="GridCell.Tab.1.left" timestamp="1597840465470">
+    <state width="1557" height="275" key="GridCell.Tab.1.center/0.0.1600.860@0.0.1600.860" timestamp="1597905965303" />
+    <state width="1557" height="275" key="GridCell.Tab.1.left" timestamp="1597905965303">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="275" key="GridCell.Tab.1.left/0.0.1600.860@0.0.1600.860" timestamp="1597840465470" />
-    <state width="1557" height="275" key="GridCell.Tab.1.right" timestamp="1597840465471">
+    <state width="1557" height="275" key="GridCell.Tab.1.left/0.0.1600.860@0.0.1600.860" timestamp="1597905965303" />
+    <state width="1557" height="275" key="GridCell.Tab.1.right" timestamp="1597905965304">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="275" key="GridCell.Tab.1.right/0.0.1600.860@0.0.1600.860" timestamp="1597840465471" />
-    <state x="496" y="254" key="com.intellij.ide.util.TipDialog" timestamp="1597837586278">
+    <state width="1557" height="275" key="GridCell.Tab.1.right/0.0.1600.860@0.0.1600.860" timestamp="1597905965304" />
+    <state x="496" y="254" key="com.intellij.ide.util.TipDialog" timestamp="1597903592887">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="423" y="227" key="com.intellij.ide.util.TipDialog/0.0.1366.768@0.0.1366.768" timestamp="1597736274201" />
-    <state x="496" y="254" key="com.intellij.ide.util.TipDialog/0.0.1600.860@0.0.1600.860" timestamp="1597837586278" />
+    <state x="496" y="254" key="com.intellij.ide.util.TipDialog/0.0.1600.860@0.0.1600.860" timestamp="1597903592887" />
     <state x="542" y="58" key="refactoring.ChangeSignatureDialog" timestamp="1597821216867">
       <screen x="0" y="0" width="1600" height="860" />
     </state>

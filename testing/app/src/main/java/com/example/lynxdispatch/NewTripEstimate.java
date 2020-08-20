@@ -117,16 +117,8 @@ public class NewTripEstimate extends AppCompatActivity {
             }
         });
 
+         getDataFromShearePrefrence();
 
-        String     baselocation = prefs.getString("baselocation", null);
-        String    basefare = prefs.getString("basefare", null);
-        String    permnute = prefs.getString("permnute", null);
-        String    permile = prefs.getString("permile", null);
-
-        baseFareValue.setText(basefare);
-        perMileValue.setText(permile);
-        perMinVale.setText(permnute);
-        baseLocation.setText(baselocation);
 
         fareParameter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -162,6 +154,18 @@ public class NewTripEstimate extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void getDataFromShearePrefrence() {
+        String     baselocation = prefs.getString("baselocation", null);
+        String    basefare = prefs.getString("basefare", null);
+        String    permnute = prefs.getString("permnute", null);
+        String    permile = prefs.getString("permile", null);
+
+        baseFareValue.setText(basefare);
+        perMileValue.setText(permile);
+        perMinVale.setText(permnute);
+        baseLocation.setText(baselocation);
     }
 
 

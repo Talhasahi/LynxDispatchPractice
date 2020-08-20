@@ -41,7 +41,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".SavePersonalTrip"></activity>
+        <activity android:name=".UrgentTripDetail_Saved"></activity>
+        <activity android:name=".SavePersonalTrip" />
         <activity android:name=".TripStatusActivity" />
         <activity android:name=".TripFareEstimateCalculate" />
         <activity android:name=".addNewVehicleActivity" />
