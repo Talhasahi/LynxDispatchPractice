@@ -197,6 +197,8 @@ public class CalculateTripActivity extends AppCompatActivity {
         calendarView = findViewById(R.id.calendarView);
         Date currentDate = Calendar.getInstance().getTime();
         calendarView.setSelectedDate(currentDate);
+        d= CalendarDay.from(currentDate);
+        getAllDataWithDate();
         marqueeText = findViewById(R.id.text);
         newTripEstimatebtn = findViewById(R.id.newTripEstimatebtn);
         backButton = findViewById(R.id.backButton_calculater);
