@@ -31,8 +31,8 @@ public class TripFareEstimateCalculate extends AppCompatActivity {
     LinearLayout ll1,ll2,ll3,ll4;
     private SingltenLoadedMiles  adp,adp2;
     Integer NoOfPasanger;
-    String pickPickup,dropOff,baseLocation;
-    Button backButton,loadedmile,baseTobase,proceedFurther;
+    String pickPickup,dropOff,baseLocation,time,date;
+    Button backButton,loadedmile,baseTobase,proceedFurther,viewDetail;
     private ListView listView,baseTobaseListView;
     private List<String> n, n1, n2, n3,n4,l1,l2,l3,l4,l5;
     private static final String TAG_DATETIME_FRAGMENT = "TAG_DATETIME_FRAGMENT";
@@ -44,6 +44,24 @@ public class TripFareEstimateCalculate extends AppCompatActivity {
         getTextFromPriviousActivity();
 
         initialization();
+
+        if ("".equals(date)){
+
+        }
+        else {
+            pickUpTime.setText(date+" "+time);
+            viewDetail.setVisibility(View.VISIBLE);
+            proceedFurther.setVisibility(View.INVISIBLE);
+        }
+        viewDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TripFareEstimateCalculate.this, PersonalTripDetailSaved.class);
+
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+            }
+        });
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,7 +109,6 @@ public class TripFareEstimateCalculate extends AppCompatActivity {
                 dateTimeDialogFragment.show(getSupportFragmentManager(), TAG_DATETIME_FRAGMENT);
             }
         });
-
         proceedFurther.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,10 +131,10 @@ public class TripFareEstimateCalculate extends AppCompatActivity {
             }
         });
 
-
     }
 
     private void initialization() {
+        viewDetail = findViewById(R.id.view_detail);
         proceedFurther = findViewById(R.id.prcceed_further);
         t1 = findViewById(R.id.textInputLayout);
         t2 = findViewById(R.id.textInputLayout3);
@@ -209,7 +226,8 @@ public class TripFareEstimateCalculate extends AppCompatActivity {
         pickPickup = b.getString("pickUp");
         dropOff = b.getString("DropOff");
         baseLocation =  b.getString("base_Location");
-
+         time = b.getString("time");
+         date =  b.getString("date");
     }
     public void onBackPressed() {
         super.onBackPressed();
