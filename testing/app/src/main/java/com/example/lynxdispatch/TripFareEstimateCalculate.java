@@ -31,7 +31,7 @@ public class TripFareEstimateCalculate extends AppCompatActivity {
     LinearLayout ll1,ll2,ll3,ll4;
     private SingltenLoadedMiles  adp,adp2;
     Integer NoOfPasanger;
-    String pickPickup,dropOff,baseLocation,time,date;
+    String pickPickup,dropOff,baseLocation,time,date,AppointmentTime,Vehicle_List,AppointmentDate,Description_List,name,contctNo;
     Button backButton,loadedmile,baseTobase,proceedFurther,viewDetail;
     private ListView listView,baseTobaseListView;
     private List<String> n, n1, n2, n3,n4,l1,l2,l3,l4,l5;
@@ -57,6 +57,18 @@ public class TripFareEstimateCalculate extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(TripFareEstimateCalculate.this, PersonalTripDetailSaved.class);
+                intent.putExtra("name_saved",name );
+                intent.putExtra("contctNo",contctNo );
+                intent.putExtra("No_Of_pasanger", NoOfPasanger);
+                intent.putExtra("pickUp", pickPickup);
+                intent.putExtra("DropOff", dropOff);
+                intent.putExtra("base_Location", baseLocation);
+                intent.putExtra("PickUpTime", time);
+                intent.putExtra("date", date);
+                intent.putExtra("AppointmentTime", AppointmentTime);
+                intent.putExtra("AppointmentDate", AppointmentDate);
+                intent.putExtra("Vehicle_List", Vehicle_List);
+                intent.putExtra("Description_List", Description_List);
 
                 startActivity(intent);
                 overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
@@ -76,9 +88,6 @@ public class TripFareEstimateCalculate extends AppCompatActivity {
                 ll3.setVisibility(View.GONE);
                 ll4.setVisibility(View.GONE);
                 baseTobaseListView.setVisibility(View.GONE);
-
-
-
                 ll1.setVisibility(View.VISIBLE);
                 es.setVisibility(View.VISIBLE);
                 listView.setVisibility(View.VISIBLE);
@@ -90,15 +99,10 @@ public class TripFareEstimateCalculate extends AppCompatActivity {
                 ll1.setVisibility(View.GONE);
                 es.setVisibility(View.GONE);
                 listView.setVisibility(View.GONE);
-
-
-
                 ll2.setVisibility(View.VISIBLE);
                 ll3.setVisibility(View.VISIBLE);
                 ll4.setVisibility(View.VISIBLE);
                 baseTobaseListView.setVisibility(View.VISIBLE);
-
-
             }
         });
         pickUpTime.setOnClickListener(new View.OnClickListener() {
@@ -125,6 +129,7 @@ public class TripFareEstimateCalculate extends AppCompatActivity {
                     overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                 }
                 else {
+
 
                 }
 
@@ -221,13 +226,22 @@ public class TripFareEstimateCalculate extends AppCompatActivity {
     }
 
     private void getTextFromPriviousActivity() {
+
         Bundle b = getIntent().getExtras();
-        NoOfPasanger = b.getInt("No_Of_pasanger");
+        name = b.getString("name_saved");
+        contctNo = b.getString("contctNo");
+        NoOfPasanger = b.getInt("pasanger");
         pickPickup = b.getString("pickUp");
         dropOff = b.getString("DropOff");
         baseLocation =  b.getString("base_Location");
          time = b.getString("time");
          date =  b.getString("date");
+        AppointmentTime = b.getString("AppointmentTime");
+        AppointmentDate =  b.getString("AppointmentDate");
+        Vehicle_List = b.getString("Vehicle_List");
+        Description_List =  b.getString("Description_List");
+
+
     }
     public void onBackPressed() {
         super.onBackPressed();

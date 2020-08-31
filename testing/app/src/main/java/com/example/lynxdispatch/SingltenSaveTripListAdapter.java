@@ -12,18 +12,22 @@ import java.util.List;
 
 public class SingltenSaveTripListAdapter extends BaseAdapter {
     private Context context;
-    private List<String> name, name1, name2, name3,name4,tripType,dropOf,NoOfPasanger,baseToBase;
+    private List<String> name, name1, name2, name3,name4,tripType,dropOf,NoOfPasanger,baseToBase,Vehicle,Description,AppointmentDate,AppointmentTime;
     private TextView t1, t2, t3, t4;
-    SingltenSaveTripListAdapter(Context c, List<String> s1, List<String> s2, List<String> s3, List<String> s4,List<String> s5,List<String> tripType_selected,List<String> dropOf_saved,List<String> No0fPasanger_saved,List<String> baseTobase_saved) {
+    SingltenSaveTripListAdapter(Context c, List<String> s1, List<String> s2, List<String> s3, List<String> s4,List<String> s5,List<String> tripType_selected,List<String> dropOf_saved,List<String> No0fPasanger_saved,List<String> baseTobase_saved,   List<String> Description_List,List<String> AppointmentDate_List,List<String> AppointmentTime_List,List<String> Vehicle_List) {
         name = s1;
         name1 = s2;
         name2 = s3;
         name3 = s4;
-            name4 = s5;
+        name4 = s5;
         tripType = tripType_selected;
         dropOf = dropOf_saved;
         NoOfPasanger = No0fPasanger_saved;
         baseToBase = baseTobase_saved;
+        Vehicle = Vehicle_List;
+        Description= Description_List;
+        AppointmentDate = AppointmentDate_List;
+        AppointmentTime = AppointmentTime_List;
         context = c;
     }
     @Override

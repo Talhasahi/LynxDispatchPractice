@@ -21,12 +21,18 @@ public class UrgentTripDetail_Saved extends AppCompatActivity {
 
         initialization();
         getdataFromCalculateTrip();
-
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+            }
+        });
     }
 
     private void getdataFromCalculateTrip() {
         Bundle b = getIntent().getExtras();
-        String     name_saved = b.getString("name_saved", null);
+        String     name_saved = b.getString("names", null);
         String    PickUpTime_saved = b.getString("PickUpTime_saved", null);
         String    address_saved = b.getString("address_saved", null);
         String    contactNo_saved = b.getString("contactNo_saved", null);
@@ -36,13 +42,7 @@ public class UrgentTripDetail_Saved extends AppCompatActivity {
         time.setText(date+" "+PickUpTime_saved);
         address.setText(address_saved);
         contactNo.setText(contactNo_saved);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
-            }
-        });
+
     }
 
     private void initialization() {

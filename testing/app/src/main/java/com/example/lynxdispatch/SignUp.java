@@ -63,7 +63,6 @@ public class SignUp extends AppCompatActivity {
         password = findViewById(R.id.password_SignIn);
         already_Account = findViewById(R.id.sign_Up_login_now);
         back_button = findViewById(R.id.backButton_go_to_login);
-
     }
 
     private void set_Up_spinner() {
@@ -74,7 +73,6 @@ public class SignUp extends AppCompatActivity {
         int text = 1;
         spinner_menu.setText("Select Account");
         spinner_menu.setAdapter(adapter);
-
 
     }
 

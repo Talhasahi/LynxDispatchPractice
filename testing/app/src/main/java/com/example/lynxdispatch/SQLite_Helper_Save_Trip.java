@@ -13,7 +13,7 @@ class SQLite_Helper_Save_Trip extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE IF NOT EXISTS saved_Trips (id INTEGER PRIMARY KEY AUTOINCREMENT, user_id LONG, name TEXT, contact_no  TEXT, pichUpTime DATETIME, pichUpAddress TEXT, DropOfaddress TEXT, NoOfPassanger INTEGER,BaseToBase TEXT,TripType TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS saved_Trips (id INTEGER PRIMARY KEY AUTOINCREMENT, user_id LONG, name TEXT, contact_no  TEXT, pichUpTime DATETIME, pichUpAddress TEXT, DropOfaddress TEXT, NoOfPassanger INTEGER,BaseToBase TEXT,TripType TEXT,Vehicle TEXT,Description TEXT,AppointmentDate DATETIME)");
         //db.execSQL("CREATE TABLE IF NOT EXISTS home_news (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, image TEXT, content TEXT, likeText TEXT, shareText TEXT, date_entry TEXT, newstag TEXT, t_temp TEXT, l_temp TEXT, image_slider_array TEXT, category TEXT, views TEXT)");
 
     }
@@ -23,7 +23,7 @@ class SQLite_Helper_Save_Trip extends SQLiteOpenHelper {
 
     }
 
-    boolean insertData(Long userId, String Name, String content, String pichUpTime, String pichUpAddress, String DropOfaddress, Integer NoOfPassanger, String baseToBase, String tripType) {
+    boolean insertData(Long userId, String Name, String content, String pichUpTime, String pichUpAddress, String DropOfaddress, Integer NoOfPassanger, String baseToBase, String tripType,String Vehicle, String Description, String AppointmentDate) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("user_id", userId);
@@ -35,7 +35,9 @@ class SQLite_Helper_Save_Trip extends SQLiteOpenHelper {
         cv.put("NoOfPassanger", NoOfPassanger);
         cv.put("BaseToBase", baseToBase);
         cv.put("TripType", tripType);
-
+        cv.put("Vehicle", Vehicle);
+        cv.put("Description", Description);
+        cv.put("AppointmentDate", AppointmentDate);
         long result_insert = db.insert("saved_Trips", null, cv);
         return result_insert != -1;  // if(result_insert != -1) return false / true
     }

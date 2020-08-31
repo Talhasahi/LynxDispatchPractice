@@ -81,15 +81,16 @@ public class UrgentTripDetail extends AppCompatActivity {
                 String  contacts_no = contact_no.getText().toString();
                 boolean fieldsOK = validate(new EditText[]{pickupTime, PickUpAddress, name,contact_no});
                 if (fieldsOK) {
-                    boolean b = save_trip_in_sqlLite.insertData(userId,name_,contacts_no,pickup_Time,PickUp_Address,"",null,"","urgentTrip");
+                    boolean b = save_trip_in_sqlLite.insertData(userId,name_,contacts_no,pickup_Time,PickUp_Address,"",null,"","urgentTrip","","","");
                     if (b){
 
                         Toast.makeText(UrgentTripDetail.this, "Saved", Toast.LENGTH_SHORT).show();
                         finish();
                         overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
-//                        Cursor res =  save_trip_in_sqlLite.getAllData();
+                        //Cursor res =  save_trip_in_sqlLite.getAllData();
 //      while (res.moveToNext()){
-//          Toast.makeText(UrgentTripDetail.this, res.getString(1), Toast.LENGTH_SHORT).show();
+//          Toast.makeText(UrgentTripDetail.this, res.getString(10), Toast.LENGTH_SHORT).show();
+//          Toast.makeText(UrgentTripDetail.this, res.getString(11), Toast.LENGTH_SHORT).show();
 //
 //     }
                     }

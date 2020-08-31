@@ -8,6 +8,12 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.TextPaint;
+import android.text.style.MetricAffectingSpan;
+import android.text.style.RelativeSizeSpan;
+import android.text.style.TypefaceSpan;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -16,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.prolificinteractive.materialcalendarview.CalendarDay;
+import com.prolificinteractive.materialcalendarview.CalendarMode;
 import com.prolificinteractive.materialcalendarview.DayViewDecorator;
 import com.prolificinteractive.materialcalendarview.DayViewFacade;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
@@ -37,17 +44,19 @@ public class CalculateTripActivity extends AppCompatActivity {
     private Button newTripEstimatebtn, backButton;
     private MaterialCalendarView calendarView;
     private ListView listView;
-    private List<String> name, contctNo, pickUpAddress, PickUpTime, date,checkActivity,dropOffAddress,baseTobase,noOffPasanger;
+    private List<String> name, contctNo, pickUpAddress, PickUpTime, date,checkActivity,dropOffAddress,baseTobase,noOffPasanger,Vehicle_List,Description_List,AppointmentDate,AppointmentTime;
     private List<Integer> savetripId;
     private SingltenSaveTripListAdapter adp;
     SQLite_Helper_Save_Trip save_trip_in_sqlLite;
     private CalendarDay d;
-
+    SpannableStringBuilder builder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculate_trip);
         initialization();
+         builder = new SpannableStringBuilder("1");
+
         try {
             getDataFromSqlLite();
         } catch (ParseException e) {
@@ -83,7 +92,7 @@ public class CalculateTripActivity extends AppCompatActivity {
              public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                  if  (checkActivity.get(position).equals("urgentTrip")){
                      Intent intent = new Intent(CalculateTripActivity.this, UrgentTripDetail_Saved.class);
-                     intent.putExtra("name_saved", name.get(position));
+                     intent.putExtra("names", name.get(position));
                      intent.putExtra("PickUpTime_saved", PickUpTime.get(position));
                      intent.putExtra("address_saved", pickUpAddress.get(position));
                      intent.putExtra("contactNo_saved", contctNo.get(position));
@@ -93,22 +102,29 @@ public class CalculateTripActivity extends AppCompatActivity {
                      overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                  }
                  else {
-                     Toast.makeText(CalculateTripActivity.this, baseTobase.get(position), Toast.LENGTH_SHORT).show();
+
                      Intent intent = new Intent(CalculateTripActivity.this, TripFareEstimateCalculate.class);
-                     intent.putExtra("No_Of_pasanger",noOffPasanger.get(position));
+
+                     intent.putExtra("name_saved", name.get(position));
+                     intent.putExtra("pasanger", Integer.parseInt(noOffPasanger.get(position)));
                      intent.putExtra("pickUp", pickUpAddress.get(position));
                      intent.putExtra("DropOff", dropOffAddress.get(position));
                      intent.putExtra("base_Location", baseTobase.get(position));
                      intent.putExtra("time", PickUpTime.get(position));
                      intent.putExtra("date", date.get(position));
+                     intent.putExtra("AppointmentTime", AppointmentTime.get(position));
+                     intent.putExtra("AppointmentDate", AppointmentDate.get(position));
+                     intent.putExtra("Vehicle_List", Vehicle_List.get(position));
+                     intent.putExtra("Description_List", Description_List.get(position));
+                     intent.putExtra("contctNo", contctNo.get(position));
                      startActivity(intent);
                      overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
-
                  }
 
 
              }
          });
+
 
     }
 
@@ -123,6 +139,7 @@ public class CalculateTripActivity extends AppCompatActivity {
             PickUpTime.clear();
             savetripId.clear();
         } else {
+
             name.clear();
             contctNo.clear();
             pickUpAddress.clear();
@@ -133,6 +150,10 @@ public class CalculateTripActivity extends AppCompatActivity {
             baseTobase.clear();
             dropOffAddress.clear();
             noOffPasanger.clear();
+            Vehicle_List.clear();
+            AppointmentDate.clear();
+            Description_List.clear();
+            AppointmentTime.clear();
             while (res.moveToNext()) {
                 savetripId.add(res.getInt(0));
                 StringTokenizer tk = new StringTokenizer(res.getString(4));
@@ -147,9 +168,24 @@ public class CalculateTripActivity extends AppCompatActivity {
                 dropOffAddress.add(res.getString(6));
                 noOffPasanger.add(res.getString(7));
                 baseTobase.add(res.getString(8));
+                Vehicle_List.add(res.getString(10));
+
+                if (!"".equals(res.getString(12))){
+                    StringTokenizer tk1 = new StringTokenizer(res.getString(12));
+                    String date2 = tk1.nextToken();
+                    String time1 = tk1.nextToken();
+                    AppointmentTime.add(time1);
+                    AppointmentDate.add(date2);
+                }
+                else {
+                    AppointmentTime.add("");
+                    AppointmentDate.add("");
+                }
+
+                Description_List.add(res.getString(11));
             }
         }
-        adp = new SingltenSaveTripListAdapter(CalculateTripActivity.this, name, PickUpTime, pickUpAddress, contctNo,date,checkActivity,dropOffAddress,noOffPasanger,baseTobase);
+        adp = new SingltenSaveTripListAdapter(CalculateTripActivity.this, name, PickUpTime, pickUpAddress, contctNo,date,checkActivity,dropOffAddress,noOffPasanger,baseTobase,Description_List,AppointmentDate,AppointmentTime,Vehicle_List);
         listView.setAdapter(adp);
         adp.notifyDataSetInvalidated();
     }
@@ -161,6 +197,10 @@ public class CalculateTripActivity extends AppCompatActivity {
         if (res.getCount() == 0) {
 
         } else {
+            Vehicle_List.clear();
+            AppointmentDate.clear();
+            AppointmentTime.clear();
+            Description_List.clear();
             name.clear();
             contctNo.clear();
             pickUpAddress.clear();
@@ -182,6 +222,10 @@ public class CalculateTripActivity extends AppCompatActivity {
     }
 
     private void initialization() {
+        Vehicle_List = new ArrayList<>();
+        AppointmentDate = new ArrayList<>();
+        Description_List = new ArrayList<>();
+        AppointmentTime = new ArrayList<>();
         noOffPasanger = new ArrayList<>();
         baseTobase = new ArrayList<>();
         dropOffAddress = new ArrayList<>();
@@ -202,11 +246,10 @@ public class CalculateTripActivity extends AppCompatActivity {
         marqueeText = findViewById(R.id.text);
         newTripEstimatebtn = findViewById(R.id.newTripEstimatebtn);
         backButton = findViewById(R.id.backButton_calculater);
-
-
     }
 
     public class EventDecorator implements DayViewDecorator {
+
 
         private final int color;
         private final HashSet<CalendarDay> dates;
@@ -215,7 +258,6 @@ public class CalculateTripActivity extends AppCompatActivity {
             this.color = color;
             this.dates = new HashSet<>(dates);
         }
-
         @Override
         public boolean shouldDecorate(CalendarDay day) {
             return dates.contains(day);
@@ -223,10 +265,12 @@ public class CalculateTripActivity extends AppCompatActivity {
 
         @Override
         public void decorate(DayViewFacade view) {
-            view.addSpan(new DotSpan(5, color));
+           view.addSpan(new DotSpan(5, color));
+          //  view.addSpan(builder);
+            view.addSpan(builder);
         }
-    }
 
+    }
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -248,12 +292,9 @@ public class CalculateTripActivity extends AppCompatActivity {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
     }
-
     protected void onPause() {
         super.onPause();
-
 
     }
 }

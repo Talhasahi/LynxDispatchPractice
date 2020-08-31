@@ -44,13 +44,15 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <View
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
         android:background="@android:color/darker_gray"
-        app:layout_constraintBottom_toTopOf="@+id/time_urgent_saved"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name_urgent_save" />
 
     <TextView
@@ -69,13 +71,16 @@
         app:layout_constraintTop_toBottomOf="@+id/name_urgent_save" />
 
     <View
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
         android:id="@+id/view2"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
         android:background="@android:color/darker_gray"
         app:layout_constraintBottom_toTopOf="@+id/address_saved"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/time_urgent_saved" />
 
     <TextView
@@ -94,13 +99,15 @@
         app:layout_constraintTop_toBottomOf="@+id/time_urgent_saved" />
 
     <View
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
         android:id="@+id/view3"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
         android:background="@android:color/darker_gray"
-        app:layout_constraintBottom_toTopOf="@+id/contact_No_saved"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/address_saved" />
 
     <TextView
@@ -119,10 +126,11 @@
         app:layout_constraintTop_toBottomOf="@+id/address_saved" />
 
     <View
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
         android:background="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -134,7 +142,7 @@
         android:layout_marginBottom="20dp"
         android:background="@drawable/loginbutton"
         android:elevation="10dp"
-        android:text="New Trip Estimate"
+        android:text="Make Trip Live"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -212,6 +212,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+
             android:id="@+id/textInputLayout12"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="320dp"
@@ -227,8 +228,12 @@
                 android:id="@+id/name_note_save_personal_trip"
                 android:layout_width="320dp"
                 android:layout_height="145dp"
+                android:lines="8"
+               android:minLines="6"
                 android:gravity="top"
-                android:inputType="text"
+                android:inputType="textMultiLine"
+                android:scrollbars="vertical"
+                android:overScrollMode="always"
                 android:maxLines="3"
                 android:padding="10dp" />
         </com.google.android.material.textfield.TextInputLayout>

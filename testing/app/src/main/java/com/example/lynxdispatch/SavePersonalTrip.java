@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -58,16 +59,23 @@ public class SavePersonalTrip extends AppCompatActivity {
             private void savePersonalTrip() {
                 String spinner_vehicle_String = spinner_vehicle.getText().toString();
                 String name_String = name.getText().toString();
+
                 String contactNo_String = contactNo.getText().toString();
                 String pickupTime_String = pickupTime.getText().toString();
                 String dropoffTime_String = dropoffTime.getText().toString();
                 String dispatcherNote_String = dispatcherNote.getText().toString();
-                boolean fieldsOK = validate(new EditText[]{name, contactNo, pickupTime,dropoffTime,dispatcherNote});
-                if (fieldsOK &&  !spinner_vehicle_String.equals("Select Vehicle")) {
-                    boolean b = save_trip_in_sqlLite.insertData(userId,name_String,contactNo_String,pickupTime_String,pickPickup,dropOff,NoOfPasanger,baseLocation,"savePersonalTrip");
-                    if (b){
 
-                        Toast.makeText(SavePersonalTrip.this, "Saved", Toast.LENGTH_SHORT).show();
+                boolean fieldsOK = validate(new EditText[]{name, contactNo, pickupTime,dispatcherNote});
+                if (fieldsOK &&  !spinner_vehicle_String.equals("Select Vehicle")) {
+                    boolean b = save_trip_in_sqlLite.insertData(userId,name_String,contactNo_String,pickupTime_String,pickPickup,dropOff,NoOfPasanger,baseLocation,"savePersonalTrip",spinner_vehicle_String,dispatcherNote_String,dropoffTime_String);
+                    if (b){
+                        Cursor res =  save_trip_in_sqlLite.getAllData();
+      while (res.moveToNext()){
+
+          Toast.makeText(SavePersonalTrip.this, res.getString(8), Toast.LENGTH_SHORT).show();
+          Toast.makeText(SavePersonalTrip.this, res.getString(7), Toast.LENGTH_SHORT).show();
+
+     }
 
                         Intent newIntent = new Intent(SavePersonalTrip.this,CalculateTripActivity.class);
                         newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -113,6 +121,7 @@ public class SavePersonalTrip extends AppCompatActivity {
         dropOff = b.getString("dropOff");
         baseLocation = b.getString("baseLocation");
         NoOfPasanger = b.getInt("NoOfPasanger");
+        Toast.makeText(SavePersonalTrip.this, String.valueOf(NoOfPasanger), Toast.LENGTH_SHORT).show();
 
     }
 

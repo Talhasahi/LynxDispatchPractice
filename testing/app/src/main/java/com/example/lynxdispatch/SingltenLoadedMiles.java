@@ -53,7 +53,6 @@ public class SingltenLoadedMiles extends BaseAdapter {
         t4.setText(name3.get(position));
         t5.setText(name4.get(position));
 
-
         return convertView;
     }
 }
