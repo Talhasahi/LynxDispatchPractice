@@ -2,10 +2,8 @@ package com.example.lynxdispatch;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RadioButton;
@@ -17,7 +15,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class TripStatusActivity extends AppCompatActivity {
+public class B_Legs_Activity extends AppCompatActivity {
 
     private Button backButton;
     private RadioButton remaining, assigned, finished;
@@ -30,7 +28,7 @@ public class TripStatusActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_trip_status);
+        setContentView(R.layout.activity_b__legs_);
 
         inialization();
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -45,8 +43,8 @@ public class TripStatusActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 flagTripsStatus = 1;
-                tripsCount.setText("( " + 85 + "/" + 158 + " )");
-                adp = new singlten_trip_status_class(TripStatusActivity.this, l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, flagTripsStatus);
+                tripsCount.setText("( " + 61 + "/" + 72 + " )");
+                adp = new singlten_trip_status_class(B_Legs_Activity.this, l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, flagTripsStatus);
                 listView.setAdapter(adp);
                 adp.notifyDataSetInvalidated();
             }
@@ -56,8 +54,8 @@ public class TripStatusActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 flagTripsStatus = 2;
-                tripsCount.setText("( " + 26 + "/" + 158 + " )");
-                adp = new singlten_trip_status_class(TripStatusActivity.this, l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, flagTripsStatus);
+                tripsCount.setText("( " + 6 + "/" + 72 + " )");
+                adp = new singlten_trip_status_class(B_Legs_Activity.this, l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, flagTripsStatus);
                 listView.setAdapter(adp);
                 adp.notifyDataSetInvalidated();
             }
@@ -67,38 +65,30 @@ public class TripStatusActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 flagTripsStatus = 3;
-                tripsCount.setText("( " + 47 + "/" + 158 + " )");
-                adp = new singlten_trip_status_class(TripStatusActivity.this, l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, flagTripsStatus);
+                tripsCount.setText("( " + 5 + "/" + 72 + " )");
+                adp = new singlten_trip_status_class(B_Legs_Activity.this, l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, flagTripsStatus);
                 listView.setAdapter(adp);
                 adp.notifyDataSetInvalidated();
             }
         });
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(TripStatusActivity.this, TripDetailActivity.class);
-                startActivity(intent);
-                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
-            }
-        });
     }
 
     private void inialization() {
-        backButton = findViewById(R.id.backButton_trip_status);
-        remaining = findViewById(R.id.remaining_tripStatus);
-        assigned = findViewById(R.id.assigned_tripStatus);
-        finished = findViewById(R.id.finished_tripStatus);
-        currentDate = findViewById(R.id.Trip_status_currentDate);
-        tripsCount = findViewById(R.id.Trip_status_tripsCount);
-        listView = findViewById(R.id.listview_tripStatus);
+        backButton = findViewById(R.id.backButton_b_legs);
+        remaining = findViewById(R.id.remaining_b_legs);
+        assigned = findViewById(R.id.assigned_b_legs);
+        finished = findViewById(R.id.finished_b_legs);
+        currentDate = findViewById(R.id.b_legs_currentDate);
+        tripsCount = findViewById(R.id.b_legs_tripsCount);
+        listView = findViewById(R.id.listview_b_legs);
         Date currentTime = Calendar.getInstance().getTime();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         currentDate.setText(df.format(currentTime));
-        tripsCount.setText("( " + 85 + "/" + 158 + " )");
-        remaining.setText("Remaining (" + 85 + ")");
-        assigned.setText("Assigned (" + 26 + ")");
-        finished.setText("Finished (" + 47 + ")");
+        tripsCount.setText("( " + 61 + "/" + 72 + " )");
+        remaining.setText("Remaining (" + 61 + ")");
+        assigned.setText("Assigned (" + 6 + ")");
+        finished.setText("Finished (" + 5 + ")");
         flagTripsStatus = 1;
 
         l1 = new ArrayList<>();
@@ -168,10 +158,9 @@ public class TripStatusActivity extends AppCompatActivity {
         l11.add("");
         l11.add("JustCancel");
 
-        adp = new singlten_trip_status_class(TripStatusActivity.this, l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, flagTripsStatus);
+        adp = new singlten_trip_status_class(B_Legs_Activity.this, l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, flagTripsStatus);
         listView.setAdapter(adp);
         adp.notifyDataSetInvalidated();
-
     }
 
     @Override
@@ -180,4 +169,6 @@ public class TripStatusActivity extends AppCompatActivity {
         finish();
         overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
     }
+
+
 }

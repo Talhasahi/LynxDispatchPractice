@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,9 +7,7 @@
     tools:context=".addNewVehicleActivity">
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingBottom="20dp"
@@ -25,9 +22,9 @@
             android:elevation="10dp"
             android:text="Add New Vehicle"
             android:textColor="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="@+id/textInputLayout1_add_newVehicle7"
-            app:layout_constraintStart_toStartOf="@+id/textInputLayout1_add_newVehicle7"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout1_add_newVehicle7" />
+            app:layout_constraintEnd_toEndOf="@+id/textInputLayout1_add_newVehicle4"
+            app:layout_constraintStart_toStartOf="@+id/textInputLayout1_add_newVehicle4"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout1_add_newVehicle4" />
 
         <Button
             android:id="@+id/backButton_go_to_addNewVehicle"
@@ -60,11 +57,12 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="320dp"
             android:layout_height="50dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="16dp"
             android:hint="Registration No *"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5">
+            app:layout_constraintEnd_toEndOf="@+id/textInputLayout1_add_newVehicle32"
+            app:layout_constraintHorizontal_bias="0.505"
+            app:layout_constraintStart_toStartOf="@+id/textInputLayout1_add_newVehicle32"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout1_add_newVehicle32">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/reg_no_car"
@@ -80,14 +78,14 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="320dp"
             android:layout_height="50dp"
-            android:layout_marginTop="16dp"
-            android:hint="Make and Model *"
-            app:layout_constraintEnd_toEndOf="@+id/textInputLayout1_add_newVehicle2"
-            app:layout_constraintStart_toStartOf="@+id/textInputLayout1_add_newVehicle2"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout1_add_newVehicle2">
+            android:layout_marginTop="32dp"
+            android:hint="Vehicle Make *"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView5">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/model_car"
+                android:id="@+id/makeVehicle_car"
                 android:layout_width="320dp"
                 android:layout_height="45dp"
                 android:inputType="text"
@@ -96,15 +94,77 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout1_add_newVehicle30"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+            android:layout_width="320dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="@+id/textInputLayout1_add_newVehicle3"
+            app:layout_constraintStart_toStartOf="@+id/textInputLayout1_add_newVehicle3"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout1_add_newVehicle3">
+
+
+            <AutoCompleteTextView
+                android:id="@+id/type_car"
+                android:layout_width="320dp"
+                android:layout_height="45dp"
+                android:filterTouchesWhenObscured="false"
+                android:inputType="none" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout1_add_newVehicle31"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="320dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:hint="Vehicle Model *"
+            app:layout_constraintEnd_toEndOf="@+id/textInputLayout1_add_newVehicle30"
+            app:layout_constraintStart_toStartOf="@+id/textInputLayout1_add_newVehicle30"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout1_add_newVehicle30">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/modelvehicle_car"
+                android:layout_width="320dp"
+                android:layout_height="45dp"
+                android:inputType="text"
+                android:maxLines="1"
+                android:padding="10dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout1_add_newVehicle32"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+            android:layout_width="320dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="@+id/textInputLayout1_add_newVehicle31"
+            app:layout_constraintStart_toStartOf="@+id/textInputLayout1_add_newVehicle31"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout1_add_newVehicle31">
+
+            <AutoCompleteTextView
+                android:id="@+id/yearvehicle_car"
+                android:layout_width="320dp"
+                android:layout_height="45dp"
+                android:filterTouchesWhenObscured="false"
+                android:inputType="none" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout1_add_newVehicle4"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="320dp"
             android:layout_height="50dp"
             android:layout_marginTop="16dp"
             android:hint="Color *"
-            app:layout_constraintEnd_toEndOf="@+id/textInputLayout1_add_newVehicle3"
-            app:layout_constraintStart_toStartOf="@+id/textInputLayout1_add_newVehicle3"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout1_add_newVehicle3">
+            app:layout_constraintEnd_toEndOf="@+id/textInputLayout1_add_newVehicle5"
+            app:layout_constraintStart_toStartOf="@+id/textInputLayout1_add_newVehicle5"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout1_add_newVehicle5">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/car_color"
@@ -121,10 +181,10 @@
             android:layout_width="320dp"
             android:layout_height="50dp"
             android:layout_marginTop="16dp"
-            android:hint="Vin *"
-            app:layout_constraintEnd_toEndOf="@+id/textInputLayout1_add_newVehicle4"
-            app:layout_constraintStart_toStartOf="@+id/textInputLayout1_add_newVehicle4"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout1_add_newVehicle4">
+            android:hint="Vehicle Identification Number (Vin) *"
+            app:layout_constraintEnd_toEndOf="@+id/textInputLayout1_add_newVehicle7"
+            app:layout_constraintStart_toStartOf="@+id/textInputLayout1_add_newVehicle7"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout1_add_newVehicle7">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/vin_car"
@@ -142,13 +202,13 @@
             android:layout_width="320dp"
             android:layout_height="50dp"
             android:layout_marginTop="16dp"
-            android:hint="Seti Decall"
-            app:layout_constraintEnd_toEndOf="@+id/textInputLayout1_add_newVehicle5"
-            app:layout_constraintStart_toStartOf="@+id/textInputLayout1_add_newVehicle5"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout1_add_newVehicle5">
+            android:hint="Vehicle Plate # *"
+            app:layout_constraintEnd_toEndOf="@+id/textInputLayout1_add_newVehicle2"
+            app:layout_constraintStart_toStartOf="@+id/textInputLayout1_add_newVehicle2"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout1_add_newVehicle2">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/set_detailCAr"
+                android:id="@+id/vehicle_PlateNo"
                 android:layout_width="320dp"
                 android:layout_height="45dp"
                 android:inputType="text"
@@ -156,24 +216,50 @@
                 android:padding="10dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout1_add_newVehicle7"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="320dp"
             android:layout_height="50dp"
             android:layout_marginTop="16dp"
-            android:hint="Odometer *"
+            android:hint="Registration Expiration Date *"
             app:layout_constraintEnd_toEndOf="@+id/textInputLayout1_add_newVehicle6"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/textInputLayout1_add_newVehicle6"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout1_add_newVehicle33">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/registrationExpDate_car"
+                android:layout_width="320dp"
+                android:layout_height="45dp"
+                android:inputType="none"
+                android:maxLines="1"
+                android:clickable="true"
+                android:focusableInTouchMode="false"
+                android:padding="10dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout1_add_newVehicle33"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="320dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:hint="Registration Date *"
+            app:layout_constraintEnd_toEndOf="@+id/textInputLayout1_add_newVehicle6"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/textInputLayout1_add_newVehicle6"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout1_add_newVehicle6">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/odometer_car"
+                android:id="@+id/registrationDate_car"
                 android:layout_width="320dp"
                 android:layout_height="45dp"
-                android:inputType="number"
+                android:inputType="none"
                 android:maxLines="1"
+                android:clickable="true"
+                android:focusableInTouchMode="false"
                 android:padding="10dp" />
         </com.google.android.material.textfield.TextInputLayout>
 

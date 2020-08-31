@@ -5,8 +5,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.RectF;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.BackgroundColorSpan;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.RelativeSizeSpan;
+import android.text.style.ReplacementSpan;
+import android.text.style.SubscriptSpan;
+import android.text.style.TypefaceSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -38,7 +49,7 @@ public class CalculateTripActivity extends AppCompatActivity {
     private List<String> name, contctNo, pickUpAddress, PickUpTime, date;
     private List<Integer> savetripId;
     private SingltenSaveTripListAdapter adp;
-    SQLite_Helper_Save_Trip save_trip_in_sqlLite;
+    private SQLite_Helper_Save_Trip save_trip_in_sqlLite;
     private CalendarDay d;
 
     @Override
@@ -150,11 +161,12 @@ public class CalculateTripActivity extends AppCompatActivity {
         calendarView = findViewById(R.id.calendarView);
         Date currentDate = Calendar.getInstance().getTime();
         calendarView.setSelectedDate(currentDate);
-        d= CalendarDay.from(currentDate);
+        d = CalendarDay.from(currentDate);
         getAllDataWithDate();
         marqueeText = findViewById(R.id.text);
         newTripEstimatebtn = findViewById(R.id.newTripEstimatebtn);
         backButton = findViewById(R.id.backButton_calculater);
+
 
     }
 
@@ -178,6 +190,7 @@ public class CalculateTripActivity extends AppCompatActivity {
             view.addSpan(new DotSpan(5, color));
         }
     }
+
 
     @Override
     public void onBackPressed() {

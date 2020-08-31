@@ -268,8 +268,10 @@
                 android:id="@+id/name_note_create_trip_dispatcher"
                 android:layout_width="320dp"
                 android:layout_height="145dp"
-                android:inputType="text"
-                android:maxLines="3"
+                android:inputType="textMultiLine"
+                android:maxLines="7"
+                android:scrollbars="vertical"
+                android:overScrollMode="always"
                 android:gravity="top"
                 android:padding="10dp" />
         </com.google.android.material.textfield.TextInputLayout>

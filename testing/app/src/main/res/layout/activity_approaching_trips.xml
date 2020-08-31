@@ -4,50 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TripStatusActivity">
+    tools:context=".ApproachingTripsActivity">
 
     <Button
-        android:id="@+id/backButton_trip_status"
+        android:id="@+id/backButton_approaching_trips"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/ic_baseline_arrow_back_24"
         android:elevation="10dp"
-        android:text=""
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <ListView
-        android:id="@+id/listview_tripStatus"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:elevation="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Approaching Trips"
+        android:textColor="#000000"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativelayout"
-        app:layout_constraintVertical_weight="1" />
-
+        app:layout_constraintTop_toTopOf="parent" />
 
     <RadioGroup
-        android:id="@+id/toggle_tripStatus"
+        android:id="@+id/toggle_approaching_trips"
         android:layout_width="350dp"
         android:layout_height="32dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/control_switch_background_border"
-        android:checkedButton="@+id/remaining_tripStatus"
+        android:checkedButton="@+id/less1_approaching_trips"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13">
+        app:layout_constraintTop_toBottomOf="@+id/textView10">
 
         <RadioButton
-            android:id="@+id/remaining_tripStatus"
+            android:id="@+id/less1_approaching_trips"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="1dp"
@@ -58,12 +53,12 @@
             android:button="@null"
             android:fontFamily="sans-serif-medium"
             android:gravity="center"
-            android:text="Remaining (84)"
+            android:text="&lt; 1 Hour"
             android:textColor="@drawable/control_switch_color_selector"
             android:textSize="13.5dp" />
 
         <RadioButton
-            android:id="@+id/assigned_tripStatus"
+            android:id="@+id/greater1_approaching_trips"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginTop="1dp"
@@ -73,23 +68,23 @@
             android:button="@null"
             android:fontFamily="sans-serif-medium"
             android:gravity="center"
-            android:text="Assigned (25)"
+            android:text="1+ Hours"
             android:textColor="@drawable/control_switch_color_selector"
             android:textSize="13.5dp" />
 
         <RadioButton
-            android:id="@+id/finished_tripStatus"
+            android:id="@+id/greater2_approaching_trips"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginTop="1dp"
             android:layout_marginRight="1dp"
-            android:layout_marginTop="1dp"
             android:layout_marginBottom="1dp"
             android:layout_weight="1"
             android:background="@drawable/control_switch_background_selector_middle"
             android:button="@null"
             android:fontFamily="sans-serif-medium"
             android:gravity="center"
-            android:text="Finished (46)"
+            android:text="2+ Hours"
             android:textColor="@drawable/control_switch_color_selector"
             android:textSize="13.5dp" />
 
@@ -97,47 +92,35 @@
     </RadioGroup>
 
 
-    <RelativeLayout
-        android:id="@+id/relativelayout"
-        android:layout_width="fill_parent"
-        android:layout_height="40dp"
+    <fragment
+        android:id="@+id/mapAPIApproachingTrips"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        android:background="@color/lighterBlue"
-        android:padding="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/toggle_tripStatus"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toggle_approaching_trips"
+        app:layout_constraintVertical_weight="1"></fragment>
 
-        <TextView
-            android:id="@+id/Trip_status_currentDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:text="08-13-2020"
-            android:textColor="#000000"
-            android:textSize="15dp"
-            android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/Trip_status_tripsCount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:text="( 25/155 )"
-            android:textColor="#000000"
-            android:textSize="15dp" />
-    </RelativeLayout>
-
-    <TextView
-        android:id="@+id/textView13"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/currentLocation_approachingTrips"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Trip Status"
-        android:textColor="@color/colorPrimary"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/localization"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/drivers_approachingTrips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_person_24"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/currentLocation_approachingTrips"
+        app:layout_constraintEnd_toEndOf="@+id/currentLocation_approachingTrips" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

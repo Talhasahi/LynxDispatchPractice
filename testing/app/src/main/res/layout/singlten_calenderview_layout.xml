@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingEnd="2.5dp"
+    android:paddingStart="2.5dp"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout16"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/circle_background"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/month_singlten"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sep."
+                android:textSize="10dp"
+                android:textColor="#fff" />
+
+            <TextView
+                android:id="@+id/day_singlten"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="02"
+                android:textColor="#fff"
+                android:textSize="10dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/year_singlten"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2020"
+                android:textSize="10dp"
+                android:textColor="#fff" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/small_circle_background"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout16"
+            app:layout_constraintTop_toTopOf="@+id/linearLayout16">
+
+            <TextView
+                android:id="@+id/no_of_trips_singlten"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12"
+                android:textSize="10dp"
+                android:textColor="#fff" />
+
+        </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
