@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.Address;
 import android.location.Geocoder;
+import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,6 +22,7 @@ import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlacePicker;
+import com.google.android.gms.maps.GoogleMap;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.io.IOException;
@@ -32,17 +34,22 @@ import me.himanshusoni.quantityview.QuantityView;
 public class NewTripEstimate extends AppCompatActivity {
     private int PLACE_PICKER_REQUEST = 1;
     private int PLACE_PICKER_REQUEST2 = 2;
-    private int PLACE_PICKER_REQUEST3= 3;
+    private int PLACE_PICKER_REQUEST3 = 3;
 
     private ImageView fareParameter;
-    private Button backButton,createUrgentTrip,calculate;
-    private TextInputEditText baseLocation,pickUpAddress,dropoFFAddress;
-    private  TextView baseFareValue,perMileValue,perMinVale;
-    private  QuantityView quantityView;
+    private Button backButton, createUrgentTrip, calculate;
+    private TextInputEditText baseLocation, pickUpAddress, dropoFFAddress;
+    private TextView baseFareValue, perMileValue, perMinVale;
+    private QuantityView quantityView;
+    String url;
+    GoogleMap mMap;
+
+    private double BaseLongitude = 0, BaseLatitude = 0, PickUpLongitude = 0, PickUpLatitude = 0,
+            DropOffLongitude = 0, DropOffLatitude = 0;
 
     SharedPreferences prefs;
 
-
+    Object dataTransfer[];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +62,25 @@ public class NewTripEstimate extends AppCompatActivity {
             public void onClick(View v) {
                 boolean fieldsOK = validate(new EditText[]{baseLocation, pickUpAddress, dropoFFAddress});
                 if (fieldsOK) {
+                    
+//                    dataTransfer = new Object[1];
+//                    url = getDirectionUrl();
+//                    GetDirectionsData getDirectionsData = new GetDirectionsData();
+//                    dataTransfer[0] = url;
+//                    getDirectionsData.execute(dataTransfer);
+
+                    int No_Of_pasanger = quantityView.getQuantity();
+                    String pickUp = pickUpAddress.getText().toString();
+                    String DropOff = dropoFFAddress.getText().toString();
+                    String base_Location = baseLocation.getText().toString();
+                    Intent intent = new Intent(NewTripEstimate.this, TripFareEstimateCalculate.class);
+                    intent.putExtra("No_Of_pasanger", No_Of_pasanger);
+                    intent.putExtra("pickUp", pickUp);
+                    intent.putExtra("DropOff", DropOff);
+                    intent.putExtra("base_Location", base_Location);
+                    startActivity(intent);
+                    overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+                } else {
                 int No_Of_pasanger = quantityView.getQuantity();
                 String  pickUp  = pickUpAddress.getText().toString();
                 String DropOff = dropoFFAddress.getText().toString();
@@ -81,7 +107,7 @@ public class NewTripEstimate extends AppCompatActivity {
             public void onClick(View v) {
                 PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
                 try {
-                    startActivityForResult(builder.build(   NewTripEstimate.this), PLACE_PICKER_REQUEST);
+                    startActivityForResult(builder.build(NewTripEstimate.this), PLACE_PICKER_REQUEST);
 
                 } catch (GooglePlayServicesRepairableException e) {
                     e.printStackTrace();
@@ -124,6 +150,15 @@ public class NewTripEstimate extends AppCompatActivity {
 
          getDataFromShearePrefrence();
 
+        String baselocation = prefs.getString("baselocation", null);
+        String basefare = prefs.getString("basefare", null);
+        String permnute = prefs.getString("permnute", null);
+        String permile = prefs.getString("permile", null);
+
+        baseFareValue.setText(basefare);
+        perMileValue.setText(permile);
+        perMinVale.setText(permnute);
+        baseLocation.setText(baselocation);
 
         fareParameter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -152,8 +187,7 @@ public class NewTripEstimate extends AppCompatActivity {
                     startActivity(intent);
                     overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
 
-                }
-                else {
+                } else {
                 }
 
 
@@ -161,6 +195,13 @@ public class NewTripEstimate extends AppCompatActivity {
         });
     }
 
+    private String getDirectionUrl() {
+        StringBuilder googleDirectionUrl = new StringBuilder("https://maps.googleapis.com/maps/api/directions/json?");
+        googleDirectionUrl.append("origin=" + PickUpLatitude + "," + PickUpLongitude);
+        googleDirectionUrl.append("&destination=" + DropOffLatitude + "," + DropOffLongitude);
+        googleDirectionUrl.append("&key=" + "AIzaSyDcC1ehBMXlbWF1Z55KwBIsWTl1Bb3yX1U");
+
+        return googleDirectionUrl.toString();
     private void getDataFromShearePrefrence() {
         String     baselocation = prefs.getString("baselocation", null);
         String    basefare = prefs.getString("basefare", null);
@@ -177,7 +218,7 @@ public class NewTripEstimate extends AppCompatActivity {
     private void initialization() {
         quantityView = findViewById(R.id.quantityView_default);
         calculate = findViewById(R.id.calculates);
-        baseFareValue =findViewById(R.id.base_fare_Value);
+        baseFareValue = findViewById(R.id.base_fare_Value);
         perMileValue = findViewById(R.id.per_mile_value);
         perMinVale = findViewById(R.id.per_minute_value);
         baseLocation = findViewById(R.id.base_location_newTrip);
@@ -188,6 +229,7 @@ public class NewTripEstimate extends AppCompatActivity {
         fareParameter = findViewById(R.id.fare_parameter);
         prefs = this.getSharedPreferences("fare_parameter_data", Context.MODE_PRIVATE);
     }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -195,6 +237,7 @@ public class NewTripEstimate extends AppCompatActivity {
         overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
 
     }
+
     private boolean validate(EditText[] fields) {
         for (int i = 0; i < fields.length; i++) {
             EditText currentField = fields[i];
@@ -205,31 +248,40 @@ public class NewTripEstimate extends AppCompatActivity {
         }
         return true;
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PLACE_PICKER_REQUEST) {
             if (resultCode == RESULT_OK) {
                 Place place = PlacePicker.getPlace(data, this);
-                String s=convertLatitudeLongitudetoAddress(place.getLatLng().latitude, place.getLatLng().longitude);
+                BaseLongitude = place.getLatLng().longitude;
+                BaseLatitude = place.getLatLng().latitude;
+                String s = convertLatitudeLongitudetoAddress(place.getLatLng().latitude, place.getLatLng().longitude);
                 baseLocation.setText(s);
             }
         }
         if (requestCode == PLACE_PICKER_REQUEST2) {
             if (resultCode == RESULT_OK) {
                 Place place = PlacePicker.getPlace(data, this);
-                String s=convertLatitudeLongitudetoAddress(place.getLatLng().latitude, place.getLatLng().longitude);
+                PickUpLongitude = place.getLatLng().longitude;
+                PickUpLatitude = place.getLatLng().latitude;
+                String s = convertLatitudeLongitudetoAddress(place.getLatLng().latitude, place.getLatLng().longitude);
                 pickUpAddress.setText(s);
             }
         }
         if (requestCode == PLACE_PICKER_REQUEST3) {
             if (resultCode == RESULT_OK) {
                 Place place = PlacePicker.getPlace(data, this);
-                String s=convertLatitudeLongitudetoAddress(place.getLatLng().latitude, place.getLatLng().longitude);
+                DropOffLongitude = place.getLatLng().longitude;
+                DropOffLatitude = place.getLatLng().latitude;
+                String s = convertLatitudeLongitudetoAddress(place.getLatLng().latitude, place.getLatLng().longitude);
                 dropoFFAddress.setText(s);
+
             }
         }
     }
+
     private String convertLatitudeLongitudetoAddress(double latitude, double longitude) {
         Geocoder geocoder = new Geocoder(this, Locale.getDefault());
         try {

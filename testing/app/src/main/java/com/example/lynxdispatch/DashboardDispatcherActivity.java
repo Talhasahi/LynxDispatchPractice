@@ -67,19 +67,25 @@ public class DashboardDispatcherActivity extends AppCompatActivity {
         tripsinProgress_b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(DashboardDispatcherActivity.this, "Trips inProgress Clicked", Toast.LENGTH_SHORT).show();
+                intent = new Intent(DashboardDispatcherActivity.this, TripsInProgressActivity.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
             }
         });
         markedReady_b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(DashboardDispatcherActivity.this, "Marked Ready", Toast.LENGTH_SHORT).show();
+                intent = new Intent(DashboardDispatcherActivity.this, MarkedReadyActivity.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
             }
         });
         bLegs_b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(DashboardDispatcherActivity.this, "B Legs", Toast.LENGTH_SHORT).show();
+                intent = new Intent(DashboardDispatcherActivity.this, B_Legs_Activity.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
             }
         });
         fleet_b.setOnClickListener(new View.OnClickListener() {
@@ -93,25 +99,33 @@ public class DashboardDispatcherActivity extends AppCompatActivity {
         approachingTrips_b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(DashboardDispatcherActivity.this, "Approaching Trips", Toast.LENGTH_SHORT).show();
+                intent = new Intent(DashboardDispatcherActivity.this, ApproachingTripsActivity.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
             }
         });
         futureTrips_b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(DashboardDispatcherActivity.this, "Future Trips", Toast.LENGTH_SHORT).show();
+                intent = new Intent(DashboardDispatcherActivity.this, FutureTrips_Activity.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
             }
         });
         past_Trips_b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(DashboardDispatcherActivity.this, "Past Trips", Toast.LENGTH_SHORT).show();
+                intent = new Intent(DashboardDispatcherActivity.this, PastTripsActivity.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
             }
         });
         privateTrips_b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(DashboardDispatcherActivity.this, "Private Trips", Toast.LENGTH_SHORT).show();
+                intent = new Intent(DashboardDispatcherActivity.this, PrivatePayActivity.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
             }
         });
 

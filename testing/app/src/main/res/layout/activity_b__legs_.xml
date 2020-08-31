@@ -7,7 +7,7 @@
     tools:context=".TripStatusActivity">
 
     <Button
-        android:id="@+id/backButton_trip_status"
+        android:id="@+id/backButton_b_legs"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginStart="10dp"
@@ -23,31 +23,32 @@
 
 
     <ListView
-        android:id="@+id/listview_tripStatus"
+        android:id="@+id/listview_b_legs"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="8dp"
         android:elevation="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativelayout"
+        app:layout_constraintTop_toBottomOf="@+id/relativelayoutb_legs"
         app:layout_constraintVertical_weight="1" />
 
 
     <RadioGroup
-        android:id="@+id/toggle_tripStatus"
+        android:id="@+id/toggle_b_legs"
         android:layout_width="350dp"
         android:layout_height="32dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/control_switch_background_border"
-        android:checkedButton="@+id/remaining_tripStatus"
+        android:checkedButton="@+id/remaining_b_legs"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView13">
 
         <RadioButton
-            android:id="@+id/remaining_tripStatus"
+            android:id="@+id/remaining_b_legs"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="1dp"
@@ -63,7 +64,7 @@
             android:textSize="13.5dp" />
 
         <RadioButton
-            android:id="@+id/assigned_tripStatus"
+            android:id="@+id/assigned_b_legs"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginTop="1dp"
@@ -78,7 +79,7 @@
             android:textSize="13.5dp" />
 
         <RadioButton
-            android:id="@+id/finished_tripStatus"
+            android:id="@+id/finished_b_legs"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginRight="1dp"
@@ -98,18 +99,18 @@
 
 
     <RelativeLayout
-        android:id="@+id/relativelayout"
+        android:id="@+id/relativelayoutb_legs"
         android:layout_width="fill_parent"
         android:layout_height="40dp"
         android:layout_marginTop="16dp"
         android:background="@color/lighterBlue"
         android:padding="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/toggle_tripStatus"
+        app:layout_constraintTop_toBottomOf="@+id/toggle_b_legs"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp">
 
         <TextView
-            android:id="@+id/Trip_status_currentDate"
+            android:id="@+id/b_legs_currentDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -119,7 +120,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/Trip_status_tripsCount"
+            android:id="@+id/b_legs_tripsCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -133,7 +134,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:text="Trip Status"
+        android:text="B Legs"
         android:textColor="@color/colorPrimary"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"

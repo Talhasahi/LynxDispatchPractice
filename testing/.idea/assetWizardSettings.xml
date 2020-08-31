@@ -18,6 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material/icons/materialicons/edit/baseline_edit_24.xml" />
                                       <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material/icons/materialicons/timer/baseline_timer_24.xml" />
                                     </map>
                                   </option>
@@ -28,6 +29,8 @@
                         </option>
                         <option name="values">
                           <map>
+                            <entry key="color" value="02aef0" />
+                            <entry key="outputName" value="ic_baseline_edit_24" />
                             <entry key="outputName" value="ic_baseline_timer_24" />
                             <entry key="sourceFile" value="E:\GitLab\testing" />
                           </map>

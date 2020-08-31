@@ -12,10 +12,10 @@
     </item>
     <item>
         <layer-list>
-            <item android:bottom="-1dp" android:left="-1dp" android:top="-1dp">
+            <item android:right="-1dp" android:left="-2dp" android:top="-2dp">
                 <shape>
                     <solid android:color="#00000000" />
-                    <stroke android:width="0.5dp" android:color="@color/colorAccent" />
+                    <stroke android:width="0.5dp" android:color="@color/lighterBlue" />
                 </shape>
             </item>
         </layer-list>

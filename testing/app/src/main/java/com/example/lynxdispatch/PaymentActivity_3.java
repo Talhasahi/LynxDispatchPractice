@@ -2,21 +2,28 @@ package com.example.lynxdispatch;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
 import org.w3c.dom.Text;
 
+import java.util.Calendar;
+
 public class PaymentActivity_3 extends AppCompatActivity {
 
     private Button backButton, nextButton;
     private TextInputEditText NameCard, CardNo, ExpiryDate, SecurityCode;
+    private DatePickerDialog picker;
+    private String selectedExpirydate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +44,31 @@ public class PaymentActivity_3 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 nextPaymentPage();
+            }
+        });
+
+        ExpiryDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar cldr = Calendar.getInstance();
+                int day = cldr.get(Calendar.DAY_OF_MONTH);
+                final int month = cldr.get(Calendar.MONTH);
+                int year = cldr.get(Calendar.YEAR);
+                // date picker dialog
+                picker = new DatePickerDialog(PaymentActivity_3.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                if ((monthOfYear+1)<10){
+                                    selectedExpirydate = year + "-0" + (monthOfYear + 1) + "-" + dayOfMonth;
+                                }else{
+                                    selectedExpirydate = year + "-" + (monthOfYear + 1) + "-" + dayOfMonth;
+                                }
+
+                                ExpiryDate.setText(selectedExpirydate);
+                            }
+                        }, year, month, day);
+                picker.show();
             }
         });
     }

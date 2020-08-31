@@ -51,7 +51,7 @@
         android:layout_width="320dp"
         android:layout_height="50dp"
         android:layout_marginTop="50dp"
-        android:hint="Name On Card"
+        android:hint="Name on Card"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6">
@@ -71,7 +71,7 @@
         android:layout_width="320dp"
         android:layout_height="50dp"
         android:layout_marginTop="24dp"
-        android:hint="Card Number"
+        android:hint="Card Number Field"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,7 +93,7 @@
         android:layout_width="320dp"
         android:layout_height="50dp"
         android:layout_marginTop="24dp"
-        android:hint="Card Expiry Date (YYYY/MM/DD)"
+        android:hint="Card Expiry Date (YYYY-MM-DD)"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
@@ -103,8 +103,10 @@
             android:id="@+id/expiry_date_payment3"
             android:layout_width="320dp"
             android:layout_height="45dp"
-            android:inputType="date"
+            android:inputType="none"
             android:maxLines="1"
+            android:clickable="true"
+            android:focusableInTouchMode="false"
             android:padding="10dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -115,7 +117,7 @@
         android:layout_width="320dp"
         android:layout_height="50dp"
         android:layout_marginTop="24dp"
-        android:hint="Security Code"
+        android:hint="Security Code (on back of card)"
         app:endIconMode="password_toggle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
