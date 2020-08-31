@@ -20,6 +20,8 @@
         <activity android:name=".MarkedReadyActivity" />
         <activity android:name=".B_Legs_Activity" />
         <activity android:name=".TripsInProgressActivity" />
+        <activity android:name=".PersonalTripDetailSaved"></activity>
+        <activity android:name=".UrgentTripDetail_Saved" />
         <activity android:name=".SavePersonalTrip" />
         <activity android:name=".TripStatusActivity" />
         <activity android:name=".TripFareEstimateCalculate" />

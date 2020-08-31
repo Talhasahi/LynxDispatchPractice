@@ -3,7 +3,9 @@ package com.example.lynxdispatch;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.location.Address;
 import android.location.Geocoder;
@@ -36,10 +38,14 @@ public class UrgentTripDetail extends AppCompatActivity {
     private static final String TAG_DATETIME_FRAGMENT = "TAG_DATETIME_FRAGMENT";
     private SwitchDateTimeDialogFragment dateTimeDialogFragment, dateTimeDialogFragment1;
     SQLite_Helper_Save_Trip save_trip_in_sqlLite;
+    SharedPreferences prefs;
+    Long    userId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_urgent_trip_detail);
+
+
         getTextFromPriviousActivity();
         initialization();
         PickUpAddress.setText(pickUPAddressFromeNewTripEstimate);
@@ -75,15 +81,16 @@ public class UrgentTripDetail extends AppCompatActivity {
                 String  contacts_no = contact_no.getText().toString();
                 boolean fieldsOK = validate(new EditText[]{pickupTime, PickUpAddress, name,contact_no});
                 if (fieldsOK) {
-                    boolean b = save_trip_in_sqlLite.insertData("user_Id",name_,contacts_no,pickup_Time,PickUp_Address,"",null);
+                    boolean b = save_trip_in_sqlLite.insertData(userId,name_,contacts_no,pickup_Time,PickUp_Address,"",null,"","urgentTrip");
                     if (b){
 
                         Toast.makeText(UrgentTripDetail.this, "Saved", Toast.LENGTH_SHORT).show();
                         finish();
                         overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
-                        //Cursor res =  save_trip_in_sqlLite.getAllData();
+//                        Cursor res =  save_trip_in_sqlLite.getAllData();
 //      while (res.moveToNext()){
-//          Toast.makeText(UrgentTripDetail.this, res.getString(4), Toast.LENGTH_SHORT).show();
+//          Toast.makeText(UrgentTripDetail.this, res.getString(1), Toast.LENGTH_SHORT).show();
+//
 //     }
                     }
                     else {
@@ -102,6 +109,9 @@ public class UrgentTripDetail extends AppCompatActivity {
                 overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
             }
         });
+
+
+
     }
 
     private void getTextFromPriviousActivity() {
@@ -110,6 +120,9 @@ public class UrgentTripDetail extends AppCompatActivity {
     }
 
     private void initialization() {
+
+        prefs = this.getSharedPreferences("login_data", MODE_PRIVATE);
+        userId = prefs.getLong("UserId",0);
         save_trip_in_sqlLite  = new SQLite_Helper_Save_Trip(UrgentTripDetail.this);
         backButton = findViewById(R.id.backButton_urgentTripDetail);
         saveTrip = findViewById(R.id.save_trip);

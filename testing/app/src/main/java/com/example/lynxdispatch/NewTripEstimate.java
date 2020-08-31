@@ -81,6 +81,20 @@ public class NewTripEstimate extends AppCompatActivity {
                     startActivity(intent);
                     overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                 } else {
+                int No_Of_pasanger = quantityView.getQuantity();
+                String  pickUp  = pickUpAddress.getText().toString();
+                String DropOff = dropoFFAddress.getText().toString();
+                String base_Location = baseLocation.getText().toString();
+                Intent intent = new Intent(NewTripEstimate.this,TripFareEstimateCalculate.class);
+                intent.putExtra("No_Of_pasanger", No_Of_pasanger);
+                intent.putExtra("pickUp", pickUp);
+                intent.putExtra("DropOff", DropOff);
+                intent.putExtra("base_Location", base_Location);
+                    intent.putExtra("time", "");
+                    intent.putExtra("date", "");
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);}
+                else {
 
                 }
             }
@@ -131,6 +145,7 @@ public class NewTripEstimate extends AppCompatActivity {
             }
         });
 
+         getDataFromShearePrefrence();
 
         String baselocation = prefs.getString("baselocation", null);
         String basefare = prefs.getString("basefare", null);
@@ -184,6 +199,16 @@ public class NewTripEstimate extends AppCompatActivity {
         googleDirectionUrl.append("&key=" + "AIzaSyDcC1ehBMXlbWF1Z55KwBIsWTl1Bb3yX1U");
 
         return googleDirectionUrl.toString();
+    private void getDataFromShearePrefrence() {
+        String     baselocation = prefs.getString("baselocation", null);
+        String    basefare = prefs.getString("basefare", null);
+        String    permnute = prefs.getString("permnute", null);
+        String    permile = prefs.getString("permile", null);
+
+        baseFareValue.setText(basefare);
+        perMileValue.setText(permile);
+        perMinVale.setText(permnute);
+        baseLocation.setText(baselocation);
     }
 
 

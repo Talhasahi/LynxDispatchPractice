@@ -3,6 +3,7 @@ package com.example.lynxdispatch;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -30,6 +31,8 @@ public class SavePersonalTrip extends AppCompatActivity {
 
     Integer NoOfPasanger;
     String pickPickup,dropOff,baseLocation,pickupTimes;
+    SharedPreferences prefs;
+    Long    userId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +40,7 @@ public class SavePersonalTrip extends AppCompatActivity {
         getTextFromPriviousActivity();
 
         inialization();
+
         pickupTime.setText(pickupTimes);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +64,7 @@ public class SavePersonalTrip extends AppCompatActivity {
                 String dispatcherNote_String = dispatcherNote.getText().toString();
                 boolean fieldsOK = validate(new EditText[]{name, contactNo, pickupTime,dropoffTime,dispatcherNote});
                 if (fieldsOK &&  !spinner_vehicle_String.equals("Select Vehicle")) {
-                    boolean b = save_trip_in_sqlLite.insertData("user_Id",name_String,contactNo_String,pickupTime_String,pickPickup,dropOff,NoOfPasanger);
+                    boolean b = save_trip_in_sqlLite.insertData(userId,name_String,contactNo_String,pickupTime_String,pickPickup,dropOff,NoOfPasanger,baseLocation,"savePersonalTrip");
                     if (b){
 
                         Toast.makeText(SavePersonalTrip.this, "Saved", Toast.LENGTH_SHORT).show();
@@ -113,6 +117,10 @@ public class SavePersonalTrip extends AppCompatActivity {
     }
 
     private void inialization() {
+
+        prefs = this.getSharedPreferences("login_data", MODE_PRIVATE);
+        userId = prefs.getLong("UserId",0);
+
         //For Spinner
         spinner_vehicle = findViewById(R.id.spinner_vehicle_Dispatcher);
         String[] vehicles = new String[]{"Standard", "BLS Stretcher", "Premium", "SUV", "WAV"};

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -19,6 +20,7 @@ import android.text.style.ReplacementSpan;
 import android.text.style.SubscriptSpan;
 import android.text.style.TypefaceSpan;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -42,11 +44,11 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 public class CalculateTripActivity extends AppCompatActivity {
-    private TextView marqueeText, nodata_save;
+    private TextView marqueeText;
     private Button newTripEstimatebtn, backButton;
     private MaterialCalendarView calendarView;
     private ListView listView;
-    private List<String> name, contctNo, pickUpAddress, PickUpTime, date;
+    private List<String> name, contctNo, pickUpAddress, PickUpTime, date,checkActivity,dropOffAddress,baseTobase,noOffPasanger;
     private List<Integer> savetripId;
     private SingltenSaveTripListAdapter adp;
     private SQLite_Helper_Save_Trip save_trip_in_sqlLite;
@@ -87,7 +89,37 @@ public class CalculateTripActivity extends AppCompatActivity {
                 getAllDataWithDate();
             }
         });
+         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+             @Override
+             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                 if  (checkActivity.get(position).equals("urgentTrip")){
+                     Intent intent = new Intent(CalculateTripActivity.this, UrgentTripDetail_Saved.class);
+                     intent.putExtra("name_saved", name.get(position));
+                     intent.putExtra("PickUpTime_saved", PickUpTime.get(position));
+                     intent.putExtra("address_saved", pickUpAddress.get(position));
+                     intent.putExtra("contactNo_saved", contctNo.get(position));
+                     intent.putExtra("date_saved", date.get(position));
 
+                     startActivity(intent);
+                     overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+                 }
+                 else {
+                     Toast.makeText(CalculateTripActivity.this, baseTobase.get(position), Toast.LENGTH_SHORT).show();
+                     Intent intent = new Intent(CalculateTripActivity.this, TripFareEstimateCalculate.class);
+                     intent.putExtra("No_Of_pasanger",noOffPasanger.get(position));
+                     intent.putExtra("pickUp", pickUpAddress.get(position));
+                     intent.putExtra("DropOff", dropOffAddress.get(position));
+                     intent.putExtra("base_Location", baseTobase.get(position));
+                     intent.putExtra("time", PickUpTime.get(position));
+                     intent.putExtra("date", date.get(position));
+                     startActivity(intent);
+                     overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+
+                 }
+
+
+             }
+         });
 
     }
 
@@ -107,18 +139,28 @@ public class CalculateTripActivity extends AppCompatActivity {
             pickUpAddress.clear();
             PickUpTime.clear();
             savetripId.clear();
-
+            date.clear();
+            checkActivity.clear();
+            baseTobase.clear();
+            dropOffAddress.clear();
+            noOffPasanger.clear();
             while (res.moveToNext()) {
                 savetripId.add(res.getInt(0));
                 StringTokenizer tk = new StringTokenizer(res.getString(4));
+                String date1 = tk.nextToken();
                 String time = tk.nextToken();
                 PickUpTime.add(time);
+                date.add(date1);
                 name.add(res.getString(2));
                 contctNo.add(res.getString(3));
                 pickUpAddress.add(res.getString(5));
+                checkActivity.add(res.getString(9));
+                dropOffAddress.add(res.getString(6));
+                noOffPasanger.add(res.getString(7));
+                baseTobase.add(res.getString(8));
             }
         }
-        adp = new SingltenSaveTripListAdapter(CalculateTripActivity.this, name, PickUpTime, pickUpAddress, contctNo);
+        adp = new SingltenSaveTripListAdapter(CalculateTripActivity.this, name, PickUpTime, pickUpAddress, contctNo,date,checkActivity,dropOffAddress,noOffPasanger,baseTobase);
         listView.setAdapter(adp);
         adp.notifyDataSetInvalidated();
     }
@@ -135,6 +177,7 @@ public class CalculateTripActivity extends AppCompatActivity {
             pickUpAddress.clear();
             PickUpTime.clear();
             date.clear();
+            checkActivity.clear();
             List<CalendarDay> events = new ArrayList<>();
             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
             while (res.moveToNext()) {
@@ -150,6 +193,10 @@ public class CalculateTripActivity extends AppCompatActivity {
     }
 
     private void initialization() {
+        noOffPasanger = new ArrayList<>();
+        baseTobase = new ArrayList<>();
+        dropOffAddress = new ArrayList<>();
+        checkActivity = new ArrayList<>();
         name = new ArrayList<>();
         contctNo = new ArrayList<>();
         pickUpAddress = new ArrayList<>();
