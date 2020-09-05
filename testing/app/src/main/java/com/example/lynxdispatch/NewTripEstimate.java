@@ -98,7 +98,7 @@ public class NewTripEstimate extends AppCompatActivity {
                     startActivity(intent);
                     overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                 }
-              
+
             }
         });
         baseLocation.setOnClickListener(new View.OnClickListener() {
@@ -248,7 +248,6 @@ public class NewTripEstimate extends AppCompatActivity {
             }
             return true;
         }
-
         @Override
         protected void onActivityResult ( int requestCode, int resultCode, @Nullable Intent data){
             super.onActivityResult(requestCode, resultCode, data);
