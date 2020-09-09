@@ -69,13 +69,13 @@ public class SavePersonalTrip extends AppCompatActivity {
                 if (fieldsOK &&  !spinner_vehicle_String.equals("Select Vehicle")) {
                     boolean b = save_trip_in_sqlLite.insertData(userId,name_String,contactNo_String,pickupTime_String,pickPickup,dropOff,NoOfPasanger,baseLocation,"savePersonalTrip",spinner_vehicle_String,dispatcherNote_String,dropoffTime_String);
                     if (b){
-                        Cursor res =  save_trip_in_sqlLite.getAllData();
-      while (res.moveToNext()){
-
-          Toast.makeText(SavePersonalTrip.this, res.getString(8), Toast.LENGTH_SHORT).show();
-          Toast.makeText(SavePersonalTrip.this, res.getString(7), Toast.LENGTH_SHORT).show();
-
-     }
+//                        Cursor res =  save_trip_in_sqlLite.getAllData();
+//      while (res.moveToNext()){
+//
+//          Toast.makeText(SavePersonalTrip.this, res.getString(8), Toast.LENGTH_SHORT).show();
+//          Toast.makeText(SavePersonalTrip.this, res.getString(7), Toast.LENGTH_SHORT).show();
+//
+//     }
 
                         Intent newIntent = new Intent(SavePersonalTrip.this,CalculateTripActivity.class);
                         newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -121,7 +121,7 @@ public class SavePersonalTrip extends AppCompatActivity {
         dropOff = b.getString("dropOff");
         baseLocation = b.getString("baseLocation");
         NoOfPasanger = b.getInt("NoOfPasanger");
-        Toast.makeText(SavePersonalTrip.this, String.valueOf(NoOfPasanger), Toast.LENGTH_SHORT).show();
+
 
     }
 

@@ -37,7 +37,6 @@ public class UrgentTripDetail_Saved extends AppCompatActivity {
         String    address_saved = b.getString("address_saved", null);
         String    contactNo_saved = b.getString("contactNo_saved", null);
         String date = b.getString("date_saved", null);
-        Toast.makeText(this, date, Toast.LENGTH_SHORT).show();
         name.setText(name_saved);
         time.setText(date+" "+PickUpTime_saved);
         address.setText(address_saved);
