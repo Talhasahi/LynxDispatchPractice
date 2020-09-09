@@ -68,7 +68,6 @@ public class NewTripEstimate extends AppCompatActivity {
 //                    GetDirectionsData getDirectionsData = new GetDirectionsData();
 //                    dataTransfer[0] = url;
 //                    getDirectionsData.execute(dataTransfer);
-
                     int No_Of_pasanger = quantityView.getQuantity();
                     String pickUp = pickUpAddress.getText().toString();
                     String DropOff = dropoFFAddress.getText().toString();
@@ -78,25 +77,15 @@ public class NewTripEstimate extends AppCompatActivity {
                     intent.putExtra("pickUp", pickUp);
                     intent.putExtra("DropOff", DropOff);
                     intent.putExtra("base_Location", base_Location);
-                    startActivity(intent);
-                    overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
-                } else {
-                    int No_Of_pasanger = quantityView.getQuantity();
-                    String pickUp = pickUpAddress.getText().toString();
-                    String DropOff = dropoFFAddress.getText().toString();
-                    String base_Location = baseLocation.getText().toString();
-                    Intent intent = new Intent(NewTripEstimate.this, TripFareEstimateCalculate.class);
-
-                    intent.putExtra("pasanger", No_Of_pasanger);
-                    intent.putExtra("pickUp", pickUp);
-                    intent.putExtra("DropOff", DropOff);
-                    intent.putExtra("base_Location", base_Location);
                     intent.putExtra("time", "");
                     intent.putExtra("date", "");
                     intent.putExtra("AppointmentTime", "");
                     intent.putExtra("AppointmentDate", "");
                     startActivity(intent);
                     overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+                }
+                else {
+
                 }
 
             }
