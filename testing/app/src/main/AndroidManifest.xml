@@ -5,9 +5,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/dispatch2"
+        android:icon="@mipmap/lynx_dispatch_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/dispatch2"
+        android:roundIcon="@mipmap/lynx_dispatch_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"

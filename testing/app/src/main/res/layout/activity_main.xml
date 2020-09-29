@@ -13,6 +13,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:scaleType="centerInside"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/dispatch" />
+        app:srcCompat="@mipmap/lynx_dispatch_logo" />
 </androidx.constraintlayout.widget.ConstraintLayout>
