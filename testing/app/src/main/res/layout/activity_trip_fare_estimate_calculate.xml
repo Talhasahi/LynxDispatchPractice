@@ -71,11 +71,8 @@
             android:fontFamily="sans-serif-medium"
             android:gravity="center"
             android:text="BASE TO BASE"
-
             android:textColor="@drawable/control_switch_color_selector"
             android:textSize="10.5dp" />
-
-
     </RadioGroup>
 
     <ListView

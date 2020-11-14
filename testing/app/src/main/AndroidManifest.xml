@@ -12,7 +12,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".TripDetailActivity"></activity>
+        <activity android:name=".saveVendorTripActivity"></activity>
+        <activity android:name=".TripDetailActivity" />
         <activity android:name=".PrivatePayActivity" />
         <activity android:name=".PastTripsActivity" />
         <activity android:name=".FutureTrips_Activity" />
@@ -20,7 +21,7 @@
         <activity android:name=".MarkedReadyActivity" />
         <activity android:name=".B_Legs_Activity" />
         <activity android:name=".TripsInProgressActivity" />
-        <activity android:name=".PersonalTripDetailSaved"></activity>
+        <activity android:name=".PersonalTripDetailSaved" />
         <activity android:name=".UrgentTripDetail_Saved" />
         <activity android:name=".SavePersonalTrip" />
         <activity android:name=".TripStatusActivity" />

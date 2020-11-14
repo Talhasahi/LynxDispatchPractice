@@ -5,14 +5,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".createNewTripDispatcherActivity"
+    tools:context=".saveVendorTripActivity"
     >
+
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/vendortriptextView19"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:text="Create LYNX Trip"
+        android:text="Create Vendor Trip"
         android:textColor="#000000"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/backButton_go_create_new_trip_dispatcher"
+        android:id="@+id/backButton_go_create_vendortrip_dispatcher"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginStart="10dp"
@@ -33,164 +34,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <RadioGroup
-        android:id="@+id/create_trips_toggle"
-        android:layout_width="320dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/control_switch_background_border"
-        android:checkedButton="@+id/vendor_trip_toggle"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12">
-
-        <RadioButton
-            android:id="@+id/vendor_trip_toggle"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginBottom="1dp"
-            android:layout_weight="1"
-            android:background="@drawable/control_switch_background_selector_middle"
-            android:button="@null"
-            android:fontFamily="sans-serif-medium"
-            android:gravity="center"
-            android:text="Vendor Trip"
-            android:textColor="@drawable/control_switch_color_selector"
-            android:textSize="12.5dp" />
-
-        <RadioButton
-            android:id="@+id/cash_call_trip_toggle"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginTop="1dp"
-            android:layout_marginRight="1dp"
-            android:layout_marginBottom="1dp"
-            android:layout_weight="1"
-            android:background="@drawable/control_switch_background_selector_middle"
-            android:button="@null"
-            android:fontFamily="sans-serif-medium"
-            android:gravity="center"
-            android:text="Cash Call Trip"
-            android:textColor="@drawable/control_switch_color_selector"
-            android:textSize="12.5dp" />
-
-
-    </RadioGroup>
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/VendorTrips_constraint"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:paddingTop="10dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_trips_toggle"
-        app:layout_constraintVertical_weight="1">
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/spinner_vendor_Dispatcher2"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-            android:layout_width="320dp"
-            android:layout_height="50dp"
-            android:hint="Vendor"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <AutoCompleteTextView
-                android:id="@+id/spinner_vendor_Dispatcher"
-                android:layout_width="320dp"
-                android:layout_height="45dp"
-                android:filterTouchesWhenObscured="false"
-                android:inputType="none" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout235"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="320dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="8dp"
-            android:hint="API KEY"
-            app:layout_constraintEnd_toEndOf="@+id/spinner_vendor_Dispatcher2"
-            app:layout_constraintStart_toStartOf="@+id/spinner_vendor_Dispatcher2"
-            app:layout_constraintTop_toBottomOf="@+id/spinner_vendor_Dispatcher2">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/API_KEY_Vendor_Trip_dispatcher"
-                android:layout_width="320dp"
-                android:layout_height="45dp"
-                android:inputType="text"
-                android:maxLines="1"
-                android:padding="10dp" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-        <Button
-            android:id="@+id/button_search_vendor_trip_dispatcher"
-            android:layout_width="320dp"
-            android:layout_height="45dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/loginbutton"
-            android:elevation="10dp"
-            android:text="Search"
-            android:textColor="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="@+id/textInputLayout235"
-            app:layout_constraintStart_toStartOf="@+id/textInputLayout235"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout235" />
-
-
-        <ListView
-            android:id="@+id/vendor_trip_listview"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            android:padding="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_search_vendor_trip_dispatcher"
-            app:layout_constraintVertical_weight="1" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
-        android:id="@+id/CashCAllTrips_Scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toggle"
-        tools:context=".createNewTripDispatcherActivity">
+        app:layout_constraintTop_toBottomOf="@+id/vendortriptextView19">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingBottom="20dp"
-            tools:context=".createNewTripDispatcherActivity">
+            android:paddingBottom="20dp">
 
 
             <Button
-                android:id="@+id/button_create_trip_dispatcher"
+                android:id="@+id/button__vendortrip_dispatcher"
                 android:layout_width="320dp"
                 android:layout_height="45dp"
                 android:layout_marginTop="50dp"
                 android:background="@drawable/loginbutton"
                 android:elevation="10dp"
-                android:text="Create Cash Call Trip"
+                android:text="Create Vendor Trip"
                 android:textColor="#FFFFFF"
                 app:layout_constraintEnd_toEndOf="@+id/textInputLayout12"
                 app:layout_constraintStart_toStartOf="@+id/textInputLayout12"
@@ -198,7 +65,7 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/spinner_vehicle_Dispatcher2"
+                android:id="@+id/spinner_vehicle_vendortrip_Dispatcher2"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                 android:layout_width="320dp"
                 android:layout_height="50dp"
@@ -209,7 +76,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout17">
 
                 <AutoCompleteTextView
-                    android:id="@+id/spinner_vehicle_Dispatcher"
+                    android:id="@+id/spinner_vehicle_vendortrip_Dispatcher"
                     android:layout_width="320dp"
                     android:layout_height="45dp"
                     android:filterTouchesWhenObscured="false"
@@ -225,12 +92,12 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="8dp"
                 android:hint="Passenger"
-                app:layout_constraintEnd_toEndOf="@+id/spinner_vehicle_Dispatcher2"
-                app:layout_constraintStart_toStartOf="@+id/spinner_vehicle_Dispatcher2"
-                app:layout_constraintTop_toBottomOf="@+id/spinner_vehicle_Dispatcher2">
+                app:layout_constraintEnd_toEndOf="@+id/spinner_vehicle_vendortrip_Dispatcher2"
+                app:layout_constraintStart_toStartOf="@+id/spinner_vehicle_vendortrip_Dispatcher2"
+                app:layout_constraintTop_toBottomOf="@+id/spinner_vehicle_vendortrip_Dispatcher2">
 
                 <AutoCompleteTextView
-                    android:id="@+id/spinner_passengers_Dispatcher"
+                    android:id="@+id/spinner_passengers_vendortrip_Dispatcher"
                     android:layout_width="320dp"
                     android:layout_height="45dp"
                     android:filterTouchesWhenObscured="false"
@@ -250,7 +117,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/name_create_trip_dispatcher"
+                    android:id="@+id/name__vendortrip_dispatcher"
                     android:layout_width="320dp"
                     android:layout_height="45dp"
                     android:inputType="textPersonName"
@@ -262,36 +129,23 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout133"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_width="202dp"
+                android:layout_width="320dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="8dp"
                 android:hint="Trip/Leg ID"
+                app:layout_constraintEnd_toEndOf="@+id/spinner_passengers_Dispatcher2"
                 app:layout_constraintStart_toStartOf="@+id/spinner_passengers_Dispatcher2"
                 app:layout_constraintTop_toBottomOf="@+id/spinner_passengers_Dispatcher2">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/name_trip_id_dispatcher"
-                    android:layout_width="202dp"
+                    android:id="@+id/trip_id_vendortrip_dispatcher"
+                    android:layout_width="320dp"
                     android:layout_height="45dp"
                     android:inputType="text"
                     android:maxLines="1"
                     android:padding="10dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
-
-            <Button
-                android:id="@+id/addLeg_createtrip"
-                android:layout_width="110dp"
-                android:layout_height="42dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/loginbutton"
-                android:elevation="10dp"
-                android:text="ADD Leg+"
-                android:textColor="#FFFFFF"
-                app:layout_constraintBottom_toBottomOf="@+id/textInputLayout133"
-                app:layout_constraintStart_toEndOf="@+id/textInputLayout133"
-                app:layout_constraintTop_toTopOf="@+id/textInputLayout133" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout5"
@@ -305,7 +159,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/name_contact_no_dispatcher"
+                    android:id="@+id/contact_no_vendortrip_dispatcher"
                     android:layout_width="320dp"
                     android:layout_height="45dp"
                     android:inputType="number"
@@ -326,7 +180,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout5">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/name_pickup_address_dispatcher"
+                    android:id="@+id/pickup_address_vendortrip_dispatcher"
                     android:layout_width="320dp"
                     android:layout_height="45dp"
                     android:clickable="true"
@@ -349,7 +203,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout7">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/name_dropoff_address_dispatcher"
+                    android:id="@+id/dropoff_address_vendortrip_dispatcher"
                     android:layout_width="320dp"
                     android:layout_height="45dp"
                     android:clickable="true"
@@ -372,7 +226,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout9">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/Mileage_dispatcher"
+                    android:id="@+id/Mileage_vendortrip_dispatcher"
                     android:layout_width="320dp"
                     android:layout_height="45dp"
                     android:inputType="number"
@@ -393,7 +247,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout16">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/CustomerRate_dispatcher"
+                    android:id="@+id/CustomerRate_vendortrip_dispatcher"
                     android:layout_width="320dp"
                     android:layout_height="45dp"
                     android:inputType="number"
@@ -409,12 +263,12 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="8dp"
                 android:hint="Pickup Time"
-                app:layout_constraintEnd_toEndOf="@+id/spinner_passengers_Dispatcher2"
+                app:layout_constraintEnd_toEndOf="@+id/textInputLayout133"
                 app:layout_constraintStart_toStartOf="@+id/textInputLayout133"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout133">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/name_pickup_time_dispatcher"
+                    android:id="@+id/pickup_time_vendortrip_dispatcher"
                     android:layout_width="320dp"
                     android:layout_height="45dp"
                     android:clickable="true"
@@ -436,7 +290,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout10">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/name_apt_time_dispatcher"
+                    android:id="@+id/apt_time_vendortrip_dispatcher"
                     android:layout_width="320dp"
                     android:layout_height="45dp"
                     android:clickable="true"
@@ -459,15 +313,14 @@
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout11">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/date_create_trip_dispatcher"
+                    android:id="@+id/date_vendortrip_dispatcher"
                     android:layout_width="320dp"
+                    android:layout_height="45dp"
                     android:clickable="true"
                     android:focusableInTouchMode="false"
                     android:inputType="none"
                     android:maxLines="1"
-                    android:padding="10dp"
-                    android:layout_height="45dp"
-                    />
+                    android:padding="10dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
 

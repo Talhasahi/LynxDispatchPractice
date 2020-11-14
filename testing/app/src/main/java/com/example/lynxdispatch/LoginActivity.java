@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
     private SharedPreferences sharedpreferences;
     private SharedPreferences.Editor editor;
     private RequestQueue requestQueue;
-    private String FullName, AccessToken, TokenType, UserProfileAddress;
+    private String FullName, AccessToken, TokenType, UserProfileAddress, UserEmail;
     private int RoleId, Id;
     private long UserId;
 
@@ -128,13 +128,13 @@ public class LoginActivity extends AppCompatActivity {
                             UserProfileAddress = response.getJSONObject("user").getString("userLogo");
                             FullName = response.getJSONObject("user").getString("firstname") + ' ' +
                                     response.getJSONObject("user").getString("lastname");
+                            UserEmail = response.getJSONObject("user").getString("email");
                             Id = response.getJSONObject("user").getInt("id");
                             UserId = response.getJSONObject("user").getLong("userId");
                             RoleId = response.getJSONObject("user").getJSONArray("roles").
                                     getJSONObject(0).getInt("id");
-                            TokenType = response.getJSONObject("user").getString("tokenType");
-                            AccessToken = response.getJSONObject("user").getString("accessToken");
-
+                            AccessToken = response.getString("accessToken");
+                            TokenType = response.getString("tokenType");
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -148,6 +148,7 @@ public class LoginActivity extends AppCompatActivity {
 
                             editor.putInt("flagLogin", 1);
                             editor.putString("FullName", FullName);
+                            editor.putString("UserEmail", UserEmail);
                             editor.putLong("UserId", UserId);
                             editor.putInt("RoleId", RoleId);
                             editor.putString("AccessToken", AccessToken);
@@ -162,9 +163,11 @@ public class LoginActivity extends AppCompatActivity {
 
                             editor.putInt("flagLogin", 2);
                             editor.putString("FullName", FullName);
+                            editor.putString("UserEmail", UserEmail);
                             editor.putLong("UserId", UserId);
                             editor.putInt("RoleId", RoleId);
                             editor.putString("AccessToken", AccessToken);
+                            editor.putString("TokenType", TokenType);
                             editor.putString("UserProfile", UserProfileAddress);
                             editor.apply();
                         }
