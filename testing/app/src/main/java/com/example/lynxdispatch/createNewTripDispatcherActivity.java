@@ -471,9 +471,13 @@ public class createNewTripDispatcherActivity extends AppCompatActivity {
                 }
                 session_N = xmlPullParser.next();
             }
-            adp = new singlten_vendortrips(createNewTripDispatcherActivity.this, clientName_l, pickupAddress_l, dropoffAddress_l, way_l);
-            vendor_trips_listview.setAdapter(adp);
-            adp.notifyDataSetInvalidated();
+            if (clientName_l.isEmpty()) {
+                Toast.makeText(this, "Vendor Trip Not Found...", Toast.LENGTH_SHORT).show();
+            } else {
+                adp = new singlten_vendortrips(createNewTripDispatcherActivity.this, clientName_l, pickupAddress_l, dropoffAddress_l, way_l);
+                vendor_trips_listview.setAdapter(adp);
+                adp.notifyDataSetInvalidated();
+            }
         } catch (XmlPullParserException | IOException e) {
             e.printStackTrace();
         }
