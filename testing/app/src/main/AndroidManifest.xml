@@ -31,7 +31,11 @@
         <activity android:name=".UrgentTripDetail" />
         <activity android:name=".FareParameters" />
         <activity android:name=".NewTripEstimate" />
-        <activity android:name=".createNewTripDispatcherActivity" />
+        <activity android:name=".createNewTripDispatcherActivity">
+            <meta-data
+                android:name="com.google.android.geo.API_KEY"
+                android:value="@string/map_key" />
+        </activity>
         <activity android:name=".DashboardDispatcherActivity" />
         <activity android:name=".CalculateTripActivity" />
         <activity android:name=".ActiveDriversActivity" />
@@ -69,6 +73,7 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
     </application>
+
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.INTERNET" />

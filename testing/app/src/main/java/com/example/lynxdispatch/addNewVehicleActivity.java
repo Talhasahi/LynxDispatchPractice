@@ -8,6 +8,7 @@ import android.app.ProgressDialog;
 import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -35,8 +36,10 @@ import com.google.android.material.textfield.TextInputEditText;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -49,6 +52,7 @@ public class addNewVehicleActivity extends AppCompatActivity {
     private String year, type, regExpDate_s;
     private DatePickerDialog picker;
     private ProgressDialog progressDialog;
+    private SharedPreferences sharedpreferences;
     private RequestQueue requestQueue;
     private int flagAddedVehicle = 0;
 
@@ -130,20 +134,20 @@ public class addNewVehicleActivity extends AppCompatActivity {
     }
 
     private void callApiForAddNewVehicle() {
-
         String url = "https://lynxdispatch-api.herokuapp.com/api/vehicle";
 
         Map<String, String> postParam = new HashMap<String, String>();
-        postParam.put("make", vehicleMake.getText().toString().trim());
-        postParam.put("type", type);
-        postParam.put("model", model.getText().toString().trim());
-        postParam.put("year", year);
-        postParam.put("registration", regNo.getText().toString().trim());
-        postParam.put("plate", vehiclePlate.getText().toString().trim());
-        postParam.put("identifationNumber", vin.getText().toString().trim());
         postParam.put("color", color.getText().toString().trim());
-        postParam.put("status", 0 + "");
+        postParam.put("identifationNumber", vin.getText().toString().trim());
+        postParam.put("make", vehicleMake.getText().toString().trim());
+        postParam.put("model", model.getText().toString().trim());
+        postParam.put("plate", vehiclePlate.getText().toString().trim());
+        postParam.put("registration", regNo.getText().toString().trim());
         postParam.put("registrationExpDate", regExpDate_s);
+        postParam.put("status", "Active");
+        postParam.put("type", type);
+        postParam.put("year", year);
+
 
         progressDialog.show();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
@@ -186,6 +190,7 @@ public class addNewVehicleActivity extends AppCompatActivity {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 HashMap<String, String> headers = new HashMap<String, String>();
                 headers.put("Content-Type", "application/json; charset=utf-8");
+                headers.put("Authorization", sharedpreferences.getString("TokenType", "") + " " + sharedpreferences.getString("AccessToken", ""));
                 return headers;
             }
         };
@@ -233,6 +238,7 @@ public class addNewVehicleActivity extends AppCompatActivity {
     }
 
     private void inialization() {
+        sharedpreferences = getSharedPreferences("login_data", MODE_PRIVATE);
         backButton = findViewById(R.id.backButton_go_to_addNewVehicle);
         addNewVehicle = findViewById(R.id.addnewVehicle_button);
         regNo = findViewById(R.id.reg_no_car);

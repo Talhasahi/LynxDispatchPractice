@@ -27,7 +27,7 @@
         app:menu="@menu/dispatch_menu"
         >
 
-
-
     </com.google.android.material.navigation.NavigationView>
+
+
 </androidx.drawerlayout.widget.DrawerLayout>
