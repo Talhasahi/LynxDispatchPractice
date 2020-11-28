@@ -147,6 +147,8 @@ public class createNewTripDispatcherActivity extends AppCompatActivity {
                 timepicker.show();
             }
         });
+
+        //TDJ0PIIHVDYN5D2UXKE3DKJU5TXLD7DDCLUX3O2Y3DSPC994Y86UIPU73BJGG2IF
         aptTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -236,6 +238,15 @@ public class createNewTripDispatcherActivity extends AppCompatActivity {
             public void onClick(View v) {
                 vendorTrip_c.setVisibility(View.GONE);
                 cashCAllTrip_s.setVisibility(View.VISIBLE);
+            }
+        });
+
+        spinner_broker.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 0) {
+                    vendor_API_KEY.setText("TDJ0PIIHVDYN5D2UXKE3DKJU5TXLD7DDCLUX3O2Y3DSPC994Y86UIPU73BJGG2IF");
+                }
             }
         });
 

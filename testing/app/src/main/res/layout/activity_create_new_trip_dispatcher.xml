@@ -130,7 +130,9 @@
                 android:id="@+id/API_KEY_Vendor_Trip_dispatcher"
                 android:layout_width="320dp"
                 android:layout_height="45dp"
-                android:inputType="text"
+                android:clickable="true"
+                android:focusableInTouchMode="false"
+                android:inputType="none"
                 android:maxLines="1"
                 android:padding="10dp" />
         </com.google.android.material.textfield.TextInputLayout>
