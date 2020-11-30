@@ -93,11 +93,10 @@ public class LoginActivity extends AppCompatActivity {
     private void loginFunc() {
         String s = email_e.getText().toString().trim();
         String s1 = password_e.getText().toString();
-        String emailValidation = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+        String emailValidation = "[a-zA-Z0-9._+-]+@[a-z]+\\.+[a-z]+";
         if (TextUtils.isEmpty(s) || !s.matches(emailValidation)) {
             email_e.setError("Invalid email format");
-        }
-        if (TextUtils.isEmpty(s1)) {
+        } else if (TextUtils.isEmpty(s1)) {
             Toast.makeText(this, "Password: This field must be filled!", Toast.LENGTH_LONG).show();
         } else {
 
