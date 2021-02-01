@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
     private SharedPreferences sharedpreferences;
     private SharedPreferences.Editor editor;
     private RequestQueue requestQueue;
-    private String FullName, AccessToken, TokenType, UserProfileAddress, UserEmail;
+    private String FullName, AccessToken, TokenType, UserProfileAddress, UserEmail, SponserEmail;
     private int RoleId, Id;
     private long UserId;
 
@@ -105,7 +105,7 @@ public class LoginActivity extends AppCompatActivity {
         }//else of checking empty fields in login username password
     }
 
-    private void sendLoginRequest(String username, String password) {
+    private void sendLoginRequest(final String username, final String password) {
 
         String url = "https://lynxdispatch-api.herokuapp.com/api/auth/signin";
 
@@ -134,6 +134,7 @@ public class LoginActivity extends AppCompatActivity {
                                     getJSONObject(0).getInt("id");
                             AccessToken = response.getString("accessToken");
                             TokenType = response.getString("tokenType");
+                            SponserEmail = response.getJSONObject("user").getString("dispatcherSponsor");
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -153,6 +154,9 @@ public class LoginActivity extends AppCompatActivity {
                             editor.putString("AccessToken", AccessToken);
                             editor.putString("TokenType", TokenType);
                             editor.putString("UserProfile", UserProfileAddress);
+                            editor.putString("UserName", username);
+                            editor.putString("Password", password);
+                            editor.putString("SponserEmail", SponserEmail);
                             editor.apply();
                         } else if (RoleId == 2) {
                             Intent intent = new Intent(LoginActivity.this, DispatchHomeActivity.class);
@@ -168,6 +172,10 @@ public class LoginActivity extends AppCompatActivity {
                             editor.putString("AccessToken", AccessToken);
                             editor.putString("TokenType", TokenType);
                             editor.putString("UserProfile", UserProfileAddress);
+                            editor.putString("dispatcherSponser", SponserEmail);
+                            editor.putString("UserName", username);
+                            editor.putString("Password", password);
+                            editor.putString("SponserEmail", SponserEmail);
                             editor.apply();
                         }
 

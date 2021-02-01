@@ -1,10 +1,7 @@
 package com.example.lynxdispatch;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.ComponentName;
@@ -13,14 +10,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.RadioButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -37,38 +30,33 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.prolificinteractive.materialcalendarview.CalendarDay;
-import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
-import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class FutureTrips_Activity extends AppCompatActivity {
+public class AssignedTripsActivity extends AppCompatActivity {
 
     private Button backButton;
     private ListView listView;
     private singlten_trip_status_class adp;
     private SharedPreferences sharedpreferences;
     private ProgressDialog progressDialog;
-
     private List<Integer> tripIdList;
     private List<String> clientNameList, pickupLocationList, dropoffLocationList,
             milageList, dateList, tripTypeList, statusList, aptList, pickupTimeList;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_future_trips_);
+        setContentView(R.layout.activity_assigned_trips);
+
 
         inialization();
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -79,13 +67,11 @@ public class FutureTrips_Activity extends AppCompatActivity {
             }
         });
 
-        getUnAssignedTrips();
-
-
+        getAssignedTrips();
     }
 
-    private void getUnAssignedTrips() {
-        String url_ = String.format("https://lynxdispatch-api.herokuapp.com/api/trips?descending=%b&dispatcherAsDriver=%b&keyword=%s&status=%s", false, false, sharedpreferences.getString("SponserEmail", ""), "UNASSIGNED");
+    private void getAssignedTrips() {
+        String url_ = String.format("https://lynxdispatch-api.herokuapp.com/api/trips?dispatcherAsDriver=%b", true);
 
         progressDialog.show();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
@@ -94,13 +80,13 @@ public class FutureTrips_Activity extends AppCompatActivity {
             public void onResponse(String response) {
                 progressDialog.dismiss();
                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
                 try {
                     JSONObject temp = new JSONObject(response);
                     if (temp.getInt("pageSize") == 0) {
-                        Toast.makeText(FutureTrips_Activity.this, "Trips Not Found...", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AssignedTripsActivity.this, "Trips Not Found...", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(FutureTrips_Activity.this, "Trips Found...", Toast.LENGTH_SHORT).show();
-
+                        Toast.makeText(AssignedTripsActivity.this, "Trips Found...", Toast.LENGTH_SHORT).show();
                         JSONArray jsonArray = temp.getJSONArray("content");
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -116,7 +102,7 @@ public class FutureTrips_Activity extends AppCompatActivity {
                             tripTypeList.add(jsonObject.getString("tripType"));
                         }
 
-                        adp = new singlten_trip_status_class(FutureTrips_Activity.this, tripIdList, clientNameList, pickupLocationList,
+                        adp = new singlten_trip_status_class(AssignedTripsActivity.this, tripIdList, clientNameList, pickupLocationList,
                                 dropoffLocationList, milageList, dateList, pickupTimeList, aptList, statusList, tripTypeList);
                         listView.setAdapter(adp);
                         adp.notifyDataSetInvalidated();
@@ -125,6 +111,8 @@ public class FutureTrips_Activity extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+
+
             }
         }, new com.android.volley.Response.ErrorListener() {
             @Override
@@ -146,14 +134,14 @@ public class FutureTrips_Activity extends AppCompatActivity {
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(10000,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        RequestQueue requestQueue = Volley.newRequestQueue(FutureTrips_Activity.this);
+        RequestQueue requestQueue = Volley.newRequestQueue(AssignedTripsActivity.this);
         requestQueue.add(stringRequest);
     }
 
     private void inialization() {
-        backButton = findViewById(R.id.backButton_future_trips);
-        listView = findViewById(R.id.listview_future_trips);
-        progressDialog = new ProgressDialog(FutureTrips_Activity.this);
+        backButton = findViewById(R.id.backButton_assigned_trips);
+        listView = findViewById(R.id.listview_assigned_trips);
+        progressDialog = new ProgressDialog(AssignedTripsActivity.this);
         progressDialog.setMessage("Loading...");
         progressDialog.setCancelable(false);
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -169,7 +157,6 @@ public class FutureTrips_Activity extends AppCompatActivity {
         statusList = new ArrayList<>();
         aptList = new ArrayList<>();
         pickupTimeList = new ArrayList<>();
-
     }
 
     private void checkInternetConnection(VolleyError error) {
@@ -188,7 +175,7 @@ public class FutureTrips_Activity extends AppCompatActivity {
         } else if (error instanceof TimeoutError) {
             message = "Connection TimeOut! Please check your internet connection.";
         }
-        AlertDialog.Builder b = new AlertDialog.Builder(FutureTrips_Activity.this);
+        AlertDialog.Builder b = new AlertDialog.Builder(AssignedTripsActivity.this);
         b.setTitle(title);
         b.setMessage(message);
         b.setPositiveButton("Wifi Settings", new DialogInterface.OnClickListener() {
@@ -216,6 +203,4 @@ public class FutureTrips_Activity extends AppCompatActivity {
         finish();
         overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
     }
-
-
 }

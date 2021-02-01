@@ -134,7 +134,7 @@ public class addNewVehicleActivity extends AppCompatActivity {
     }
 
     private void callApiForAddNewVehicle() {
-        String url = "https://lynxdispatch-api.herokuapp.com/api/vehicle";
+        String url = "https://lynxdispatch-api.herokuapp.com/api/vehicle/vehicle";
 
         Map<String, String> postParam = new HashMap<String, String>();
         postParam.put("color", color.getText().toString().trim());

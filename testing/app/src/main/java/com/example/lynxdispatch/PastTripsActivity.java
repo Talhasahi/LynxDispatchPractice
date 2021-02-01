@@ -29,7 +29,8 @@ public class PastTripsActivity extends AppCompatActivity implements singlten_cal
     private ListView listView;
     private RecyclerView calendarView;
     private singlten_trip_status_class adp;
-    private List<String> l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11;
+    private List<Integer> l1;
+    private List<String> l2, l3, l4, l5, l6, l7, l8, l9, l10, l11;
     private int flagTripsStatus = 0;
     private singlten_calender_view adp1;
     private ArrayList<String> MonthList, YearList, DayList, No_Of_Trips;
@@ -52,7 +53,7 @@ public class PastTripsActivity extends AppCompatActivity implements singlten_cal
             @Override
             public void onClick(View v) {
                 flagTripsStatus = 1;
-                adp = new singlten_trip_status_class(PastTripsActivity.this, l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, flagTripsStatus);
+                adp = new singlten_trip_status_class(PastTripsActivity.this, l1, l2, l3, l4, l5, l6, l7, l8, l9, l10);
                 listView.setAdapter(adp);
                 adp.notifyDataSetInvalidated();
             }
@@ -62,7 +63,7 @@ public class PastTripsActivity extends AppCompatActivity implements singlten_cal
             @Override
             public void onClick(View v) {
                 flagTripsStatus = 2;
-                adp = new singlten_trip_status_class(PastTripsActivity.this, l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, flagTripsStatus);
+                adp = new singlten_trip_status_class(PastTripsActivity.this, l1, l2, l3, l4, l5, l6, l7, l8, l9, l10);
                 listView.setAdapter(adp);
                 adp.notifyDataSetInvalidated();
             }
@@ -72,12 +73,11 @@ public class PastTripsActivity extends AppCompatActivity implements singlten_cal
             @Override
             public void onClick(View v) {
                 flagTripsStatus = 3;
-                adp = new singlten_trip_status_class(PastTripsActivity.this, l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, flagTripsStatus);
+                adp = new singlten_trip_status_class(PastTripsActivity.this, l1, l2, l3, l4, l5, l6, l7, l8, l9, l10);
                 listView.setAdapter(adp);
                 adp.notifyDataSetInvalidated();
             }
         });
-
 
 
     }
@@ -146,10 +146,10 @@ public class PastTripsActivity extends AppCompatActivity implements singlten_cal
         No_Of_Trips.add("8");
         No_Of_Trips.add("9");
 
-        l1.add("Fahad Ali Mughal");
-        l1.add("Fahad Ali");
-        l1.add("Fahad");
-        l1.add("Talha");
+        l1.add(1);
+        l1.add(2);
+        l1.add(3);
+        l1.add(4);
 
         l2.add("Fahad Ali Mughal");
         l2.add("Fahad Ali");
@@ -201,7 +201,7 @@ public class PastTripsActivity extends AppCompatActivity implements singlten_cal
         l11.add("");
         l11.add("JustCancel");
 
-        adp = new singlten_trip_status_class(PastTripsActivity.this, l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, flagTripsStatus);
+        adp = new singlten_trip_status_class(PastTripsActivity.this, l1, l2, l3, l4, l5, l6, l7, l8, l9, l10);
         listView.setAdapter(adp);
         adp.notifyDataSetInvalidated();
 

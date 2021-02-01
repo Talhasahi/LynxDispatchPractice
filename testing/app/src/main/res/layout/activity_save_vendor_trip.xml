@@ -284,7 +284,7 @@
                 android:layout_width="320dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="8dp"
-                android:hint="Apt. Time (Optional)"
+                android:hint="Apt. Time"
                 app:layout_constraintEnd_toEndOf="@+id/textInputLayout10"
                 app:layout_constraintStart_toStartOf="@+id/textInputLayout10"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout10">

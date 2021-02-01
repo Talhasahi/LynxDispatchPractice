@@ -33,34 +33,19 @@
             <TextView
                 android:id="@+id/driver_name_singlten"
                 android:textColor="#000000"
-                android:textSize="17dp"
+                android:textSize="14dp"
                 android:maxLines="1"
+                android:paddingTop="20dp"
                 android:ellipsize="end"
                 android:text="Driver Name"
+                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <TextView
                 android:id="@+id/driver_name1_singlten"
                 android:textColor="#000000"
-                android:textSize="17dp"
-                android:maxLines="1"
-                android:ellipsize="end"
-                android:text="Driver Name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:id="@+id/driver_name2_singlten"
-                android:textSize="14dp"
-                android:maxLines="1"
-                android:ellipsize="end"
-                android:text="Driver Name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:id="@+id/driver_name3_singlten"
-                android:textSize="14dp"
+                android:textSize="12dp"
                 android:maxLines="1"
                 android:ellipsize="end"
                 android:text="Driver Name"

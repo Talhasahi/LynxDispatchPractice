@@ -79,7 +79,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="4dp"
             android:paddingTop="5dp"
-            android:text="Sprint 1.0.3"
+            android:text="Sprint 1.0.10"
             android:textColor="@android:color/white"
             android:textSize="15sp" />
 

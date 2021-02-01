@@ -66,6 +66,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -286,8 +287,26 @@ public class createNewTripDispatcherActivity extends AppCompatActivity {
                         newIntent.putExtra("clientPickupLatLang", pickupLatLang_l.get(position));
                         newIntent.putExtra("clientDropoffLatLang", dropoff_LatLang_l.get(position));
                         newIntent.putExtra("clientMilaege", milaege_l.get(position));
-                        newIntent.putExtra("clientPickupDate", pickupDate_l.get(position));
-                        newIntent.putExtra("clientPickupTime", pickupTime_l.get(position));
+                        String date = pickupDate_l.get(position);
+                        SimpleDateFormat input = new SimpleDateFormat("dd/MM/yyyy");
+                        SimpleDateFormat output = new SimpleDateFormat("yyyy-MM-dd");
+                        try {
+                            Date oneDate = input.parse(date);                 // parse input
+                            date = output.format(oneDate);
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                        newIntent.putExtra("clientPickupDate", date);
+                        String time = pickupTime_l.get(position);
+                        SimpleDateFormat input1 = new SimpleDateFormat("HHmm");
+                        SimpleDateFormat output1 = new SimpleDateFormat("HH:mm");
+                        try {
+                            Date oneTime = input1.parse(time);                 // parse input
+                            time = output1.format(oneTime);
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                        newIntent.putExtra("clientPickupTime", time);
                         newIntent.putExtra("clientLegid", legID_l.get(position));
                         startActivity(newIntent);
                         overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
@@ -680,7 +699,8 @@ public class createNewTripDispatcherActivity extends AppCompatActivity {
                 TextUtils.isEmpty(picupAddress.getText().toString()) ||
                 TextUtils.isEmpty(dropoffAddress.getText().toString()) ||
                 TextUtils.isEmpty(pickupDate.getText().toString()) ||
-                TextUtils.isEmpty(pickupDate.getText().toString())) {
+                TextUtils.isEmpty(pickupDate.getText().toString()) ||
+                TextUtils.isEmpty(aptTime.getText().toString())) {
             Toast.makeText(this, "Please Fill All Fields...", Toast.LENGTH_SHORT).show();
         } else {
             callApiForAddNewTrip();
@@ -697,21 +717,19 @@ public class createNewTripDispatcherActivity extends AppCompatActivity {
 
         Map<String, String> postParam = new HashMap<String, String>();
         postParam.put("appointmentTime", aptTime.getText().toString());
-        postParam.put("assignedDriver", "NULL");
         postParam.put("clientName", name.getText().toString());
         postParam.put("companyNote", "Ok");
-        postParam.put("createdAt", currentDateTime);
         postParam.put("customerSpecialRate", customerRate.getText().toString());
         postParam.put("date", pickupDate.getText().toString());
         postParam.put("dropoffLocation", dropofflatlang);
-        postParam.put("milage", "12");
+        postParam.put("milage", mileage.getText().toString());
         postParam.put("passengers", no_of_passengers);
         postParam.put("phoneNo1", contactNo.getText().toString());
-        postParam.put("phoneNo2", contactNo.getText().toString());
         postParam.put("pickupLocation", pickuplatlang);
         postParam.put("pickupTime", pickupTime.getText().toString());
         postParam.put("status", "UNASSIGNED");
-        postParam.put("tripCreatorEmail", sharedpreferences.getString("UserEmail", ""));
+        //postParam.put("tripCreatorEmail", sharedpreferences.getString("UserEmail", ""));
+        //postParam.put("tripLegCount", 0 + "");
         postParam.put("tripType", "INTERNAL");
         postParam.put("vehicleType", vehicle);
 
@@ -728,7 +746,6 @@ public class createNewTripDispatcherActivity extends AppCompatActivity {
                         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
                         try {
-                            Toast.makeText(createNewTripDispatcherActivity.this, response.getJSONObject("body") + "", Toast.LENGTH_LONG).show();
                             newCreatedTripID = response.getJSONObject("body").getInt("id");
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -748,6 +765,14 @@ public class createNewTripDispatcherActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 progressDialog.dismiss();
                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                try {
+                    String responseBody = new String(error.networkResponse.data, "utf-8");
+                    JSONObject data = new JSONObject(responseBody);
+                    String errors = data.getString("message");
+                    Toast.makeText(getApplicationContext(), errors, Toast.LENGTH_LONG).show();
+                } catch (JSONException e) {
+                } catch (UnsupportedEncodingException errorr) {
+                }
                 checkInternetConnection(error);
             }
         }) {

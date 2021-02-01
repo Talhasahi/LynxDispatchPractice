@@ -1,6 +1,7 @@
 package com.example.lynxdispatch;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,41 +14,40 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import androidx.appcompat.app.AppCompatActivity;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class singlten_trip_status_class extends BaseAdapter {
 
     private Context context;
-    private List<String> n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11;
+    private List<Integer> tripIdList;
+    private List<String> clientNameList, pickupLocationList,
+            dropoffLocationList, milageList, dateList, pickupTimeList, aptList, statusList, tripTypeList;
     private TextView t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, cancel_reason;
     private Button cancel_b, forward_b;
     private ImageView edit_b;
     private LinearLayout cancel_layout;
-    private int n;
 
-    singlten_trip_status_class(Context c, List<String> nn1, List<String> nn2, List<String> nn3,
-                               List<String> nn4, List<String> nn5, List<String> nn6,
-                               List<String> nn7, List<String> nn8, List<String> nn9, List<String> nn10,
-                               List<String> nn11, int num1) {
-
-        n = num1;
-        n1 = nn1;
-        n2 = nn2;
-        n3 = nn3;
-        n4 = nn4;
-        n5 = nn5;
-        n6 = nn6;
-        n7 = nn7;
-        n8 = nn8;
-        n9 = nn9;
-        n10 = nn10;
-        n11 = nn11;
+    singlten_trip_status_class(Context c, List<Integer> tripIdList_, List<String> clientNameList_,
+                               List<String> pickupLocationList_, List<String> dropoffLocationList_,
+                               List<String> milageList_, List<String> dateList_, List<String> pickupTimeList_,
+                               List<String> aptList_, List<String> statusList_, List<String> tripTypeList_) {
+        tripIdList = tripIdList_;
+        clientNameList = clientNameList_;
+        pickupLocationList = pickupLocationList_;
+        dropoffLocationList = dropoffLocationList_;
+        milageList = milageList_;
+        dateList = dateList_;
+        pickupTimeList = pickupTimeList_;
+        aptList = aptList_;
+        statusList = statusList_;
+        tripTypeList = tripTypeList_;
         context = c;
     }
 
     @Override
     public int getCount() {
-        return n1.size();
+        return tripIdList.size();
     }
 
     @Override
@@ -62,7 +62,7 @@ public class singlten_trip_status_class extends BaseAdapter {
 
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         convertView = LayoutInflater.from(context).inflate(R.layout.singlten_trip_status_layout, null, false);
         t1 = convertView.findViewById(R.id.singlten_tripStatus_customerName);
         t2 = convertView.findViewById(R.id.singlten_tripStatus_Date);
@@ -80,51 +80,38 @@ public class singlten_trip_status_class extends BaseAdapter {
         cancel_b = convertView.findViewById(R.id.singlten_tripStatus_cancel_b);
         forward_b = convertView.findViewById(R.id.singlten_tripStatus_forward_b);
 
-        if (n == 1) {
+
+        if (!statusList.get(position).equals("UNASSIGNED")) {
+            forward_b.setVisibility(View.INVISIBLE);
+            cancel_b.setVisibility(View.INVISIBLE);
+        }
+        if(statusList.get(position).equals("NOT_STARTED")){
             cancel_b.setVisibility(View.VISIBLE);
-            forward_b.setVisibility(View.VISIBLE);
-            edit_b.setVisibility(View.VISIBLE);
-        } else {
-            cancel_b.setVisibility(View.GONE);
-            forward_b.setVisibility(View.GONE);
-            edit_b.setVisibility(View.GONE);
+            cancel_b.setText("Start");
         }
 
-        if (n10.get(position).equals("Offered")) {
-            cancel_b.setVisibility(View.VISIBLE);
-            forward_b.setVisibility(View.VISIBLE);
-            edit_b.setVisibility(View.VISIBLE);
-        } else if (n10.get(position).equals("Accepted")) {
-            cancel_b.setVisibility(View.VISIBLE);
-            forward_b.setVisibility(View.VISIBLE);
-            edit_b.setVisibility(View.VISIBLE);
-        } else if (n10.get(position).equals("Started")) {
-            cancel_b.setVisibility(View.GONE);
-            forward_b.setVisibility(View.GONE);
-            edit_b.setVisibility(View.GONE);
-        } else if (n10.get(position).equals("Cancelled")) {
-            cancel_b.setVisibility(View.GONE);
-            forward_b.setVisibility(View.GONE);
-            edit_b.setVisibility(View.GONE);
-            cancel_layout.setVisibility(View.VISIBLE);
-        } else {
-            cancel_b.setVisibility(View.GONE);
-            forward_b.setVisibility(View.GONE);
-            edit_b.setVisibility(View.GONE);
-            cancel_layout.setVisibility(View.GONE);
-        }
+        t1.setText(clientNameList.get(position));
+        t2.setText(dateList.get(position));
+        t3.setText(tripTypeList.get(position));
+        t4.setText(pickupLocationList.get(position));
+        t5.setText(dropoffLocationList.get(position));
+        t6.setText(milageList.get(position));
+        t7.setText("Appointment: " + aptList.get(position));
+        t8.setText("No Driver");
+        t9.setText(pickupTimeList.get(position));
+        t10.setText(statusList.get(position));
+        //cancel_reason.setText("Reason: ");
 
-        t1.setText(n1.get(position));
-        t2.setText(n2.get(position));
-        t3.setText(n3.get(position));
-        t4.setText(n4.get(position));
-        t5.setText(n5.get(position));
-        t6.setText(n6.get(position));
-        t7.setText("Appointment: " + n7.get(position));
-        t8.setText(n8.get(position));
-        t9.setText(n9.get(position));
-        t10.setText(n10.get(position));
-        cancel_reason.setText("Reason: " + n11.get(position));
+
+        forward_b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ActiveDriversActivity.class);
+                intent.putExtra("trip_Id", tripIdList.get(position));
+                ((AppCompatActivity) context).startActivity(intent);
+                ((AppCompatActivity) context).finish();
+            }
+        });
 
 
         return convertView;

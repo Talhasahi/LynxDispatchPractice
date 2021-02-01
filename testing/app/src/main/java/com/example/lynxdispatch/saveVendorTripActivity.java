@@ -45,6 +45,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -207,7 +208,8 @@ public class saveVendorTripActivity extends AppCompatActivity {
                 TextUtils.isEmpty(picupAddress.getText().toString()) ||
                 TextUtils.isEmpty(dropoffAddress.getText().toString()) ||
                 TextUtils.isEmpty(pickupDate.getText().toString()) ||
-                TextUtils.isEmpty(pickupDate.getText().toString())) {
+                TextUtils.isEmpty(pickupDate.getText().toString()) ||
+                TextUtils.isEmpty(aptTime.getText().toString())) {
             Toast.makeText(this, "Please Fill All Fields...", Toast.LENGTH_SHORT).show();
         } else {
             callApiForAddNewTrip();
@@ -217,28 +219,22 @@ public class saveVendorTripActivity extends AppCompatActivity {
 
     private void callApiForAddNewTrip() {
         sharedpreferences = getSharedPreferences("login_data", MODE_PRIVATE);
-        Date currentTime = Calendar.getInstance().getTime();
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.uX");
-        currentDateTime = df.format(currentTime);
         String url = "https://lynxdispatch-api.herokuapp.com/api/saveTrip";
 
         Map<String, String> postParam = new HashMap<String, String>();
         postParam.put("appointmentTime", aptTime.getText().toString());
-        postParam.put("assignedDriver", "NULL");
         postParam.put("clientName", name.getText().toString());
         postParam.put("companyNote", "Ok");
-        postParam.put("createdAt", currentDateTime);
         postParam.put("customerSpecialRate", customerRate.getText().toString());
         postParam.put("date", pickupDate.getText().toString());
         postParam.put("dropoffLocation", dropofflatlang);
         postParam.put("milage", mileage.getText().toString());
         postParam.put("passengers", no_of_passengers);
         postParam.put("phoneNo1", contactNo.getText().toString());
-        postParam.put("phoneNo2", contactNo.getText().toString());
         postParam.put("pickupLocation", pickuplatlang);
         postParam.put("pickupTime", pickupTime.getText().toString());
         postParam.put("status", "UNASSIGNED");
-        postParam.put("tripCreatorEmail", sharedpreferences.getString("UserEmail", ""));
+        // postParam.put("tripCreatorEmail", sharedpreferences.getString("UserEmail", ""));
         postParam.put("tripType", "EXTERNAL");
         postParam.put("vehicleType", vehicle);
 
@@ -275,6 +271,14 @@ public class saveVendorTripActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 progressDialog.dismiss();
                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                try {
+                    String responseBody = new String(error.networkResponse.data, "utf-8");
+                    JSONObject data = new JSONObject(responseBody);
+                    String errors = data.getString("message");
+                    Toast.makeText(getApplicationContext(), errors, Toast.LENGTH_LONG).show();
+                } catch (JSONException e) {
+                } catch (UnsupportedEncodingException errorr) {
+                }
                 checkInternetConnection(error);
             }
         }) {

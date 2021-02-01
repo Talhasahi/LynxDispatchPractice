@@ -125,7 +125,10 @@ public class DriverHomeActivity extends FragmentActivity implements OnMapReadyCa
                 drawerLayout.closeDrawer(Gravity.LEFT);
                 break;
             case R.id.dispatch_item2:
-                Toast.makeText(this, "Assigned Trips", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(DriverHomeActivity.this, AssignedTripsActivity.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+                drawerLayout.closeDrawer(Gravity.LEFT);
                 break;
             case R.id.dispatch_item3:
                 Toast.makeText(this, "Trip History", Toast.LENGTH_SHORT).show();

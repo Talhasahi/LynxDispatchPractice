@@ -7,7 +7,7 @@ android {
         applicationId "com.example.lynxdispatch"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 6
+        versionCode 10
         versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

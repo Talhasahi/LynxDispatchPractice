@@ -51,7 +51,11 @@ public class singlten_fleet_cars extends BaseAdapter {
         t3 = convertView.findViewById(R.id.fleet_reg_singlten);
         avatar = convertView.findViewById(R.id.fleet_avatar_singlten);
         t1.setText(car.get(position));
-        t2.setText(assign.get(position));
+        if (assign.get(position) == "null") {
+            t2.setText("UNASSIGNED");
+        } else {
+            t2.setText(assign.get(position));
+        }
         t3.setText(reg.get(position));
 
 

@@ -236,7 +236,7 @@
             android:layout_marginTop="5dp"
             android:textSize="12dp"
             android:textColor="@color/colorPrimaryDark"
-            android:text="B Legs"
+            android:text="Not Started"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>

@@ -12,7 +12,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".saveVendorTripActivity"></activity>
+        <activity android:name=".AssignedTripsActivity"></activity>
+        <activity android:name=".ChatActivity" />
+        <activity android:name=".saveVendorTripActivity" />
         <activity android:name=".TripDetailActivity" />
         <activity android:name=".PrivatePayActivity" />
         <activity android:name=".PastTripsActivity" />
@@ -73,7 +75,6 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
     </application>
-
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -101,7 +102,6 @@
     <uses-permission android:name="com.htc.launcher.permission.READ_SETTINGS" />
     <uses-permission android:name="com.htc.launcher.permission.UPDATE_SHORTCUT" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
 </manifest>
