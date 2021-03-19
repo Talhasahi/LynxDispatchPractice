@@ -51,8 +51,8 @@ public class DriverHomeActivity extends FragmentActivity implements OnMapReadyCa
     private SupportMapFragment mapFragment;
     private FloatingActionButton button;
     private GpsTracker gpsTracker;
-
-
+    private String f1;
+    private String f2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +79,7 @@ public class DriverHomeActivity extends FragmentActivity implements OnMapReadyCa
 
 
     }
+
 
     private void inialization() {
         toolbar = findViewById(R.id.toolbar_driver);
