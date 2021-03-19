@@ -52,6 +52,7 @@ import java.util.List;
 import java.util.Map;
 
 public class TripStarted extends AppCompatActivity implements OnMapReadyCallback {
+    //This activity belongs to fahad.
     String startingF1, startingF2;
     int tripId;
     private ProgressDialog progressDialog;
@@ -70,8 +71,6 @@ public class TripStarted extends AppCompatActivity implements OnMapReadyCallback
     LatLng location5;
     LatLng location6;
     LatLng location7;
-
-
     Button endTrip;
 
     @Override
