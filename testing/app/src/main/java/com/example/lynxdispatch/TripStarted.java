@@ -135,7 +135,7 @@ public class TripStarted extends AppCompatActivity implements OnMapReadyCallback
                         latLngList.add(location4);
                     }
                 }, 1000);
-                
+
                 Handler handler1 = new Handler();
                 handler1.postDelayed(new Runnable() {
                     @Override
