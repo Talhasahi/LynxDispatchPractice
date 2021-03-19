@@ -6,6 +6,7 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/05de3ebdf35cdb771e1bb24f3ced0745/jetified-material-calendarview-1.5.0/annotations.zip!/" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f84e311ed862aef9e752aadd29d4bdd1/jetified-material-calendarview-1.5.0/annotations.zip!/" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1b64a1e46b1196dc3d65172657ad570a/jetified-material-calendarview-1.5.0/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/0aea681815db5a9dd7dfc8d8844848df/jetified-material-calendarview-1.5.0/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8417e3ba8298f63c497e113fd6df8809/jetified-material-calendarview-1.5.0/AndroidManifest.xml" />
@@ -23,6 +24,9 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1b64a1e46b1196dc3d65172657ad570a/jetified-material-calendarview-1.5.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1b64a1e46b1196dc3d65172657ad570a/jetified-material-calendarview-1.5.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1b64a1e46b1196dc3d65172657ad570a/jetified-material-calendarview-1.5.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/0aea681815db5a9dd7dfc8d8844848df/jetified-material-calendarview-1.5.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/0aea681815db5a9dd7dfc8d8844848df/jetified-material-calendarview-1.5.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/0aea681815db5a9dd7dfc8d8844848df/jetified-material-calendarview-1.5.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.prolificinteractive/material-calendarview/1.5.0/1b02e711dee2c72ebb06ce579e612d50f6f4d63e/material-calendarview-1.5.0-javadoc.jar!/" />

@@ -109,6 +109,8 @@ public class createNewTripDispatcherActivity extends AppCompatActivity {
             pickupDate_l, pickupTime_l, pickupLatLang_l, dropoff_LatLang_l, legID_l, way_l;
     private singlten_vendortrips adp;
 
+    //This activity belongs to fahad.
+
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
