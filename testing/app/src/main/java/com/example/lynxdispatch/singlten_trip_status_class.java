@@ -157,21 +157,10 @@ public class singlten_trip_status_class extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 if (statusList.get(position).equals("NOT_STARTED")) {
-                       startTrips(tripIdList.get(position));
-                }
-            }
-        });
-
-        cancel_b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (statusList.get(position).equals("NOT_STARTED")) {
                     Toast.makeText(context, "Trip Started.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
-
         return convertView;
     }
 
