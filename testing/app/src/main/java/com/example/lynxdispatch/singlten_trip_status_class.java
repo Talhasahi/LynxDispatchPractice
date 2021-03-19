@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -85,7 +86,7 @@ public class singlten_trip_status_class extends BaseAdapter {
             forward_b.setVisibility(View.INVISIBLE);
             cancel_b.setVisibility(View.INVISIBLE);
         }
-        if(statusList.get(position).equals("NOT_STARTED")){
+        if (statusList.get(position).equals("NOT_STARTED")) {
             cancel_b.setVisibility(View.VISIBLE);
             cancel_b.setText("Start");
         }
@@ -110,6 +111,15 @@ public class singlten_trip_status_class extends BaseAdapter {
                 intent.putExtra("trip_Id", tripIdList.get(position));
                 ((AppCompatActivity) context).startActivity(intent);
                 ((AppCompatActivity) context).finish();
+            }
+        });
+
+        cancel_b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (statusList.get(position).equals("NOT_STARTED")) {
+                    Toast.makeText(context, "Trip Started.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
