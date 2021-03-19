@@ -52,7 +52,7 @@ import java.util.List;
 import java.util.Map;
 
 public class TripStarted extends AppCompatActivity implements OnMapReadyCallback {
-    //This activity belongs to fahad.
+    //This activity belongs to talha.
     String startingF1, startingF2;
     int tripId;
     private ProgressDialog progressDialog;
@@ -135,8 +135,7 @@ public class TripStarted extends AppCompatActivity implements OnMapReadyCallback
                         latLngList.add(location4);
                     }
                 }, 1000);
-
-
+                
                 Handler handler1 = new Handler();
                 handler1.postDelayed(new Runnable() {
                     @Override
