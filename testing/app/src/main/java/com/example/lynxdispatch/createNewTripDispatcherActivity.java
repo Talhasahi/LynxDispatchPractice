@@ -33,6 +33,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkError;
 import com.android.volley.NoConnectionError;
 import com.android.volley.ParseError;
@@ -52,6 +53,7 @@ import com.google.android.gms.location.places.ui.PlacePicker;
 import com.google.android.material.textfield.TextInputEditText;
 import com.kunzisoft.switchdatetime.SwitchDateTimeDialogFragment;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Document;
@@ -106,7 +108,7 @@ public class createNewTripDispatcherActivity extends AppCompatActivity {
     private ConstraintLayout vendorTrip_c;
     private double pickuplat, pickuplang, dropofflat, dropofflang;
     private List<String> clientName_l, clientPhone_l, pickupAddress_l, dropoffAddress_l, milaege_l,
-            pickupDate_l, pickupTime_l, pickupLatLang_l, dropoff_LatLang_l, legID_l, way_l;
+            pickupDate_l, pickupTime_l, pickupLatLang_l, dropoff_LatLang_l, legID_l, way_l,vendor_name_l,vendor_api_key_l;
     private singlten_vendortrips adp;
 
     //This activity belongs to fahad.
@@ -247,9 +249,7 @@ public class createNewTripDispatcherActivity extends AppCompatActivity {
         spinner_broker.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 0) {
-                    vendor_API_KEY.setText("TDJ0PIIHVDYN5D2UXKE3DKJU5TXLD7DDCLUX3O2Y3DSPC994Y86UIPU73BJGG2IF");
-                }
+                vendor_API_KEY.setText(vendor_api_key_l.get(position));
             }
         });
 
@@ -328,7 +328,6 @@ public class createNewTripDispatcherActivity extends AppCompatActivity {
     }
 
     private void SearchVendorTrips(String API_KEY) {
-        sharedpreferences = getSharedPreferences("login_data", MODE_PRIVATE);
         Date currentTime = Calendar.getInstance().getTime();
         SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
         String currentDate = df.format(currentTime);
@@ -868,6 +867,8 @@ public class createNewTripDispatcherActivity extends AppCompatActivity {
         pickupTime_l = new ArrayList<>();
         pickupLatLang_l = new ArrayList<>();
         dropoff_LatLang_l = new ArrayList<>();
+        vendor_name_l= new ArrayList<>();
+        vendor_api_key_l= new ArrayList<>();
         legID_l = new ArrayList<>();
         way_l = new ArrayList<>();
 
@@ -916,12 +917,8 @@ public class createNewTripDispatcherActivity extends AppCompatActivity {
 //            }
 //        });
 
-
-        String[] vendors = new String[]{"MAS"};
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<>(createNewTripDispatcherActivity.this,
-                R.layout.list_item,
-                vendors);
-        spinner_broker.setAdapter(adapter2);
+        sharedpreferences = getSharedPreferences("login_data", MODE_PRIVATE);
+        getVendorsData();
 
         String[] no_of_passenger = new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(createNewTripDispatcherActivity.this,
@@ -934,6 +931,70 @@ public class createNewTripDispatcherActivity extends AppCompatActivity {
                 R.layout.list_item,
                 vehicles);
         spinner_vehicle.setAdapter(adapter1);
+
+    }
+
+    private void getVendorsData() {
+
+        String url_ = String.format("https://lynxdispatch-api.herokuapp.com/api/vendor-management/list-vendors?keyword=%s", sharedpreferences.getString("UserEmail",""));
+
+        progressDialog.show();
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url_, new com.android.volley.Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                progressDialog.dismiss();
+                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
+                try {
+                    JSONObject temp = new JSONObject(response);
+                    if (temp.getInt("pageSize") == 0) {
+                        //Toast.makeText(createNewTripDispatcherActivity.this, "Trips Not Found...", Toast.LENGTH_SHORT).show();
+                    } else {
+                        JSONArray jsonArray = temp.getJSONArray("content");
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+                            vendor_name_l.add(jsonObject.getString("vendorName"));
+                            vendor_api_key_l.add(jsonObject.getString("apiKey"));
+                        }
+                        ArrayAdapter<String> adapter2 = new ArrayAdapter<>(createNewTripDispatcherActivity.this,
+                                R.layout.list_item,
+                                vendor_name_l);
+                        spinner_broker.setAdapter(adapter2);
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        }, new com.android.volley.Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
+                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                checkInternetConnection(error);
+            }
+        }) {
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/json");
+                headers.put("Authorization", sharedpreferences.getString("TokenType", "") + " " + sharedpreferences.getString("AccessToken", ""));
+
+                return headers;
+            }
+        };
+
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(10000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestQueue requestQueue = Volley.newRequestQueue(createNewTripDispatcherActivity.this);
+        requestQueue.add(stringRequest);
+
+
+
+
 
     }
 //    public static void hideSoftKeyboard(Activity activity) {
