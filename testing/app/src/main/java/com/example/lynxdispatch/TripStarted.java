@@ -264,7 +264,7 @@ public class TripStarted extends AppCompatActivity implements OnMapReadyCallback
                         Toast.makeText(TripStarted.this, "You Trip is Completed", Toast.LENGTH_SHORT).show();
                         AlertDialog.Builder b = new AlertDialog.Builder(TripStarted.this);
                         b.setTitle("Bill");
-                        b.setMessage("Your Bill is $9 Thanks For Ride");
+                        b.setMessage("Your Bill Is $9 Thanks For Ride");
                         b.setPositiveButton("Okay!", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
