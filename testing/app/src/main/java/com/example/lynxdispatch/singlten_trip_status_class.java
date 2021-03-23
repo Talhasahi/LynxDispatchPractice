@@ -61,7 +61,6 @@ public class singlten_trip_status_class extends BaseAdapter {
     private RequestQueue requestQueue;
     private String f1, f2;
     private SharedPreferences sharedpreferences;
-
     singlten_trip_status_class(Context c, List<Integer> tripIdList_, List<String> clientNameList_,
                                List<String> pickupLocationList_, List<String> dropoffLocationList_,
                                List<String> milageList_, List<String> dateList_, List<String> pickupTimeList_,
@@ -77,8 +76,6 @@ public class singlten_trip_status_class extends BaseAdapter {
         statusList = statusList_;
         tripTypeList = tripTypeList_;
         context = c;
-
-
         progressDialog = new ProgressDialog(context);
         progressDialog.setMessage("Loading...");
         progressDialog.setCancelable(false);
@@ -91,18 +88,14 @@ public class singlten_trip_status_class extends BaseAdapter {
     public int getCount() {
         return tripIdList.size();
     }
-
     @Override
     public Object getItem(int position) {
         return null;
     }
-
     @Override
     public long getItemId(int position) {
         return position;
     }
-
-
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         convertView = LayoutInflater.from(context).inflate(R.layout.singlten_trip_status_layout, null, false);
@@ -163,7 +156,6 @@ public class singlten_trip_status_class extends BaseAdapter {
         });
         return convertView;
     }
-
     private void sendRequest(final int id) {
         String url = "https://api.thingspeak.com/channels/1287872/feeds.json?api_key=78B9OSG42R4R0PNM&results=2";
         progressDialog.show();
@@ -180,7 +172,6 @@ public class singlten_trip_status_class extends BaseAdapter {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
                         for (int i = 0; i < 1; i++) {
                             try {
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -195,8 +186,6 @@ public class singlten_trip_status_class extends BaseAdapter {
                                 } else {
 
                                 }
-
-
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }

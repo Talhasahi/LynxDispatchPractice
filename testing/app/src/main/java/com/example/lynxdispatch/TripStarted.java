@@ -239,7 +239,7 @@ public class TripStarted extends AppCompatActivity implements OnMapReadyCallback
         startingF1 = intent.getStringExtra("F1");
         startingF2 = intent.getStringExtra("F2");
         tripId = intent.getIntExtra("Tripid", 0);
-        Toast.makeText(this, String.valueOf(tripId), Toast.LENGTH_SHORT).show();
+
     }
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -251,14 +251,37 @@ public class TripStarted extends AppCompatActivity implements OnMapReadyCallback
         mapAPI.animateCamera(CameraUpdateFactory.zoomTo(18.0f));
     }
     private void endTrips(final int id) {
-        Toast.makeText(this, "End Trip Call", Toast.LENGTH_SHORT).show();
+
         String url_ = String.format("https://lynxdispatch-api.herokuapp.com/api/update/status/mark-complete?tripId=" + id);
         progressDialog.show();
-        StringRequest stringRequest = new StringRequest(Request.Method.PUT, url_, new com.android.volley.Response.Listener<String>() {
+        JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.PUT, url_, new JSONObject(), new Response.Listener<JSONObject>() {
             @Override
-            public void onResponse(String response) {
+            public void onResponse(JSONObject response) {
                 progressDialog.dismiss();
-                Toast.makeText(TripStarted.this, response, Toast.LENGTH_SHORT).show();
+                try {
+                    String status= response.getString("status");
+                    if(status.equals("COMPLETED")) {
+                        Toast.makeText(TripStarted.this, "You Trip is Completed", Toast.LENGTH_SHORT).show();
+                        AlertDialog.Builder b = new AlertDialog.Builder(TripStarted.this);
+                        b.setTitle("Bill");
+                        b.setMessage("Your Bill is $9 Thanks For Ride");
+                        b.setPositiveButton("Okay!", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                final Intent intent =  new Intent(TripStarted.this, DriverHomeActivity.class);
+                                startActivity(intent);
+                            }
+                        });
+                        b.show();
+
+                    }
+                    else {
+                        Toast.makeText(TripStarted.this, status, Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
             }
         }, new com.android.volley.Response.ErrorListener() {
             @Override
