@@ -21,12 +21,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+<!--    Change the term "Trips In progress" to "En-route to Drop Off”-->
     <TextView
         android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:text="Trips in Progress"
+        android:text="En-route to Drop Off"
         android:textColor="@color/colorPrimary"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
