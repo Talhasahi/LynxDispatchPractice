@@ -197,8 +197,7 @@ public class DriverHomeActivity extends FragmentActivity implements OnMapReadyCa
             }
         }, 2000);
 
-    }//end of back pressed
-
+    }//end of back presse
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mapAPI = googleMap;

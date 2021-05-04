@@ -14,6 +14,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -45,11 +46,30 @@ import com.google.android.gms.maps.model.PolylineOptions;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Document;
+import org.xml.sax.InputSource;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlPullParserFactory;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.StringReader;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 public class TripStarted extends AppCompatActivity implements OnMapReadyCallback {
     //This activity belongs to talha.
@@ -63,6 +83,7 @@ public class TripStarted extends AppCompatActivity implements OnMapReadyCallback
     List<LatLng> latLngList = new ArrayList<>();
     List<Marker> markerList = new ArrayList<>();
     MarkerOptions markerOptions1;
+    String SessionKey = "";
     Marker marker;
     LatLng location;
     LatLng location2;
@@ -270,6 +291,7 @@ public class TripStarted extends AppCompatActivity implements OnMapReadyCallback
                             public void onClick(DialogInterface dialog, int which) {
                                 final Intent intent =  new Intent(TripStarted.this, DriverHomeActivity.class);
                                 startActivity(intent);
+                                finish();
                             }
                         });
                         b.show();
@@ -340,5 +362,117 @@ public class TripStarted extends AppCompatActivity implements OnMapReadyCallback
             }
         });
         b.show();
+    }
+    private void getSession(final String API_KEY) {
+        String url = "https://www.medanswering.com/Provider_API.taf";
+        final String reqXML = "<TPRequest>\n" +
+                "<authentication>" + API_KEY + "</authentication>\n" +
+                "<startSession>\n" +
+                "<attributes>\n" +
+                "<attribute>\n" +
+                "<name>CLIENT IP</name>\n" +
+                "<value>10.10.10.10</value>\n" +
+                "</attribute>\n" +
+                "</attributes>\n" +
+                "</startSession>\n" +
+                "</TPRequest>";
+
+        progressDialog.show();
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
+//Volley request
+        StringRequest request = new StringRequest(Request.Method.POST, url,
+
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+                        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                        XmlPullParserFactory parserFactory;
+                        try {
+                            parserFactory = XmlPullParserFactory.newInstance();
+                            XmlPullParser xmlPullParser = parserFactory.newPullParser();
+                            InputStream is = convertStringToDocument(response);
+                            xmlPullParser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
+                            xmlPullParser.setInput(is, null);
+                            int session_N = xmlPullParser.getEventType();
+                            while (session_N != XmlPullParser.END_DOCUMENT) {
+                                String eltName = null;
+                                switch (session_N) {
+                                    case XmlPullParser.START_TAG:
+                                        eltName = xmlPullParser.getName();
+                                        if ("TPRequest".equals(eltName)) {
+
+                                        } else {
+                                            if ("startSession".equals(eltName)) {
+
+                                            } else {
+                                                if ("sessionIdentifier".equals(eltName)) {
+                                                    SessionKey = xmlPullParser.nextText();
+                                                }
+                                            }
+                                        }
+                                        break;
+                                }
+                                session_N = xmlPullParser.next();
+                            }
+                           // SearchVendorTrips(API_KEY);
+                        } catch (XmlPullParserException | IOException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
+                        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                        checkInternetConnection(error);
+                    }
+                }) {
+
+            @Override
+            public String getBodyContentType() {
+                // set body content type
+                return "application/xml; charset=UTF-8";
+            }
+
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+
+                try {
+                    return reqXML.getBytes("UTF-8");
+                } catch (UnsupportedEncodingException uee) {
+                    // TODO consider if some other action should be taken
+                    return null;
+                }
+            }
+
+        };
+//
+//Creating a Request Queue
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+//Adding request to the queue
+        requestQueue.add(request);
+
+    }
+    private static InputStream convertStringToDocument(String xmlStr) {
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder;
+        try {
+            builder = factory.newDocumentBuilder();
+            Document doc = builder.parse(new InputSource(new StringReader(xmlStr)));
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            Source xmlSource = new DOMSource(doc);
+            Result outputTarget = new StreamResult(outputStream);
+            TransformerFactory.newInstance().newTransformer().transform(xmlSource, outputTarget);
+            InputStream is = new ByteArrayInputStream(outputStream.toByteArray());
+            return is;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
