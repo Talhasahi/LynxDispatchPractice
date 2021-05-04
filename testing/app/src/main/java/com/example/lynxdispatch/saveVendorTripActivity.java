@@ -2,7 +2,6 @@ package com.example.lynxdispatch;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
@@ -19,9 +18,6 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.ListView;
-import android.widget.RadioButton;
-import android.widget.ScrollView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -46,12 +42,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class saveVendorTripActivity extends AppCompatActivity {
@@ -221,20 +213,22 @@ public class saveVendorTripActivity extends AppCompatActivity {
         sharedpreferences = getSharedPreferences("login_data", MODE_PRIVATE);
         String url = "https://lynxdispatch-api.herokuapp.com/api/saveTrip";
 
-        Map<String, String> postParam = new HashMap<String, String>();
+        Map<String, Object> postParam = new HashMap<>();
         postParam.put("appointmentTime", aptTime.getText().toString());
         postParam.put("clientName", name.getText().toString());
         postParam.put("companyNote", "Ok");
         postParam.put("customerSpecialRate", customerRate.getText().toString());
         postParam.put("date", pickupDate.getText().toString());
         postParam.put("dropoffLocation", dropofflatlang);
+        Map<String,String> externalTripParam=new HashMap<>();
+        postParam.put("externalTripData", externalTripParam);
         postParam.put("milage", mileage.getText().toString());
         postParam.put("passengers", no_of_passengers);
         postParam.put("phoneNo1", contactNo.getText().toString());
         postParam.put("pickupLocation", pickuplatlang);
         postParam.put("pickupTime", pickupTime.getText().toString());
         postParam.put("status", "UNASSIGNED");
-        // postParam.put("tripCreatorEmail", sharedpreferences.getString("UserEmail", ""));
+        postParam.put("tripCreatorEmail", sharedpreferences.getString("UserEmail", ""));
         postParam.put("tripType", "EXTERNAL");
         postParam.put("vehicleType", vehicle);
 

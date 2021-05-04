@@ -144,11 +144,13 @@
             android:layout_gravity="center_horizontal"
             />
 
+        <!--    Change the term "Trips In progress" to "En-route to Drop Off”-->
         <TextView
             android:layout_marginTop="5dp"
             android:textSize="12dp"
             android:textColor="@color/colorPrimaryDark"
-            android:text="Trips in Progress"
+            android:text="En-route to\nDrop Off"
+            android:textAlignment="center"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -187,12 +189,13 @@
             android:text="01"
             android:layout_gravity="center_horizontal"
             />
-
+        <!--    Change the button "Marked ready" as “En-route to Pick Up-->
         <TextView
             android:layout_marginTop="5dp"
             android:textSize="12dp"
             android:textColor="@color/colorPrimaryDark"
-            android:text="Marked Ready"
+            android:text="En-route to\nPick Up"
+            android:textAlignment="center"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -321,12 +324,13 @@
             android:text="01"
             android:layout_gravity="center_horizontal"
             />
-
+<!--        Change the "Approaching Trip" button to "“Arrived at pick up location”-->
         <TextView
             android:layout_marginTop="5dp"
             android:textSize="12dp"
             android:textColor="@color/colorPrimaryDark"
-            android:text="Approaching\n       Trips"
+            android:text="Arrived at\npick up location"
+            android:textAlignment="center"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -367,12 +371,12 @@
             android:text="01"
             android:layout_gravity="center_horizontal"
             />
-
+        <!--     change Future trip button to "Unassigned"-->
         <TextView
             android:layout_marginTop="5dp"
             android:textSize="12dp"
             android:textColor="@color/colorPrimaryDark"
-            android:text="Future Trips"
+            android:text="Unassigned"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -413,11 +417,12 @@
             android:layout_gravity="center_horizontal"
             />
 
+<!--        Change the "Past trips" button to "Completed Trips-->
         <TextView
             android:layout_marginTop="5dp"
             android:textSize="12dp"
             android:textColor="@color/colorPrimaryDark"
-            android:text="Past Trips"
+            android:text="Completed Trips"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>

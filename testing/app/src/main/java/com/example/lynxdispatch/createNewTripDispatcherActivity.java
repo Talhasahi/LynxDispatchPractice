@@ -108,7 +108,7 @@ public class createNewTripDispatcherActivity extends AppCompatActivity {
     private ConstraintLayout vendorTrip_c;
     private double pickuplat, pickuplang, dropofflat, dropofflang;
     private List<String> clientName_l, clientPhone_l, pickupAddress_l, dropoffAddress_l, milaege_l,
-            pickupDate_l, pickupTime_l, pickupLatLang_l, dropoff_LatLang_l, legID_l, way_l,vendor_name_l,vendor_api_key_l;
+            pickupDate_l, pickupTime_l, pickupLatLang_l, dropoff_LatLang_l, legID_l, way_l, vendor_name_l, vendor_api_key_l;
     private singlten_vendortrips adp;
 
     //This activity belongs to fahad.
@@ -257,12 +257,13 @@ public class createNewTripDispatcherActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 broker = spinner_broker.getText().toString();
-                String api_key = vendor_API_KEY.getText().toString();
-                if (TextUtils.isEmpty(broker) || TextUtils.isEmpty(api_key)) {
-                    Toast.makeText(createNewTripDispatcherActivity.this, "Please, Fill All Fields...", Toast.LENGTH_SHORT).show();
-                } else {
-                    getSession(api_key);
-                }
+                //String api_key = vendor_API_KEY.getText().toString();
+                String api_key = "TDJ0PIIHVDYN5D2UXKE3DKJU5TXLD7DDCLUX3O2Y3DSPC994Y86UIPU73BJGG2IF";
+//                if (TextUtils.isEmpty(broker) || TextUtils.isEmpty(api_key)) {
+//                    Toast.makeText(createNewTripDispatcherActivity.this, "Please, Fill All Fields...", Toast.LENGTH_SHORT).show();
+//                } else {
+                getSession(api_key);
+                // }
 
             }
         });
@@ -716,20 +717,22 @@ public class createNewTripDispatcherActivity extends AppCompatActivity {
         currentDateTime = df.format(currentTime);
         String url = "https://lynxdispatch-api.herokuapp.com/api/saveTrip";
 
-        Map<String, String> postParam = new HashMap<String, String>();
+        Map<String, Object> postParam = new HashMap<>();
         postParam.put("appointmentTime", aptTime.getText().toString());
         postParam.put("clientName", name.getText().toString());
         postParam.put("companyNote", "Ok");
         postParam.put("customerSpecialRate", customerRate.getText().toString());
         postParam.put("date", pickupDate.getText().toString());
         postParam.put("dropoffLocation", dropofflatlang);
+        Map<String, String> externalTripParam = new HashMap<>();
+        postParam.put("externalTripData", externalTripParam);
         postParam.put("milage", mileage.getText().toString());
         postParam.put("passengers", no_of_passengers);
         postParam.put("phoneNo1", contactNo.getText().toString());
         postParam.put("pickupLocation", pickuplatlang);
         postParam.put("pickupTime", pickupTime.getText().toString());
         postParam.put("status", "UNASSIGNED");
-        //postParam.put("tripCreatorEmail", sharedpreferences.getString("UserEmail", ""));
+        postParam.put("tripCreatorEmail", sharedpreferences.getString("UserEmail", ""));
         //postParam.put("tripLegCount", 0 + "");
         postParam.put("tripType", "INTERNAL");
         postParam.put("vehicleType", vehicle);
@@ -867,8 +870,8 @@ public class createNewTripDispatcherActivity extends AppCompatActivity {
         pickupTime_l = new ArrayList<>();
         pickupLatLang_l = new ArrayList<>();
         dropoff_LatLang_l = new ArrayList<>();
-        vendor_name_l= new ArrayList<>();
-        vendor_api_key_l= new ArrayList<>();
+        vendor_name_l = new ArrayList<>();
+        vendor_api_key_l = new ArrayList<>();
         legID_l = new ArrayList<>();
         way_l = new ArrayList<>();
 
@@ -936,7 +939,7 @@ public class createNewTripDispatcherActivity extends AppCompatActivity {
 
     private void getVendorsData() {
 
-        String url_ = String.format("https://lynxdispatch-api.herokuapp.com/api/vendor-management/list-vendors?keyword=%s", sharedpreferences.getString("UserEmail",""));
+        String url_ = String.format("https://lynxdispatch-api.herokuapp.com/api/vendor-management/list-vendors?keyword=%s", sharedpreferences.getString("UserEmail", ""));
 
         progressDialog.show();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
@@ -949,7 +952,7 @@ public class createNewTripDispatcherActivity extends AppCompatActivity {
                 try {
                     JSONObject temp = new JSONObject(response);
                     if (temp.getInt("pageSize") == 0) {
-                        //Toast.makeText(createNewTripDispatcherActivity.this, "Trips Not Found...", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(createNewTripDispatcherActivity.this, "Vendors Not Found...", Toast.LENGTH_SHORT).show();
                     } else {
                         JSONArray jsonArray = temp.getJSONArray("content");
                         for (int i = 0; i < jsonArray.length(); i++) {
@@ -991,9 +994,6 @@ public class createNewTripDispatcherActivity extends AppCompatActivity {
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue requestQueue = Volley.newRequestQueue(createNewTripDispatcherActivity.this);
         requestQueue.add(stringRequest);
-
-
-
 
 
     }
