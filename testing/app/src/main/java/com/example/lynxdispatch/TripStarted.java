@@ -13,9 +13,11 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.InputType;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -113,7 +115,45 @@ public class TripStarted extends AppCompatActivity implements OnMapReadyCallback
         endTrip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                endTrips(tripId);
+                AlertDialog.Builder builder = new AlertDialog.Builder(TripStarted.this);
+                builder.setTitle("Customer Signature");
+                builder.setMessage("Please Input Customer Name");
+                final EditText input = new EditText(TripStarted.this);
+                input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_CLASS_TEXT);
+                builder.setView(input);
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String customer_name = input.getText().toString();
+                        if(!customer_name.equals("")) {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(TripStarted.this);
+                            builder.setTitle("Driver Signature");
+                            builder.setMessage("Please Input Your Name");
+                            final EditText input = new EditText(TripStarted.this);
+                            input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_CLASS_TEXT);
+                            builder.setView(input);
+                            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    String driver_name = input.getText().toString();
+                                    if(!driver_name.equals("")) {
+                                        endTrips(tripId);
+                                    }
+                                    else {
+                                        Toast.makeText(TripStarted.this, "Please Enter Driver Name", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                            builder.show();
+                        }
+                        else {
+                            Toast.makeText(TripStarted.this, "Please Enter Customer Name", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+                builder.show();
+
+
             }
         });
         Handler handler = new Handler();
