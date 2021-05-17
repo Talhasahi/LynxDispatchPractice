@@ -257,13 +257,13 @@ public class createNewTripDispatcherActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 broker = spinner_broker.getText().toString();
-                //String api_key = vendor_API_KEY.getText().toString();
-                String api_key = "TDJ0PIIHVDYN5D2UXKE3DKJU5TXLD7DDCLUX3O2Y3DSPC994Y86UIPU73BJGG2IF";
-//                if (TextUtils.isEmpty(broker) || TextUtils.isEmpty(api_key)) {
-//                    Toast.makeText(createNewTripDispatcherActivity.this, "Please, Fill All Fields...", Toast.LENGTH_SHORT).show();
-//                } else {
-                getSession(api_key);
-                // }
+                String api_key = vendor_API_KEY.getText().toString();
+                // String api_key = "TDJ0PIIHVDYN5D2UXKE3DKJU5TXLD7DDCLUX3O2Y3DSPC994Y86UIPU73BJGG2IF";
+                if (TextUtils.isEmpty(broker) || TextUtils.isEmpty(api_key)) {
+                    Toast.makeText(createNewTripDispatcherActivity.this, "Please, Fill All Fields...", Toast.LENGTH_SHORT).show();
+                } else {
+                    getSession(api_key);
+                }
 
             }
         });
@@ -939,7 +939,8 @@ public class createNewTripDispatcherActivity extends AppCompatActivity {
 
     private void getVendorsData() {
 
-        String url_ = String.format("https://lynxdispatch-api.herokuapp.com/api/vendor-management/list-vendors?keyword=%s", sharedpreferences.getString("UserEmail", ""));
+        //String url_ = String.format("https://lynxdispatch-api.herokuapp.com/api/vendor-management/list-vendors?keyword=%s", sharedpreferences.getString("UserEmail", ""));
+        String url_ = String.format("https://lynxdispatch-api.herokuapp.com/api/vendor-management/list-vendors");
 
         progressDialog.show();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);

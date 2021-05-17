@@ -220,7 +220,7 @@ public class saveVendorTripActivity extends AppCompatActivity {
         postParam.put("customerSpecialRate", customerRate.getText().toString());
         postParam.put("date", pickupDate.getText().toString());
         postParam.put("dropoffLocation", dropofflatlang);
-        Map<String,String> externalTripParam=new HashMap<>();
+        Map<String, String> externalTripParam = new HashMap<>();
         postParam.put("externalTripData", externalTripParam);
         postParam.put("milage", mileage.getText().toString());
         postParam.put("passengers", no_of_passengers);
@@ -245,7 +245,6 @@ public class saveVendorTripActivity extends AppCompatActivity {
                         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
                         try {
-                            Toast.makeText(saveVendorTripActivity.this, response.getJSONObject("body") + "", Toast.LENGTH_LONG).show();
                             newCreatedTripID = response.getJSONObject("body").getInt("id");
                         } catch (JSONException e) {
                             e.printStackTrace();
