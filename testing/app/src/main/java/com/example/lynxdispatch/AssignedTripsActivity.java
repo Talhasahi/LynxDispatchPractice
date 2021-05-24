@@ -71,7 +71,7 @@ public class AssignedTripsActivity extends AppCompatActivity {
     }
 
     private void getAssignedTrips() {
-        String url_ = String.format("https://lynxdispatch-api.herokuapp.com/api/trips?dispatcherAsDriver=%b", true);
+        String url_ = String.format("https://lynxdispatch-api.herokuapp.com/api/trips?status=%s", "NOT_STARTED");
 
         progressDialog.show();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);

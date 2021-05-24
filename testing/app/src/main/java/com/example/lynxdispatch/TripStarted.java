@@ -330,8 +330,9 @@ public class TripStarted extends AppCompatActivity implements OnMapReadyCallback
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 final Intent intent =  new Intent(TripStarted.this, DriverHomeActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intent);
-                                finish();
+
                             }
                         });
                         b.show();
