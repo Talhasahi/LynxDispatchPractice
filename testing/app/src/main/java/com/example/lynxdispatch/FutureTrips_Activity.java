@@ -85,7 +85,7 @@ public class FutureTrips_Activity extends AppCompatActivity {
     }
 
     private void getUnAssignedTrips() {
-        String url_ = String.format("https://lynxdispatch-api.herokuapp.com/api/trips?descending=%b&dispatcherAsDriver=%b&keyword=%s&status=%s", false, false, sharedpreferences.getString("SponserEmail", ""), "UNASSIGNED");
+        String url_ = String.format("https://lynxdispatch-api.herokuapp.com/api/trips?status=%s","UNASSIGNED");
 
         progressDialog.show();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
@@ -96,7 +96,7 @@ public class FutureTrips_Activity extends AppCompatActivity {
                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 try {
                     JSONObject temp = new JSONObject(response);
-                    if (temp.getInt("pageSize") == 0) {
+                    if (temp.getInt("totalElements") == 0) {
                         Toast.makeText(FutureTrips_Activity.this, "Trips Not Found...", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(FutureTrips_Activity.this, "Trips Found...", Toast.LENGTH_SHORT).show();
