@@ -29,98 +29,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <RadioGroup
-        android:id="@+id/toggle_approaching_trips"
-        android:layout_width="350dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/control_switch_background_border"
-        android:checkedButton="@+id/less1_approaching_trips"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10">
-
-        <RadioButton
-            android:id="@+id/less1_approaching_trips"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginBottom="1dp"
-            android:layout_weight="1"
-            android:background="@drawable/control_switch_background_selector_middle"
-            android:button="@null"
-            android:fontFamily="sans-serif-medium"
-            android:gravity="center"
-            android:text="&lt; 1 Hour"
-            android:textColor="@drawable/control_switch_color_selector"
-            android:textSize="13.5dp" />
-
-        <RadioButton
-            android:id="@+id/greater1_approaching_trips"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginTop="1dp"
-            android:layout_marginBottom="1dp"
-            android:layout_weight="1"
-            android:background="@drawable/control_switch_background_selector_middle"
-            android:button="@null"
-            android:fontFamily="sans-serif-medium"
-            android:gravity="center"
-            android:text="1+ Hours"
-            android:textColor="@drawable/control_switch_color_selector"
-            android:textSize="13.5dp" />
-
-        <RadioButton
-            android:id="@+id/greater2_approaching_trips"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginTop="1dp"
-            android:layout_marginRight="1dp"
-            android:layout_marginBottom="1dp"
-            android:layout_weight="1"
-            android:background="@drawable/control_switch_background_selector_middle"
-            android:button="@null"
-            android:fontFamily="sans-serif-medium"
-            android:gravity="center"
-            android:text="2+ Hours"
-            android:textColor="@drawable/control_switch_color_selector"
-            android:textSize="13.5dp" />
-
-
-    </RadioGroup>
-
-
-    <fragment
-        android:id="@+id/mapAPIApproachingTrips"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
+    <ListView
+        android:id="@+id/listview_approaching_trips"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
+        android:elevation="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toggle_approaching_trips"
-        app:layout_constraintVertical_weight="1"></fragment>
-
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/currentLocation_approachingTrips"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:src="@drawable/localization"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/drivers_approachingTrips"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_baseline_person_24"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/currentLocation_approachingTrips"
-        app:layout_constraintEnd_toEndOf="@+id/currentLocation_approachingTrips" />
-
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10"
+        app:layout_constraintVertical_weight="1" />
 </androidx.constraintlayout.widget.ConstraintLayout>

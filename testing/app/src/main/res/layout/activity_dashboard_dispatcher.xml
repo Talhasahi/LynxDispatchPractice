@@ -1,504 +1,496 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="15dp"
     tools:context=".DashboardDispatcherActivity">
 
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".DashboardDispatcherActivity">
 
-    <Button
-        android:id="@+id/backButton_go_to_dashboard_dispatcher"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/ic_baseline_arrow_back_24"
-        android:elevation="10dp"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="350dp"
-        android:layout_height="125dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/background_linear_items"
-        android:elevation="20dp"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:outlineAmbientShadowColor="@color/colorPrimaryDark"
-        android:padding="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8">
+        <Button
+            android:id="@+id/backButton_go_to_dashboard_dispatcher"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/ic_baseline_arrow_back_24"
+            android:elevation="10dp"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <Button
+            android:id="@+id/button_dispatcher_create_trip"
+            android:layout_width="320dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/loginbutton"
+            android:elevation="10dp"
+            android:text="Create Lynx Trip"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout14" />
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="350dp"
+            android:layout_height="125dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/background_linear_items"
+            android:elevation="20dp"
             android:gravity="center_horizontal"
-            android:text="Today's Status"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="20dp" />
+            android:orientation="vertical"
+            android:outlineAmbientShadowColor="@color/colorPrimaryDark"
+            android:padding="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView8">
+
+            <ProgressBar
+                android:id="@+id/progressBar_TodayStatus"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:progressTint="@color/colorAccent" />
 
 
-        <ProgressBar
-            android:id="@+id/progressBar_TodayStatus"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            android:layout_width="match_parent"
-            android:progressTint="@color/colorAccent"
-            android:layout_height="30dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Today's Status"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20dp" />
+
+
+            <TextView
+                android:id="@+id/TripsStatus_Dispatcher"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="25 of 161 Completed"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/background_linear_items"
+            android:elevation="20dp"
+            android:orientation="vertical"
+            android:outlineSpotShadowColor="@color/colorPrimaryDark"
+            android:padding="10dp"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/ic_baseline_perm_identity_24" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:text="Active Drivers"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="12dp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout5"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/background_linear_items"
+            android:elevation="20dp"
+            android:orientation="vertical"
+            android:outlineSpotShadowColor="@color/colorPrimaryDark"
+            app:layout_constraintBottom_toBottomOf="@+id/linearLayout4"
+            app:layout_constraintEnd_toStartOf="@+id/linearLayout6"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/linearLayout4"
+            app:layout_constraintTop_toTopOf="@+id/linearLayout4">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/ic_baseline_directions_car_24" />
+
+
+            <!--    Change the term "Trips In progress" to "En-route to Drop Off”-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:text="En-route to\nDrop Off"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="12dp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout6"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/background_linear_items"
+            android:elevation="20dp"
+            android:orientation="vertical"
+            android:outlineSpotShadowColor="@color/colorPrimaryDark"
+            app:layout_constraintBottom_toBottomOf="@+id/linearLayout5"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+            app:layout_constraintTop_toTopOf="@+id/linearLayout5">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/ic_baseline_check_circle_24" />
+
+            <!--    Change the button "Marked ready" as “En-route to Pick Up-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:text="En-route to\nPick Up"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="12dp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout7"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/background_linear_items"
+            android:elevation="20dp"
+            android:orientation="vertical"
+            android:outlineSpotShadowColor="@color/colorPrimaryDark"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout4"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/ic_outline_directions_car_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:text="Not Started"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="12dp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout8"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/background_linear_items"
+            android:elevation="20dp"
+            android:orientation="vertical"
+            android:outlineSpotShadowColor="@color/colorPrimaryDark"
+            app:layout_constraintBottom_toBottomOf="@+id/linearLayout7"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout5"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout5"
+            app:layout_constraintTop_toTopOf="@+id/linearLayout7">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/ic_outline_local_car_wash_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:text="Vehicle"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="12dp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout9"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/background_linear_items"
+            android:elevation="20dp"
+            android:orientation="vertical"
+            android:outlineSpotShadowColor="@color/colorPrimaryDark"
+            app:layout_constraintBottom_toBottomOf="@+id/linearLayout8"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout6"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout6"
+            app:layout_constraintTop_toTopOf="@+id/linearLayout8">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/ic_baseline_timer_24" />
+
+            <!--        Change the "Approaching Trip" button to "“Arrived at pick up location”-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:text="Arrived at\npickup"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="12dp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout10"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/background_linear_items"
+            android:elevation="20dp"
+            android:orientation="vertical"
+            android:outlineSpotShadowColor="@color/colorPrimaryDark"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout7"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout7"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/ic_baseline_unpublished_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:text="Unassigned"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="12dp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout11"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/background_linear_items"
+            android:elevation="20dp"
+            android:orientation="vertical"
+            android:outlineSpotShadowColor="@color/colorPrimaryDark"
+            app:layout_constraintBottom_toBottomOf="@+id/linearLayout10"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout8"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout8"
+            app:layout_constraintTop_toTopOf="@+id/linearLayout10">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/ic_baseline_done_all_24" />
+
+            <!--        Change the "Past trips" button to "Completed Trips-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:text="Completed"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="12dp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout12"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/background_linear_items"
+            android:elevation="20dp"
+            android:orientation="vertical"
+            android:outlineSpotShadowColor="@color/colorPrimaryDark"
+            app:layout_constraintBottom_toBottomOf="@+id/linearLayout11"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout9"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout9"
+            app:layout_constraintTop_toTopOf="@+id/linearLayout11">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/ic_baseline_pending_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:text="Pending"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="12dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout13"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/background_linear_items"
+            android:elevation="20dp"
+            android:orientation="vertical"
+            android:outlineSpotShadowColor="@color/colorPrimaryDark"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout12"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout12"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout12">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/ic_baseline_browser_not_supported_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:text="No Show"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="12dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout14"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/background_linear_items"
+            android:elevation="20dp"
+            android:orientation="vertical"
+            android:outlineSpotShadowColor="@color/colorPrimaryDark"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout11"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout11"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout11">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/ic_baseline_check_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:text="Attested"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="12dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout15"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/background_linear_items"
+            android:elevation="20dp"
+            android:orientation="vertical"
+            android:outlineSpotShadowColor="@color/colorPrimaryDark"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout10"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout10"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout10">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/ic_baseline_cancel_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:text="Cancelled"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="12dp" />
+
+        </LinearLayout>
 
 
         <TextView
-            android:id="@+id/TripsStatus_Dispatcher"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="25 of 161 Completed"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="20dp" />
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/linearLayout4"
-        android:layout_width="100dp"
-        android:layout_height="110dp"
-        android:layout_marginTop="16dp"
-        android:padding="10dp"
-        android:background="@drawable/background_linear_items"
-        android:elevation="20dp"
-        android:outlineSpotShadowColor="@color/colorPrimaryDark"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-
-        <ImageView
-            android:layout_marginTop="5dp"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_baseline_perm_identity_24"
-            android:layout_gravity="center_horizontal"
-            />
-
-        <TextView
-            android:id="@+id/linearLayout4_text"
-            android:layout_marginTop="5dp"
+            android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Dashboard"
+            android:textColor="#000000"
             android:textSize="20dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:textStyle="bold"
-            android:text="01"
-            android:layout_gravity="center_horizontal"
-            />
-
-        <TextView
-            android:layout_marginTop="5dp"
-            android:textSize="12dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:text="Active Drivers"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-    </LinearLayout>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-    <LinearLayout
-        android:id="@+id/linearLayout5"
-        android:layout_width="100dp"
-        android:layout_height="110dp"
-        android:elevation="20dp"
-        android:outlineSpotShadowColor="@color/colorPrimaryDark"
-        android:orientation="vertical"
-        android:background="@drawable/background_linear_items"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout4"
-        app:layout_constraintEnd_toStartOf="@+id/linearLayout6"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/linearLayout4"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout4">
-
-        <ImageView
-            android:layout_marginTop="5dp"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_baseline_directions_car_24"
-            android:layout_gravity="center_horizontal"
-            />
-
-        <TextView
-            android:id="@+id/linearLayout5_text"
-            android:layout_marginTop="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:textStyle="bold"
-            android:text="01"
-            android:layout_gravity="center_horizontal"
-            />
-
-        <!--    Change the term "Trips In progress" to "En-route to Drop Off”-->
-        <TextView
-            android:layout_marginTop="5dp"
-            android:textSize="12dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:text="En-route to\nDrop Off"
-            android:textAlignment="center"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/linearLayout6"
-        android:layout_width="100dp"
-        android:layout_height="110dp"
-        android:elevation="20dp"
-        android:outlineSpotShadowColor="@color/colorPrimaryDark"
-        android:orientation="vertical"
-        android:background="@drawable/background_linear_items"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout5"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout5">
-
-        <ImageView
-            android:layout_marginTop="5dp"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_baseline_check_circle_24"
-            android:layout_gravity="center_horizontal"
-            />
-
-        <TextView
-            android:id="@+id/linearLayout6_text"
-            android:layout_marginTop="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:textStyle="bold"
-            android:text="01"
-            android:layout_gravity="center_horizontal"
-            />
-        <!--    Change the button "Marked ready" as “En-route to Pick Up-->
-        <TextView
-            android:layout_marginTop="5dp"
-            android:textSize="12dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:text="En-route to\nPick Up"
-            android:textAlignment="center"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/linearLayout7"
-        android:layout_width="100dp"
-        android:layout_height="110dp"
-        android:elevation="20dp"
-        android:outlineSpotShadowColor="@color/colorPrimaryDark"
-        android:layout_marginTop="16dp"
-        android:orientation="vertical"
-        android:background="@drawable/background_linear_items"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout4"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
-
-        <ImageView
-            android:layout_marginTop="5dp"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_outline_directions_car_24"
-            android:layout_gravity="center_horizontal"
-            />
-
-        <TextView
-            android:id="@+id/linearLayout7_text"
-            android:layout_marginTop="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:textStyle="bold"
-            android:text="01"
-            android:layout_gravity="center_horizontal"
-            />
-
-        <TextView
-            android:layout_marginTop="5dp"
-            android:textSize="12dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:text="Not Started"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/linearLayout8"
-        android:layout_width="100dp"
-        android:layout_height="110dp"
-        android:elevation="20dp"
-        android:outlineSpotShadowColor="@color/colorPrimaryDark"
-        android:orientation="vertical"
-        android:background="@drawable/background_linear_items"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout7"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout5"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout5"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout7">
-
-        <ImageView
-            android:layout_marginTop="5dp"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_outline_local_car_wash_24"
-            android:layout_gravity="center_horizontal"
-            />
-
-        <TextView
-            android:id="@+id/linearLayout8_text"
-            android:layout_marginTop="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:textStyle="bold"
-            android:text="01"
-            android:layout_gravity="center_horizontal"
-            />
-
-        <TextView
-            android:layout_marginTop="5dp"
-            android:textSize="12dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:text="Fleet"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/linearLayout9"
-        android:layout_width="100dp"
-        android:layout_height="110dp"
-        android:elevation="20dp"
-        android:outlineSpotShadowColor="@color/colorPrimaryDark"
-        android:orientation="vertical"
-        android:background="@drawable/background_linear_items"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout8"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout6"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout6"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout8">
-
-        <ImageView
-            android:layout_marginTop="5dp"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_baseline_timer_24"
-            android:layout_gravity="center_horizontal"
-            />
-
-        <TextView
-            android:id="@+id/linearLayout9_text"
-            android:layout_marginTop="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:textStyle="bold"
-            android:text="01"
-            android:layout_gravity="center_horizontal"
-            />
-<!--        Change the "Approaching Trip" button to "“Arrived at pick up location”-->
-        <TextView
-            android:layout_marginTop="5dp"
-            android:textSize="12dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:text="Arrived at\npick up location"
-            android:textAlignment="center"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/linearLayout10"
-        android:layout_width="100dp"
-        android:layout_height="110dp"
-        android:elevation="20dp"
-        android:outlineSpotShadowColor="@color/colorPrimaryDark"
-        android:layout_marginTop="16dp"
-        android:orientation="vertical"
-        android:background="@drawable/background_linear_items"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout7"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout7"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
-
-        <ImageView
-            android:layout_marginTop="5dp"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_baseline_calendar_today_24"
-            android:layout_gravity="center_horizontal"
-            />
-
-        <TextView
-            android:id="@+id/linearLayout10_text"
-            android:layout_marginTop="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:textStyle="bold"
-            android:text="01"
-            android:layout_gravity="center_horizontal"
-            />
-        <!--     change Future trip button to "Unassigned"-->
-        <TextView
-            android:layout_marginTop="5dp"
-            android:textSize="12dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:text="Unassigned"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/linearLayout11"
-        android:layout_width="100dp"
-        android:layout_height="110dp"
-        android:elevation="20dp"
-        android:outlineSpotShadowColor="@color/colorPrimaryDark"
-        android:orientation="vertical"
-        android:background="@drawable/background_linear_items"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout10"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout8"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout8"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout10">
-
-        <ImageView
-            android:layout_marginTop="5dp"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_baseline_list_alt_24"
-            android:layout_gravity="center_horizontal"
-            />
-
-        <TextView
-            android:id="@+id/linearLayout11_text"
-            android:layout_marginTop="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:textStyle="bold"
-            android:text="01"
-            android:layout_gravity="center_horizontal"
-            />
-
-<!--        Change the "Past trips" button to "Completed Trips-->
-        <TextView
-            android:layout_marginTop="5dp"
-            android:textSize="12dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:text="Completed Trips"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/linearLayout12"
-        android:layout_width="100dp"
-        android:layout_height="110dp"
-        android:elevation="20dp"
-        android:outlineSpotShadowColor="@color/colorPrimaryDark"
-        android:orientation="vertical"
-        android:background="@drawable/background_linear_items"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout11"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout9"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout9"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout11">
-
-        <ImageView
-            android:layout_marginTop="5dp"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_baseline_directions_car_24"
-            android:layout_gravity="center_horizontal"
-            />
-
-        <TextView
-            android:id="@+id/linearLayout12_text"
-            android:layout_marginTop="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:textStyle="bold"
-            android:text="01"
-            android:layout_gravity="center_horizontal"
-            />
-
-        <TextView
-            android:layout_marginTop="5dp"
-            android:textSize="12dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:text="Private Pay"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Dashboard"
-        android:textColor="#000000"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <Button
-        android:id="@+id/button_dispatcher_create_trip"
-        android:layout_width="320dp"
-        android:layout_height="45dp"
-        android:layout_marginBottom="24dp"
-        android:background="@drawable/loginbutton"
-        android:elevation="10dp"
-        android:text="Create Lynx Trip"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout12"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout10" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

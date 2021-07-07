@@ -6,18 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".PastTripsActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/calendarView_pastTrips"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10"
-        app:mcv_calendarMode="week"
-        app:mcv_selectionColor="@color/colorAccent"
-        app:mcv_showOtherDates="all" />
-
     <Button
         android:id="@+id/backButton_past_trips"
         android:layout_width="30dp"
@@ -42,68 +30,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <RadioGroup
-        android:id="@+id/toggle_past_trips"
-        android:layout_width="350dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/control_switch_background_border"
-        android:checkedButton="@+id/finished_past_trips"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView_pastTrips">
-
-        <RadioButton
-            android:id="@+id/remaining_past_trips"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginBottom="1dp"
-            android:layout_weight="1"
-            android:background="@drawable/control_switch_background_selector_middle"
-            android:button="@null"
-            android:fontFamily="sans-serif-medium"
-            android:gravity="center"
-            android:text="Remaining"
-            android:textColor="@drawable/control_switch_color_selector"
-            android:textSize="13.5dp" />
-
-        <RadioButton
-            android:id="@+id/assigned_past_trips"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginTop="1dp"
-            android:layout_marginBottom="1dp"
-            android:layout_weight="1"
-            android:background="@drawable/control_switch_background_selector_middle"
-            android:button="@null"
-            android:fontFamily="sans-serif-medium"
-            android:gravity="center"
-            android:text="Assigned"
-            android:textColor="@drawable/control_switch_color_selector"
-            android:textSize="13.5dp" />
-
-        <RadioButton
-            android:id="@+id/finished_past_trips"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginTop="1dp"
-            android:layout_marginRight="1dp"
-            android:layout_marginBottom="1dp"
-            android:layout_weight="1"
-            android:background="@drawable/control_switch_background_selector_middle"
-            android:button="@null"
-            android:fontFamily="sans-serif-medium"
-            android:gravity="center"
-            android:text="Finished"
-            android:textColor="@drawable/control_switch_color_selector"
-            android:textSize="13.5dp" />
-
-
-    </RadioGroup>
-
 
     <ListView
         android:id="@+id/listview_past_trips"
@@ -113,7 +39,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toggle_past_trips" />
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

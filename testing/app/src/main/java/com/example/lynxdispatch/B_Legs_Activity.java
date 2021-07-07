@@ -46,12 +46,12 @@ public class B_Legs_Activity extends AppCompatActivity {
 
     private Button backButton;
     private ListView listView;
-    private singlten_trip_status_class adp;
+    private singlten_no_started adp;
     private SharedPreferences sharedpreferences;
     private ProgressDialog progressDialog;
     private List<Integer> tripIdList;
     private List<String> clientNameList, pickupLocationList, dropoffLocationList,
-            milageList, dateList, tripTypeList, statusList, aptList, pickupTimeList;
+            milageList, dateList, tripTypeList, statusList, aptList, pickupTimeList, driverList;
 
 
     @Override
@@ -68,12 +68,12 @@ public class B_Legs_Activity extends AppCompatActivity {
             }
         });
 
-        getAssignedTrips();
+        getTrips();
 
     }
 
-    private void getAssignedTrips() {
-        String url_ = String.format("https://lynxdispatch-api.herokuapp.com/api/trips?descending=%b&dispatcherAsDriver=%b&keyword=%s&status=%s", false, false, sharedpreferences.getString("SponserEmail", ""), "NOT_STARTED");
+    private void getTrips() {
+        String url_ = String.format("https://lynxdispatch-api.herokuapp.com/api/trips?descending=%b&keyword=%s&status=%s", false, sharedpreferences.getString("SponserEmail", ""), "NOT_STARTED");
 
         progressDialog.show();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
@@ -84,7 +84,7 @@ public class B_Legs_Activity extends AppCompatActivity {
                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 try {
                     JSONObject temp = new JSONObject(response);
-                    if (temp.getInt("pageSize") == 0) {
+                    if (temp.getInt("totalElements") == 0) {
                         Toast.makeText(B_Legs_Activity.this, "Trips Not Found...", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(B_Legs_Activity.this, "Trips Found...", Toast.LENGTH_SHORT).show();
@@ -101,11 +101,12 @@ public class B_Legs_Activity extends AppCompatActivity {
                             pickupTimeList.add(jsonObject.getString("pickupTime"));
                             aptList.add(jsonObject.getString("appointmentTime"));
                             statusList.add(jsonObject.getString("status"));
+                            driverList.add(jsonObject.getString("assignedDriver"));
                             tripTypeList.add(jsonObject.getString("tripType"));
                         }
 
-                        adp = new singlten_trip_status_class(B_Legs_Activity.this, tripIdList, clientNameList, pickupLocationList,
-                                dropoffLocationList, milageList, dateList, pickupTimeList, aptList, statusList, tripTypeList);
+                        adp = new singlten_no_started(B_Legs_Activity.this, tripIdList, clientNameList, pickupLocationList,
+                                dropoffLocationList, milageList, dateList, pickupTimeList, aptList, statusList, driverList ,tripTypeList);
                         listView.setAdapter(adp);
                         adp.notifyDataSetInvalidated();
                     }
@@ -158,8 +159,7 @@ public class B_Legs_Activity extends AppCompatActivity {
         statusList = new ArrayList<>();
         aptList = new ArrayList<>();
         pickupTimeList = new ArrayList<>();
-
-
+        driverList = new ArrayList<>();
     }
 
     private void checkInternetConnection(VolleyError error) {
