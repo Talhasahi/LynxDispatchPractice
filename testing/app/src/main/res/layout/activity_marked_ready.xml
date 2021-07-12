@@ -30,75 +30,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <RadioGroup
-        android:id="@+id/toggle_marked_ready"
-        android:layout_width="320dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/control_switch_background_border"
-        android:checkedButton="@+id/List_MarkedReady"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10">
-
-        <RadioButton
-            android:id="@+id/List_MarkedReady"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="1dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginBottom="1dp"
-            android:layout_weight="1"
-            android:background="@drawable/control_switch_background_selector_middle"
-            android:button="@null"
-            android:fontFamily="sans-serif-medium"
-            android:gravity="center"
-            android:text="List"
-            android:textColor="@drawable/control_switch_color_selector"
-            android:textSize="14.5dp" />
-
-        <RadioButton
-            android:id="@+id/Map_MarkedReady"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginTop="1dp"
-            android:layout_marginRight="1dp"
-            android:layout_marginBottom="1dp"
-            android:layout_weight="1"
-            android:background="@drawable/control_switch_background_selector_middle"
-            android:button="@null"
-            android:fontFamily="sans-serif-medium"
-            android:gravity="center"
-            android:text="Map"
-            android:textColor="@drawable/control_switch_color_selector"
-            android:textSize="14.5dp" />
-
-
-    </RadioGroup>
-
 
     <ListView
         android:id="@+id/listview_marked_ready"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintVertical_weight="1"
         android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toggle_marked_ready" />
+        app:layout_constraintTop_toBottomOf="@+id/textView10"
+        app:layout_constraintVertical_weight="1" />
 
-
-    <fragment
-        android:id="@+id/mapAPIMarkedReady"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toggle_marked_ready"
-        app:layout_constraintVertical_weight="1"></fragment>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

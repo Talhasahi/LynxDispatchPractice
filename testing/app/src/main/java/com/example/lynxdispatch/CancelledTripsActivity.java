@@ -1,10 +1,7 @@
 package com.example.lynxdispatch;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.ComponentName;
@@ -16,7 +13,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -31,23 +27,17 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.prolificinteractive.materialcalendarview.CalendarDay;
-import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
-import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class PastTripsActivity extends AppCompatActivity {
+public class CancelledTripsActivity extends AppCompatActivity {
 
     private Button backButton;
     private ListView listView;
@@ -58,10 +48,11 @@ public class PastTripsActivity extends AppCompatActivity {
     private List<String> clientNameList, pickupLocationList, dropoffLocationList,
             milageList, dateList, tripTypeList, statusList, aptList, pickupTimeList, driverList;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_past_trips);
+        setContentView(R.layout.activity_cancelled_trips);
 
         inialization();
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -77,7 +68,7 @@ public class PastTripsActivity extends AppCompatActivity {
     }
 
     private void getTrips() {
-        String url_ = String.format("https://lynxdispatch-api.herokuapp.com/api/trips?descending=%b&keyword=%s&status=%s", false, sharedpreferences.getString("SponserEmail", ""), "COMPLETED");
+        String url_ = String.format("https://lynxdispatch-api.herokuapp.com/api/trips?descending=%b&keyword=%s&status=%s", false, sharedpreferences.getString("SponserEmail", ""), "CANCELLED");
 
         progressDialog.show();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
@@ -89,9 +80,9 @@ public class PastTripsActivity extends AppCompatActivity {
                 try {
                     JSONObject temp = new JSONObject(response);
                     if (temp.getInt("totalElements") == 0) {
-                        Toast.makeText(PastTripsActivity.this, "Trips Not Found...", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CancelledTripsActivity.this, "Trips Not Found...", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(PastTripsActivity.this, "Trips Found...", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CancelledTripsActivity.this, "Trips Found...", Toast.LENGTH_SHORT).show();
 
                         JSONArray jsonArray = temp.getJSONArray("content");
                         for (int i = 0; i < jsonArray.length(); i++) {
@@ -109,7 +100,7 @@ public class PastTripsActivity extends AppCompatActivity {
                             tripTypeList.add(jsonObject.getString("tripType"));
                         }
 
-                        adp = new singlten_no_started(PastTripsActivity.this, tripIdList, clientNameList, pickupLocationList,
+                        adp = new singlten_no_started(CancelledTripsActivity.this, tripIdList, clientNameList, pickupLocationList,
                                 dropoffLocationList, milageList, dateList, pickupTimeList, aptList, statusList, driverList, tripTypeList);
                         listView.setAdapter(adp);
                         adp.notifyDataSetInvalidated();
@@ -139,15 +130,15 @@ public class PastTripsActivity extends AppCompatActivity {
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(10000,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        RequestQueue requestQueue = Volley.newRequestQueue(PastTripsActivity.this);
+        RequestQueue requestQueue = Volley.newRequestQueue(CancelledTripsActivity.this);
         requestQueue.add(stringRequest);
     }
 
     private void inialization() {
-        backButton = findViewById(R.id.backButton_past_trips);
-        listView = findViewById(R.id.listview_past_trips);
+        backButton = findViewById(R.id.backButton_cancelled);
+        listView = findViewById(R.id.listview_cancelled);
 
-        progressDialog = new ProgressDialog(PastTripsActivity.this);
+        progressDialog = new ProgressDialog(CancelledTripsActivity.this);
         progressDialog.setMessage("Loading...");
         progressDialog.setCancelable(false);
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -164,7 +155,6 @@ public class PastTripsActivity extends AppCompatActivity {
         aptList = new ArrayList<>();
         pickupTimeList = new ArrayList<>();
         driverList = new ArrayList<>();
-
     }
 
     private void checkInternetConnection(VolleyError error) {
@@ -183,7 +173,7 @@ public class PastTripsActivity extends AppCompatActivity {
         } else if (error instanceof TimeoutError) {
             message = "Connection TimeOut! Please check your internet connection.";
         }
-        AlertDialog.Builder b = new AlertDialog.Builder(PastTripsActivity.this);
+        AlertDialog.Builder b = new AlertDialog.Builder(CancelledTripsActivity.this);
         b.setTitle(title);
         b.setMessage(message);
         b.setPositiveButton("Wifi Settings", new DialogInterface.OnClickListener() {
@@ -211,5 +201,4 @@ public class PastTripsActivity extends AppCompatActivity {
         finish();
         overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
     }
-
 }

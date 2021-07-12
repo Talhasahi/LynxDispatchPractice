@@ -1,24 +1,54 @@
 package com.example.lynxdispatch;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
+import android.content.ComponentName;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.NetworkError;
+import com.android.volley.NoConnectionError;
+import com.android.volley.ParseError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TripsInProgressActivity extends AppCompatActivity {
 
     private Button backButton;
     private ListView listView;
-    private singlten_trip_status_class adp;
-    private List<Integer> l1;
-    private List<String> l2, l3, l4, l5, l6, l7, l8, l9, l10, l11;
+    private singlten_no_started adp;
+    private SharedPreferences sharedpreferences;
+    private ProgressDialog progressDialog;
+    private List<Integer> tripIdList;
+    private List<String> clientNameList, pickupLocationList, dropoffLocationList,
+            milageList, dateList, tripTypeList, statusList, aptList, pickupTimeList, driverList;
 
 
     @Override
@@ -34,82 +64,134 @@ public class TripsInProgressActivity extends AppCompatActivity {
                 overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
             }
         });
+        getTrips();
     }
 
     private void inialization() {
         backButton = findViewById(R.id.backButton_trip_in_progress);
         listView = findViewById(R.id.listview_tripsInProgress);
 
-        l1 = new ArrayList<>();
-        l2 = new ArrayList<>();
-        l3 = new ArrayList<>();
-        l4 = new ArrayList<>();
-        l5 = new ArrayList<>();
-        l6 = new ArrayList<>();
-        l7 = new ArrayList<>();
-        l8 = new ArrayList<>();
-        l9 = new ArrayList<>();
-        l10 = new ArrayList<>();
-        l11 = new ArrayList<>();
+        progressDialog = new ProgressDialog(TripsInProgressActivity.this);
+        progressDialog.setMessage("Loading...");
+        progressDialog.setCancelable(false);
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        sharedpreferences = getSharedPreferences("login_data", MODE_PRIVATE);
 
+        tripIdList = new ArrayList<>();
+        clientNameList = new ArrayList<>();
+        pickupLocationList = new ArrayList<>();
+        dropoffLocationList = new ArrayList<>();
+        milageList = new ArrayList<>();
+        dateList = new ArrayList<>();
+        tripTypeList = new ArrayList<>();
+        statusList = new ArrayList<>();
+        aptList = new ArrayList<>();
+        pickupTimeList = new ArrayList<>();
+        driverList = new ArrayList<>();
+    }
 
-        l1.add(1);
-        l1.add(2);
-        l1.add(3);
-        l1.add(4);
+    private void getTrips() {
+        String url_ = String.format("https://lynxdispatch-api.herokuapp.com/api/trips?descending=%b&keyword=%s&status=%s", false, sharedpreferences.getString("SponserEmail", ""), "EN_ROUTE_TO_DROP_OFF");
 
-        l2.add("Fahad Ali Mughal");
-        l2.add("Fahad Ali");
-        l2.add("Fahad");
-        l2.add("Talha");
+        progressDialog.show();
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url_, new com.android.volley.Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                progressDialog.dismiss();
+                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                try {
+                    JSONObject temp = new JSONObject(response);
+                    if (temp.getInt("totalElements") == 0) {
+                        Toast.makeText(TripsInProgressActivity.this, "Trips Not Found...", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(TripsInProgressActivity.this, "Trips Found...", Toast.LENGTH_SHORT).show();
 
-        l3.add("Fahad Ali Mughal");
-        l3.add("Fahad Ali");
-        l3.add("Fahad");
-        l3.add("Talha");
+                        JSONArray jsonArray = temp.getJSONArray("content");
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+                            tripIdList.add(jsonObject.getInt("id"));
+                            clientNameList.add(jsonObject.getString("clientName"));
+                            pickupLocationList.add(jsonObject.getString("pickupLocation"));
+                            dropoffLocationList.add(jsonObject.getString("dropoffLocation"));
+                            milageList.add(jsonObject.getString("milage"));
+                            dateList.add(jsonObject.getString("date"));
+                            pickupTimeList.add(jsonObject.getString("pickupTime"));
+                            aptList.add(jsonObject.getString("appointmentTime"));
+                            statusList.add(jsonObject.getString("status"));
+                            driverList.add(jsonObject.getString("assignedDriver"));
+                            tripTypeList.add(jsonObject.getString("tripType"));
+                        }
 
-        l4.add("Fahad Ali Mughal");
-        l4.add("Fahad Ali");
-        l4.add("Fahad");
-        l4.add("Talha");
+                        adp = new singlten_no_started(TripsInProgressActivity.this, tripIdList, clientNameList, pickupLocationList,
+                                dropoffLocationList, milageList, dateList, pickupTimeList, aptList, statusList, driverList, tripTypeList);
+                        listView.setAdapter(adp);
+                        adp.notifyDataSetInvalidated();
+                    }
 
-        l5.add("Fahad Ali Mughal");
-        l5.add("Fahad Ali");
-        l5.add("Fahad");
-        l5.add("Talha");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new com.android.volley.Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
+                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                checkInternetConnection(error);
+            }
+        }) {
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/json");
+                headers.put("Authorization", sharedpreferences.getString("TokenType", "") + " " + sharedpreferences.getString("AccessToken", ""));
 
-        l6.add("Fahad Ali Mughal");
-        l6.add("Fahad Ali");
-        l6.add("Fahad");
-        l6.add("Talha");
+                return headers;
+            }
+        };
 
-        l7.add("Fahad Ali Mughal");
-        l7.add("Fahad Ali");
-        l7.add("Fahad");
-        l7.add("Talha");
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(10000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestQueue requestQueue = Volley.newRequestQueue(TripsInProgressActivity.this);
+        requestQueue.add(stringRequest);
+    }
 
-        l8.add("Fahad Ali Mughal");
-        l8.add("Fahad Ali");
-        l8.add("Fahad");
-        l8.add("Talha");
-
-        l9.add("Fahad Ali Mughal");
-        l9.add("Fahad Ali");
-        l9.add("Fahad");
-        l9.add("Talha");
-
-        l10.add("Started");
-        l10.add("Started");
-        l10.add("Onway");
-        l10.add("Onway");
-
-        l11.add("");
-        l11.add("");
-        l11.add("");
-        l11.add("");
-
-        adp = new singlten_trip_status_class(TripsInProgressActivity.this, l1, l2, l3, l4, l5, l6, l7, l8, l9, l10);
-        listView.setAdapter(adp);
-        adp.notifyDataSetInvalidated();
+    private void checkInternetConnection(VolleyError error) {
+        String message = null;
+        String title = "Network Error";
+        if (error instanceof NetworkError) {
+            message = "Cannot connect to Internet...Please check your connection!";
+        } else if (error instanceof ServerError) {
+            message = "The server could not be found. Please try again after some time!!";
+        } else if (error instanceof AuthFailureError) {
+            message = "Cannot connect to Internet...Please check your connection!";
+        } else if (error instanceof ParseError) {
+            message = "Parsing error! Please try again after some time!!";
+        } else if (error instanceof NoConnectionError) {
+            message = "Cannot connect to Internet...Please check your connection!";
+        } else if (error instanceof TimeoutError) {
+            message = "Connection TimeOut! Please check your internet connection.";
+        }
+        AlertDialog.Builder b = new AlertDialog.Builder(TripsInProgressActivity.this);
+        b.setTitle(title);
+        b.setMessage(message);
+        b.setPositiveButton("Wifi Settings", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                final Intent intent = new Intent(Intent.ACTION_MAIN, null);
+                intent.addCategory(Intent.CATEGORY_LAUNCHER);
+                final ComponentName cn = new ComponentName("com.android.settings", "com.android.settings.Settings");
+                intent.setComponent(cn);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
+        b.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        b.show();
     }
 }

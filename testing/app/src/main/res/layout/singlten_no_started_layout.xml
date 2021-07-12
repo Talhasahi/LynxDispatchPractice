@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    android:elevation="10dp"
+    android:background="@drawable/listview_items_background"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <TextView
+            android:id="@+id/singlten_not_started_customerName"
+            android:text="Perry, Martha"
+            android:textColor="#000"
+            android:textSize="15dp"
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1.5"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/singlten_not_started_Date"
+            android:text="08-13-2020"
+            android:textColor="#000"
+            android:textSize="15dp"
+            android:gravity="end"
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/singlten_not_started_edit"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_edit_24"
+            />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:layout_height="0.5dp"
+        android:background="@android:color/darker_gray"/>
+    <LinearLayout
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_unfold_less_24"
+            />
+
+        <TextView
+            android:id="@+id/singlten_not_started_Id"
+            android:text="1-58623-A"
+            android:textColor="#000"
+            android:textSize="15dp"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text="Logisticare"
+            android:textColor="#000"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_location_on_24_m"
+            />
+
+        <TextView
+            android:id="@+id/singlten_not_started_picupaddress"
+            android:text="315 W Garro St 311 Plymouth IN 46563"
+            android:textColor="#000"
+            android:textSize="15dp"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_outline_assigned_trips_24"
+            />
+
+        <TextView
+            android:id="@+id/singlten_not_started_dropoffadd"
+            android:text="8402 Harcourt Rd Indianapolis IN 46260"
+            android:textColor="#000"
+            android:textSize="15dp"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_car_24"
+            />
+
+        <TextView
+            android:id="@+id/singlten_not_started_distance"
+            android:text=" A, 107.00 miles"
+            android:textColor="#000"
+            android:textSize="15dp"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_note_24"
+            />
+
+        <TextView
+            android:text="Notes"
+            android:textColor="#000"
+            android:textSize="15dp"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="0.4"
+            android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_class_24"
+            />
+
+        <TextView
+            android:id="@+id/singlten_not_started_appointmentNo"
+            android:text="Appointment: 1930"
+            android:textColor="#000"
+            android:textSize="15dp"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_person_24"
+            />
+
+        <TextView
+            android:id="@+id/singlten_not_started_driverName"
+            android:text="HAGER KATRIANA K"
+            android:textColor="#000"
+            android:textSize="15dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1.5"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_timer_24"
+            />
+
+        <TextView
+            android:id="@+id/singlten_not_started_tripDate"
+            android:text="08-13-2020"
+            android:textColor="#000"
+            android:paddingStart="5dp"
+            android:textSize="15dp"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:padding="5dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/singlten_not_started_status"
+            android:text="Started"
+            android:textColor="@color/colorAccent"
+            android:textSize="15dp"
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:textStyle="bold"
+            android:gravity="end"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>

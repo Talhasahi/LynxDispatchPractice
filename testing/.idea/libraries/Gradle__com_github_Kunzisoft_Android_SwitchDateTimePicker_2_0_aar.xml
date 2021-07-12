@@ -34,6 +34,9 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/0a59afab69fa544e6de444bf51e34482/jetified-Android-SwitchDateTimePicker-2.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/0a59afab69fa544e6de444bf51e34482/jetified-Android-SwitchDateTimePicker-2.0/AndroidManifest.xml" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/0a59afab69fa544e6de444bf51e34482/jetified-Android-SwitchDateTimePicker-2.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1b4189da378cc2a3084c28e1e46a319f/jetified-Android-SwitchDateTimePicker-2.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1b4189da378cc2a3084c28e1e46a319f/jetified-Android-SwitchDateTimePicker-2.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1b4189da378cc2a3084c28e1e46a319f/jetified-Android-SwitchDateTimePicker-2.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

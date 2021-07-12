@@ -14,10 +14,10 @@ import android.widget.Toast;
 public class DashboardDispatcherActivity extends AppCompatActivity {
 
 
-    private TextView todayStatus_t, activeTrips_t, tripsinProgress_t, markedReady_t, bLegs_t, fleet_t, approachingTrips_t, futureTrips_t,
-            past_Trips_t, privateTrips_t;
-    private LinearLayout todayStatus_b, activeTrips_b, tripsinProgress_b, markedReady_b, bLegs_b, fleet_b, approachingTrips_b, futureTrips_b,
-            past_Trips_b, privateTrips_b;
+    private TextView todayStatus_t;
+    private LinearLayout todayStatus_b, activeTrips_b, enroutedropoff, enroutepickup, notstarted,
+            fleet_b, arrivedatpickup, unnassigned,
+            completed, pending,cancelled,attested,no_show;
     private Button backButton, CreateTrip;
     private Intent intent;
     private ProgressBar progressBar_TodayStatus;
@@ -64,7 +64,7 @@ public class DashboardDispatcherActivity extends AppCompatActivity {
 
             }
         });
-        tripsinProgress_b.setOnClickListener(new View.OnClickListener() {
+        enroutedropoff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 intent = new Intent(DashboardDispatcherActivity.this, TripsInProgressActivity.class);
@@ -72,7 +72,7 @@ public class DashboardDispatcherActivity extends AppCompatActivity {
                 overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
             }
         });
-        markedReady_b.setOnClickListener(new View.OnClickListener() {
+        enroutepickup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 intent = new Intent(DashboardDispatcherActivity.this, MarkedReadyActivity.class);
@@ -80,7 +80,7 @@ public class DashboardDispatcherActivity extends AppCompatActivity {
                 overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
             }
         });
-        bLegs_b.setOnClickListener(new View.OnClickListener() {
+        notstarted.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 intent = new Intent(DashboardDispatcherActivity.this, B_Legs_Activity.class);
@@ -96,7 +96,7 @@ public class DashboardDispatcherActivity extends AppCompatActivity {
                 overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
             }
         });
-        approachingTrips_b.setOnClickListener(new View.OnClickListener() {
+        arrivedatpickup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 intent = new Intent(DashboardDispatcherActivity.this, ApproachingTripsActivity.class);
@@ -104,7 +104,7 @@ public class DashboardDispatcherActivity extends AppCompatActivity {
                 overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
             }
         });
-        futureTrips_b.setOnClickListener(new View.OnClickListener() {
+        unnassigned.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 intent = new Intent(DashboardDispatcherActivity.this, FutureTrips_Activity.class);
@@ -112,7 +112,7 @@ public class DashboardDispatcherActivity extends AppCompatActivity {
                 overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
             }
         });
-        past_Trips_b.setOnClickListener(new View.OnClickListener() {
+        completed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 intent = new Intent(DashboardDispatcherActivity.this, PastTripsActivity.class);
@@ -120,10 +120,35 @@ public class DashboardDispatcherActivity extends AppCompatActivity {
                 overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
             }
         });
-        privateTrips_b.setOnClickListener(new View.OnClickListener() {
+        pending.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 intent = new Intent(DashboardDispatcherActivity.this, PrivatePayActivity.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+            }
+        });
+
+        cancelled.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(DashboardDispatcherActivity.this, CancelledTripsActivity.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+            }
+        });
+        attested.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(DashboardDispatcherActivity.this, AttestedTripsActivity.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+            }
+        });
+        no_show.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(DashboardDispatcherActivity.this, No_ShowActivity.class);
                 startActivity(intent);
                 overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
             }
@@ -134,25 +159,21 @@ public class DashboardDispatcherActivity extends AppCompatActivity {
     private void initialization() {
 
         todayStatus_t = findViewById(R.id.TripsStatus_Dispatcher);
-        activeTrips_t = findViewById(R.id.linearLayout4_text);
-        tripsinProgress_t = findViewById(R.id.linearLayout5_text);
-        markedReady_t = findViewById(R.id.linearLayout6_text);
-        bLegs_t = findViewById(R.id.linearLayout7_text);
-        fleet_t = findViewById(R.id.linearLayout8_text);
-        approachingTrips_t = findViewById(R.id.linearLayout9_text);
-        futureTrips_t = findViewById(R.id.linearLayout10_text);
-        past_Trips_t = findViewById(R.id.linearLayout11_text);
-        privateTrips_t = findViewById(R.id.linearLayout12_text);
+
         todayStatus_b = findViewById(R.id.linearLayout);
         activeTrips_b = findViewById(R.id.linearLayout4);
-        tripsinProgress_b = findViewById(R.id.linearLayout5);
-        markedReady_b = findViewById(R.id.linearLayout6);
-        bLegs_b = findViewById(R.id.linearLayout7);
+        enroutedropoff = findViewById(R.id.linearLayout5);
+        enroutepickup = findViewById(R.id.linearLayout6);
+        notstarted = findViewById(R.id.linearLayout7);
         fleet_b = findViewById(R.id.linearLayout8);
-        approachingTrips_b = findViewById(R.id.linearLayout9);
-        futureTrips_b = findViewById(R.id.linearLayout10);
-        past_Trips_b = findViewById(R.id.linearLayout11);
-        privateTrips_b = findViewById(R.id.linearLayout12);
+        arrivedatpickup = findViewById(R.id.linearLayout9);
+        unnassigned = findViewById(R.id.linearLayout10);
+        completed = findViewById(R.id.linearLayout11);
+        pending = findViewById(R.id.linearLayout12);
+        cancelled = findViewById(R.id.linearLayout15);
+        attested = findViewById(R.id.linearLayout14);
+        no_show = findViewById(R.id.linearLayout13);
+
         backButton = findViewById(R.id.backButton_go_to_dashboard_dispatcher);
         CreateTrip = findViewById(R.id.button_dispatcher_create_trip);
         progressBar_TodayStatus = findViewById(R.id.progressBar_TodayStatus);
