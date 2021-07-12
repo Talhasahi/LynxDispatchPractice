@@ -5,25 +5,183 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".TripStarted">
-    <fragment
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></fragment>
-
     <Button
-        android:id="@+id/endtrip"
+        android:id="@+id/backButton_noshow_trips"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/ic_baseline_arrow_back_24"
+        android:elevation="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/textView19"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="End Trip"
-        app:layout_constraintBottom_toBottomOf="@+id/map"
+        android:layout_marginTop="10dp"
+        android:text="En-Route To Pickup"
+        android:textColor="#000000"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_marginTop="9dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView19">
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></fragment>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="10dp"
+            android:background="@drawable/listview_items_background">
+        <LinearLayout
+            android:padding="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_person_24"
+                />
+            <TextView
+                android:id="@+id/customnername"
+                android:text="Customer Name"
+                android:textColor="#000"
+                android:textSize="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <LinearLayout
+            android:padding="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_timer_24"
+                />
+            <TextView
+                android:id="@+id/pickuptime"
+                android:text="Pick up Time"
+                android:textColor="#000"
+                android:textSize="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_timer_24"
+                />
+
+            <TextView
+                android:id="@+id/apptime"
+                android:text="App Time"
+                android:textColor="#000"
+                android:textSize="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+            <TextView
+                android:id="@+id/singlten_tripStatus_status"
+                android:text="En-Route To Pickup"
+                android:textColor="@color/colorAccent"
+                android:textSize="15dp"
+                android:layout_gravity="end"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:textStyle="bold"
+                android:layout_height="wrap_content"/>
+        <LinearLayout
+            android:padding="5dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/singlten_tripStatus_cancel_b"
+                android:layout_marginStart="12dp"
+                android:text="Cancel"
+                android:textSize="9dp"
+                android:textColor="#fff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:visibility="gone"
+                android:id="@+id/noshow"
+                android:layout_marginStart="10dp"
+                android:text="No Show"
+                android:textSize="9dp"
+                android:textColor="#fff"
+                android:backgroundTint="@color/colorAccent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/arrivedat"
+                android:layout_marginStart="10dp"
+                android:text="Arrived to Pickup"
+                android:textSize="9dp"
+                android:textColor="#fff"
+                android:backgroundTint="@color/colorAccent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:visibility="gone"
+                android:id="@+id/enrotetodropoff"
+                android:layout_marginStart="10dp"
+                android:text="En-Route to Drop-Off"
+                android:textSize="9dp"
+                android:textColor="#fff"
+                android:backgroundTint="@color/colorAccent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:visibility="gone"
+                android:id="@+id/arrivedatdroof"
+                android:layout_marginStart="10dp"
+                android:text="Arrived to Drop-Off"
+                android:textSize="9dp"
+                android:textColor="#fff"
+                android:backgroundTint="@color/colorAccent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,9 @@
     <string name="app_name">LynxDispatch</string>
     <string name="home">Home</string>
     <string name="assigned_trips">Assigned Trips</string>
+    <string name="notstarted">Not Started Trips</string>
+    <string name="noshow">No Show</string>
+    <string name="completed">Completed Trips</string>
     <string name="trip_history">Trip History</string>
     <string name="earnings">Earnings</string>
     <string name="helping_material">Helping Material</string>

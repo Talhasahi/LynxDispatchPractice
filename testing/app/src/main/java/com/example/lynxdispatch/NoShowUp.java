@@ -9,7 +9,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -23,11 +22,9 @@ import com.android.volley.NoConnectionError;
 import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
 import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -40,24 +37,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AssignedTripsActivity extends AppCompatActivity {
-
+public class NoShowUp extends AppCompatActivity {
     private Button backButton;
     private ListView listView;
-    private singlten_assigned_trip_class_t adp;
+    private singlten_no_show_trip_class_t adp;
     private SharedPreferences sharedpreferences;
     private ProgressDialog progressDialog;
     private List<Integer> tripIdList;
     private List<String> clientNameList, pickupLocationList, dropoffLocationList,
             milageList, dateList, tripTypeList, statusList, aptList, pickupTimeList;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_assigned_trips);
-
-
+        setContentView(R.layout.activity_no_show_up);
         inialization();
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,10 +61,8 @@ public class AssignedTripsActivity extends AppCompatActivity {
 
         getAssignedTrips();
     }
-
     private void getAssignedTrips() {
-        String url_ = String.format("https://lynxdispatch-api.herokuapp.com/api/trips?status=%s", "PENDING");
-
+        String url_ = String.format("https://lynxdispatch-api.herokuapp.com/api/trips?status=%s", "NO_SHOW_UP");
         progressDialog.show();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url_, new com.android.volley.Response.Listener<String>() {
@@ -84,9 +74,9 @@ public class AssignedTripsActivity extends AppCompatActivity {
                 try {
                     JSONObject temp = new JSONObject(response);
                     if (temp.getInt("pageSize") == 0) {
-                        Toast.makeText(AssignedTripsActivity.this, "Trips Not Found...", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(NoShowUp.this, "Trips Not Found...", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(AssignedTripsActivity.this, "Trips Found...", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(NoShowUp.this, "Trips Found...", Toast.LENGTH_SHORT).show();
                         JSONArray jsonArray = temp.getJSONArray("content");
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -102,7 +92,7 @@ public class AssignedTripsActivity extends AppCompatActivity {
                             tripTypeList.add(jsonObject.getString("tripType"));
                         }
 
-                        adp = new singlten_assigned_trip_class_t(AssignedTripsActivity.this, tripIdList, clientNameList, pickupLocationList,
+                        adp = new singlten_no_show_trip_class_t(NoShowUp.this, tripIdList, clientNameList, pickupLocationList,
                                 dropoffLocationList, milageList, dateList, pickupTimeList, aptList, statusList, tripTypeList);
                         listView.setAdapter(adp);
                         adp.notifyDataSetInvalidated();
@@ -134,13 +124,14 @@ public class AssignedTripsActivity extends AppCompatActivity {
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(10000,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        RequestQueue requestQueue = Volley.newRequestQueue(AssignedTripsActivity.this);
+        RequestQueue requestQueue = Volley.newRequestQueue(NoShowUp.this);
         requestQueue.add(stringRequest);
     }
+
     private void inialization() {
-        backButton = findViewById(R.id.backButton_assigned_trips);
-        listView = findViewById(R.id.listview_assigned_trips);
-        progressDialog = new ProgressDialog(AssignedTripsActivity.this);
+        backButton = findViewById(R.id.backButton_noshow_trips);
+        listView = findViewById(R.id.listview_noshow_trips);
+        progressDialog = new ProgressDialog(NoShowUp.this);
         progressDialog.setMessage("Loading...");
         progressDialog.setCancelable(false);
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -157,6 +148,7 @@ public class AssignedTripsActivity extends AppCompatActivity {
         aptList = new ArrayList<>();
         pickupTimeList = new ArrayList<>();
     }
+
     private void checkInternetConnection(VolleyError error) {
         String message = null;
         String title = "Network Error";
@@ -173,7 +165,7 @@ public class AssignedTripsActivity extends AppCompatActivity {
         } else if (error instanceof TimeoutError) {
             message = "Connection TimeOut! Please check your internet connection.";
         }
-        AlertDialog.Builder b = new AlertDialog.Builder(AssignedTripsActivity.this);
+        AlertDialog.Builder b = new AlertDialog.Builder(NoShowUp.this);
         b.setTitle(title);
         b.setMessage(message);
         b.setPositiveButton("Wifi Settings", new DialogInterface.OnClickListener() {
@@ -194,6 +186,7 @@ public class AssignedTripsActivity extends AppCompatActivity {
         });
         b.show();
     }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();

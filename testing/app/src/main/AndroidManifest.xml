@@ -41,7 +41,10 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".TripStarted"></activity>
+        <activity android:name=".CompletedTrips"></activity>
+        <activity android:name=".NoShowUp" />
+        <activity android:name=".NotStartedTrips" />
+        <activity android:name=".TripStarted" />
         <activity android:name=".AssignedTripsActivity" />
         <activity android:name=".ChatActivity" />
         <activity android:name=".saveVendorTripActivity" />

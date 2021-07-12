@@ -2,6 +2,7 @@ package com.example.lynxdispatch;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.IntentCompat;
 
 import android.app.ProgressDialog;
 import android.content.ComponentName;
@@ -18,6 +19,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -60,6 +62,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
+import java.sql.Driver;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -75,7 +78,7 @@ import javax.xml.transform.stream.StreamResult;
 
 public class TripStarted extends AppCompatActivity implements OnMapReadyCallback {
     //This activity belongs to talha.
-    String startingF1, startingF2;
+    String startingF1, startingF2,customerNameS,pickUPTimeS,appTimeS;
     int tripId;
     private ProgressDialog progressDialog;
     private SharedPreferences sharedpreferences;
@@ -94,7 +97,10 @@ public class TripStarted extends AppCompatActivity implements OnMapReadyCallback
     LatLng location5;
     LatLng location6;
     LatLng location7;
-    Button endTrip;
+    //    Button endTrip;
+    private TextView customerName, noOfPasanger, pickUpTime, appTime,tripStatus,pageTitle;
+    private Button cancel, noShow, arrivedAtPickup,arrivedAtDropOff,enRoutetoDropOff;
+    int chaeckActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,7 +118,154 @@ public class TripStarted extends AppCompatActivity implements OnMapReadyCallback
         location = new LatLng(Double.parseDouble(startingF1), Double.parseDouble(startingF2));
         latLngList.add(location);
         latLngList.add(location2);
-        endTrip.setOnClickListener(new View.OnClickListener() {
+
+        //This is Start of
+//        Handler handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                if (polyline != null) polyline.remove();
+//                PolylineOptions polylineOptions = new PolylineOptions();
+//                polylineOptions
+//                        .addAll(latLngList);
+//                polyline = mapAPI.addPolyline(polylineOptions);
+//                polyline.setColor(Color.rgb(235, 52, 79));
+//                polyline.setWidth(8);
+//                if (marker != null) {
+//                    marker.remove();
+//                    MarkerOptions markerOptions = new MarkerOptions().position(location2);
+//                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.mya));
+//                    marker = mapAPI.addMarker(markerOptions);
+//                    mapAPI.moveCamera(CameraUpdateFactory.newLatLng(location2));
+//                    mapAPI.animateCamera(CameraUpdateFactory.zoomTo(18.0f));
+//                    latLngList.add(location3);
+//
+//                }
+//                Handler handler = new Handler();
+//                handler.postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        if (polyline != null) polyline.remove();
+//                        PolylineOptions polylineOptions = new PolylineOptions();
+//                        polylineOptions.addAll(latLngList);
+//                        polyline = mapAPI.addPolyline(polylineOptions);
+//                        polyline.setColor(Color.rgb(235, 52, 79));
+//                        polyline.setWidth(8);
+//                        marker.remove();
+//                        MarkerOptions markerOptions2 = new MarkerOptions().position(location3);
+//                        markerOptions2.icon(BitmapDescriptorFactory.fromResource(R.drawable.mya));
+//                        marker = mapAPI.addMarker(markerOptions2);
+//                        mapAPI.moveCamera(CameraUpdateFactory.newLatLng(location3));
+//                        mapAPI.animateCamera(CameraUpdateFactory.zoomTo(18.0f));
+//                        latLngList.add(location4);
+//                    }
+//                }, 1000);
+//
+//                Handler handler1 = new Handler();
+//                handler1.postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        if (polyline != null) polyline.remove();
+//                        PolylineOptions polylineOptions = new PolylineOptions();
+//                        polylineOptions.addAll(latLngList);
+//                        polyline = mapAPI.addPolyline(polylineOptions);
+//                        polyline.setColor(Color.rgb(235, 52, 79));
+//                        polyline.setWidth(8);
+//                        marker.remove();
+//                        MarkerOptions markerOptions2 = new MarkerOptions().position(location4);
+//                        markerOptions2.icon(BitmapDescriptorFactory.fromResource(R.drawable.mya));
+//                        marker = mapAPI.addMarker(markerOptions2);
+//                        mapAPI.moveCamera(CameraUpdateFactory.newLatLng(location4));
+//                        mapAPI.animateCamera(CameraUpdateFactory.zoomTo(18.0f));
+//                        latLngList.add(location5);
+//                    }
+//                }, 2000);
+//
+//                Handler handler3 = new Handler();
+//                handler3.postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        if (polyline != null) polyline.remove();
+//                        PolylineOptions polylineOptions = new PolylineOptions();
+//                        polylineOptions.addAll(latLngList);
+//                        polyline = mapAPI.addPolyline(polylineOptions);
+//                        polyline.setColor(Color.rgb(235, 52, 79));
+//                        polyline.setWidth(8);
+//                        marker.remove();
+//                        MarkerOptions markerOptions2 = new MarkerOptions().position(location5);
+//                        markerOptions2.icon(BitmapDescriptorFactory.fromResource(R.drawable.mya));
+//                        marker = mapAPI.addMarker(markerOptions2);
+//                        mapAPI.moveCamera(CameraUpdateFactory.newLatLng(location5));
+//                        mapAPI.animateCamera(CameraUpdateFactory.zoomTo(18.0f));
+//                        latLngList.add(location6);
+//
+//                    }
+//                }, 3000);
+//                Handler handler4 = new Handler();
+//                handler4.postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        if (polyline != null) polyline.remove();
+//                        PolylineOptions polylineOptions = new PolylineOptions();
+//                        polylineOptions.addAll(latLngList);
+//                        polyline = mapAPI.addPolyline(polylineOptions);
+//                        polyline.setColor(Color.rgb(235, 52, 79));
+//                        polyline.setWidth(8);
+//                        marker.remove();
+//                        MarkerOptions markerOptions2 = new MarkerOptions().position(location6);
+//                        markerOptions2.icon(BitmapDescriptorFactory.fromResource(R.drawable.mya));
+//                        marker = mapAPI.addMarker(markerOptions2);
+//                        mapAPI.moveCamera(CameraUpdateFactory.newLatLng(location6));
+//                        mapAPI.animateCamera(CameraUpdateFactory.zoomTo(18.0f));
+//                        latLngList.add(location7);
+//
+//                    }
+//                }, 4000);
+//                Handler handler5 = new Handler();
+//                handler5.postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        if (polyline != null) polyline.remove();
+//                        PolylineOptions polylineOptions = new PolylineOptions();
+//                        polylineOptions.addAll(latLngList);
+//                        polyline = mapAPI.addPolyline(polylineOptions);
+//                        polyline.setColor(Color.rgb(235, 52, 79));
+//                        polyline.setWidth(8);
+//                        marker.remove();
+//                        MarkerOptions markerOptions2 = new MarkerOptions().position(location7);
+//                        markerOptions2.icon(BitmapDescriptorFactory.fromResource(R.drawable.mya));
+//                        marker = mapAPI.addMarker(markerOptions2);
+//                        mapAPI.moveCamera(CameraUpdateFactory.newLatLng(location7));
+//                        mapAPI.animateCamera(CameraUpdateFactory.zoomTo(18.0f));
+//
+//
+//                    }
+//                }, 5000);
+//            }
+//        }, 3000);
+
+
+
+        //This is End Of
+        arrivedAtPickup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                trip_status_update(tripId,"ARRIVED_AT_PICKUP");
+            }
+        });
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              trip_status_update(tripId,"CANCELLED");
+            }
+        });
+        noShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                trip_status_update(tripId,"NO_SHOW_UP");
+            }
+        });
+        arrivedAtDropOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(TripStarted.this);
@@ -152,143 +305,32 @@ public class TripStarted extends AppCompatActivity implements OnMapReadyCallback
                     }
                 });
                 builder.show();
-
-
             }
         });
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
+        enRoutetoDropOff.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void run() {
-                if (polyline != null) polyline.remove();
-                PolylineOptions polylineOptions = new PolylineOptions();
-                polylineOptions
-                        .addAll(latLngList);
-                polyline = mapAPI.addPolyline(polylineOptions);
-                polyline.setColor(Color.rgb(235, 52, 79));
-                polyline.setWidth(8);
-                if (marker != null) {
-                    marker.remove();
-                    MarkerOptions markerOptions = new MarkerOptions().position(location2);
-                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.mya));
-                    marker = mapAPI.addMarker(markerOptions);
-                    mapAPI.moveCamera(CameraUpdateFactory.newLatLng(location2));
-                    mapAPI.animateCamera(CameraUpdateFactory.zoomTo(18.0f));
-                    latLngList.add(location3);
-
-                }
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (polyline != null) polyline.remove();
-                        PolylineOptions polylineOptions = new PolylineOptions();
-                        polylineOptions.addAll(latLngList);
-                        polyline = mapAPI.addPolyline(polylineOptions);
-                        polyline.setColor(Color.rgb(235, 52, 79));
-                        polyline.setWidth(8);
-                        marker.remove();
-                        MarkerOptions markerOptions2 = new MarkerOptions().position(location3);
-                        markerOptions2.icon(BitmapDescriptorFactory.fromResource(R.drawable.mya));
-                        marker = mapAPI.addMarker(markerOptions2);
-                        mapAPI.moveCamera(CameraUpdateFactory.newLatLng(location3));
-                        mapAPI.animateCamera(CameraUpdateFactory.zoomTo(18.0f));
-                        latLngList.add(location4);
-                    }
-                }, 1000);
-
-                Handler handler1 = new Handler();
-                handler1.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (polyline != null) polyline.remove();
-                        PolylineOptions polylineOptions = new PolylineOptions();
-                        polylineOptions.addAll(latLngList);
-                        polyline = mapAPI.addPolyline(polylineOptions);
-                        polyline.setColor(Color.rgb(235, 52, 79));
-                        polyline.setWidth(8);
-                        marker.remove();
-                        MarkerOptions markerOptions2 = new MarkerOptions().position(location4);
-                        markerOptions2.icon(BitmapDescriptorFactory.fromResource(R.drawable.mya));
-                        marker = mapAPI.addMarker(markerOptions2);
-                        mapAPI.moveCamera(CameraUpdateFactory.newLatLng(location4));
-                        mapAPI.animateCamera(CameraUpdateFactory.zoomTo(18.0f));
-                        latLngList.add(location5);
-                    }
-                }, 2000);
-
-                Handler handler3 = new Handler();
-                handler3.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (polyline != null) polyline.remove();
-                        PolylineOptions polylineOptions = new PolylineOptions();
-                        polylineOptions.addAll(latLngList);
-                        polyline = mapAPI.addPolyline(polylineOptions);
-                        polyline.setColor(Color.rgb(235, 52, 79));
-                        polyline.setWidth(8);
-                        marker.remove();
-                        MarkerOptions markerOptions2 = new MarkerOptions().position(location5);
-                        markerOptions2.icon(BitmapDescriptorFactory.fromResource(R.drawable.mya));
-                        marker = mapAPI.addMarker(markerOptions2);
-                        mapAPI.moveCamera(CameraUpdateFactory.newLatLng(location5));
-                        mapAPI.animateCamera(CameraUpdateFactory.zoomTo(18.0f));
-                        latLngList.add(location6);
-
-                    }
-                }, 3000);
-                Handler handler4 = new Handler();
-                handler4.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (polyline != null) polyline.remove();
-                        PolylineOptions polylineOptions = new PolylineOptions();
-                        polylineOptions.addAll(latLngList);
-                        polyline = mapAPI.addPolyline(polylineOptions);
-                        polyline.setColor(Color.rgb(235, 52, 79));
-                        polyline.setWidth(8);
-                        marker.remove();
-                        MarkerOptions markerOptions2 = new MarkerOptions().position(location6);
-                        markerOptions2.icon(BitmapDescriptorFactory.fromResource(R.drawable.mya));
-                        marker = mapAPI.addMarker(markerOptions2);
-                        mapAPI.moveCamera(CameraUpdateFactory.newLatLng(location6));
-                        mapAPI.animateCamera(CameraUpdateFactory.zoomTo(18.0f));
-                        latLngList.add(location7);
-
-                    }
-                }, 4000);
-                Handler handler5 = new Handler();
-                handler5.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (polyline != null) polyline.remove();
-                        PolylineOptions polylineOptions = new PolylineOptions();
-                        polylineOptions.addAll(latLngList);
-                        polyline = mapAPI.addPolyline(polylineOptions);
-                        polyline.setColor(Color.rgb(235, 52, 79));
-                        polyline.setWidth(8);
-                        marker.remove();
-                        MarkerOptions markerOptions2 = new MarkerOptions().position(location7);
-                        markerOptions2.icon(BitmapDescriptorFactory.fromResource(R.drawable.mya));
-                        marker = mapAPI.addMarker(markerOptions2);
-                        mapAPI.moveCamera(CameraUpdateFactory.newLatLng(location7));
-                        mapAPI.animateCamera(CameraUpdateFactory.zoomTo(18.0f));
-
-
-                    }
-                }, 5000);
+            public void onClick(View v) {
+                trip_status_update(tripId,"EN_ROUTE_TO_DROP_OFF");
             }
-        }, 3000);
-
+        });
     }
-
     private void inialization() {
         progressDialog = new ProgressDialog(TripStarted.this);
         progressDialog.setMessage("Loading...");
         progressDialog.setCancelable(false);
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         sharedpreferences = getSharedPreferences("login_data", MODE_PRIVATE);
-        endTrip = findViewById(R.id.endtrip);
+        chaeckActivity = sharedpreferences.getInt("flagLogin",0);
+        customerName = findViewById(R.id.customnername);
+        pickUpTime = findViewById(R.id.pickuptime);
+        appTime = findViewById(R.id.apptime);
+        tripStatus = findViewById(R.id.singlten_tripStatus_status);
+        cancel =findViewById(R.id.singlten_tripStatus_cancel_b);
+        noShow =findViewById(R.id.noshow);
+        arrivedAtPickup =findViewById(R.id.arrivedat);
+        arrivedAtDropOff =findViewById(R.id.arrivedatdroof);
+        enRoutetoDropOff =findViewById(R.id.enrotetodropoff);
+        pageTitle = findViewById(R.id.textView19);
     }
 
     private void setmap() {
@@ -299,8 +341,13 @@ public class TripStarted extends AppCompatActivity implements OnMapReadyCallback
         Intent intent = getIntent();
         startingF1 = intent.getStringExtra("F1");
         startingF2 = intent.getStringExtra("F2");
+        customerNameS = intent.getStringExtra("customerName");
+        pickUPTimeS = intent.getStringExtra("pickuptime");
+        appTimeS = intent.getStringExtra("appTime");
         tripId = intent.getIntExtra("Tripid", 0);
-
+        customerName.setText(customerNameS);
+        pickUpTime.setText("Pick Up Time "+pickUPTimeS);
+        appTime.setText("App Time "+appTimeS);
     }
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -320,8 +367,8 @@ public class TripStarted extends AppCompatActivity implements OnMapReadyCallback
             public void onResponse(JSONObject response) {
                 progressDialog.dismiss();
                 try {
-                    String status= response.getString("status");
-                    if(status.equals("COMPLETED")) {
+                    String status = response.getString("status");
+                    if (status.equals("COMPLETED")) {
                         Toast.makeText(TripStarted.this, "You Trip is Completed", Toast.LENGTH_SHORT).show();
                         AlertDialog.Builder b = new AlertDialog.Builder(TripStarted.this);
                         b.setTitle("Bill");
@@ -329,16 +376,23 @@ public class TripStarted extends AppCompatActivity implements OnMapReadyCallback
                         b.setPositiveButton("Okay!", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                final Intent intent =  new Intent(TripStarted.this, DriverHomeActivity.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                startActivity(intent);
+                                if(chaeckActivity == 1) {
+                                    Intent intent = new Intent(TripStarted.this, DriverHomeActivity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    startActivity(intent);
+                                    finish();
+                                }else if(chaeckActivity == 2) {
+                                    Intent intent = new Intent(TripStarted.this, DispatchHomeActivity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    startActivity(intent);
+                                    finish();
+                                }
 
                             }
                         });
                         b.show();
 
-                    }
-                    else {
+                    } else {
                         Toast.makeText(TripStarted.this, status, Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
@@ -404,116 +458,76 @@ public class TripStarted extends AppCompatActivity implements OnMapReadyCallback
         });
         b.show();
     }
-    private void getSession(final String API_KEY) {
-        String url = "https://www.medanswering.com/Provider_API.taf";
-        final String reqXML = "<TPRequest>\n" +
-                "<authentication>" + API_KEY + "</authentication>\n" +
-                "<startSession>\n" +
-                "<attributes>\n" +
-                "<attribute>\n" +
-                "<name>CLIENT IP</name>\n" +
-                "<value>10.10.10.10</value>\n" +
-                "</attribute>\n" +
-                "</attributes>\n" +
-                "</startSession>\n" +
-                "</TPRequest>";
-
+    private void trip_status_update(final int mid, final String status1) {
+        String url_ = String.format("https://lynxdispatch-api.herokuapp.com/api/update/trip-status?tripId="+mid+"&tripStatus="+status1);
         progressDialog.show();
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-
-//Volley request
-        StringRequest request = new StringRequest(Request.Method.POST, url,
-
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        progressDialog.dismiss();
-                        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-                        XmlPullParserFactory parserFactory;
-                        try {
-                            parserFactory = XmlPullParserFactory.newInstance();
-                            XmlPullParser xmlPullParser = parserFactory.newPullParser();
-                            InputStream is = convertStringToDocument(response);
-                            xmlPullParser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
-                            xmlPullParser.setInput(is, null);
-                            int session_N = xmlPullParser.getEventType();
-                            while (session_N != XmlPullParser.END_DOCUMENT) {
-                                String eltName = null;
-                                switch (session_N) {
-                                    case XmlPullParser.START_TAG:
-                                        eltName = xmlPullParser.getName();
-                                        if ("TPRequest".equals(eltName)) {
-
-                                        } else {
-                                            if ("startSession".equals(eltName)) {
-
-                                            } else {
-                                                if ("sessionIdentifier".equals(eltName)) {
-                                                    SessionKey = xmlPullParser.nextText();
-                                                }
-                                            }
-                                        }
-                                        break;
-                                }
-                                session_N = xmlPullParser.next();
-                            }
-                           // SearchVendorTrips(API_KEY);
-                        } catch (XmlPullParserException | IOException e) {
-                            e.printStackTrace();
-                        }
-
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        progressDialog.dismiss();
-                        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-                        checkInternetConnection(error);
-                    }
-                }) {
-
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, url_, new com.android.volley.Response.Listener<String>() {
             @Override
-            public String getBodyContentType() {
-                // set body content type
-                return "application/xml; charset=UTF-8";
-            }
-
-            @Override
-            public byte[] getBody() throws AuthFailureError {
-
-                try {
-                    return reqXML.getBytes("UTF-8");
-                } catch (UnsupportedEncodingException uee) {
-                    // TODO consider if some other action should be taken
-                    return null;
+            public void onResponse(String response) {
+                progressDialog.dismiss();
+                if (status1.equals("CANCELLED")){
+                    if(chaeckActivity == 1) {
+                        Intent intent = new Intent(TripStarted.this, DriverHomeActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                        finish();
+                    }else if(chaeckActivity == 2) {
+                        Intent intent = new Intent(TripStarted.this, DispatchHomeActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                        finish();
+                    }
+                }
+                else if (status1.equals("ARRIVED_AT_PICKUP")){
+                    arrivedAtPickup.setVisibility(View.GONE);
+                    noShow.setVisibility(View.VISIBLE);
+                    enRoutetoDropOff.setVisibility(View.VISIBLE);
+                    pageTitle.setText("Arrived at Pickup Location");
+                    tripStatus.setText("Arrived at Pickup Location");
+                }
+                else if (status1.equals("EN_ROUTE_TO_DROP_OFF")){
+                    arrivedAtPickup.setVisibility(View.GONE);
+                    noShow.setVisibility(View.GONE);
+                    enRoutetoDropOff.setVisibility(View.
+                            GONE);
+                    arrivedAtDropOff.setVisibility(View.VISIBLE);
+                    pageTitle.setText("En-Route to Drop off");
+                    tripStatus.setText("En-Route to Drop off");
+                }
+                else if (status1.equals("NO_SHOW_UP")){
+                    if(chaeckActivity == 1) {
+                        Intent intent = new Intent(TripStarted.this, DriverHomeActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                        finish();
+                    }else if(chaeckActivity == 2) {
+                        Intent intent = new Intent(TripStarted.this, DispatchHomeActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                        finish();
+                    }
                 }
             }
-
+        }, new com.android.volley.Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
+                checkInternetConnection(error);
+            }
+        }) {
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/json");
+                headers.put("Authorization", sharedpreferences.getString("TokenType", "") + " " + sharedpreferences.getString("AccessToken", ""));
+                return headers;
+            }
         };
-//
-//Creating a Request Queue
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
 
-//Adding request to the queue
-        requestQueue.add(request);
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(10000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestQueue requestQueue = Volley.newRequestQueue(TripStarted.this);
+        requestQueue.add(stringRequest);
+    }
 
-    }
-    private static InputStream convertStringToDocument(String xmlStr) {
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder;
-        try {
-            builder = factory.newDocumentBuilder();
-            Document doc = builder.parse(new InputSource(new StringReader(xmlStr)));
-            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-            Source xmlSource = new DOMSource(doc);
-            Result outputTarget = new StreamResult(outputStream);
-            TransformerFactory.newInstance().newTransformer().transform(xmlSource, outputTarget);
-            InputStream is = new ByteArrayInputStream(outputStream.toByteArray());
-            return is;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 }

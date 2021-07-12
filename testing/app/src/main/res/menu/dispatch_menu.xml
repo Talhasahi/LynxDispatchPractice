@@ -10,7 +10,18 @@
         android:id="@+id/dispatch_item2"
         android:icon="@drawable/ic_outline_assigned_trips_24"
         android:title="@string/assigned_trips" />
-
+    <item
+        android:id="@+id/notstarted"
+        android:icon="@drawable/ic_outline_assigned_trips_24"
+        android:title="@string/notstarted" />
+    <item
+        android:id="@+id/noshowup"
+        android:icon="@drawable/ic_outline_assigned_trips_24"
+        android:title="@string/noshow" />
+    <item
+        android:id="@+id/compleated"
+        android:icon="@drawable/ic_outline_assigned_trips_24"
+        android:title="@string/completed" />
     <item
         android:id="@+id/dispatch_item3"
         android:icon="@drawable/ic_baseline_history_24"

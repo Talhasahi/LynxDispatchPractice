@@ -6,21 +6,15 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -44,11 +38,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import de.hdodenhof.circleimageview.CircleImageView;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class singlten_trip_status_class extends BaseAdapter {
+public class singlten_assigned_trip_class_t extends BaseAdapter {
     private ProgressDialog progressDialog;
     private Context context;
     private List<Integer> tripIdList;
@@ -60,10 +56,8 @@ public class singlten_trip_status_class extends BaseAdapter {
     private LinearLayout cancel_layout;
     private RequestQueue requestQueue;
     private String f1, f2;
-    String status1;
     private SharedPreferences sharedpreferences;
-    private int chaeckActivity;
-    singlten_trip_status_class(Context c, List<Integer> tripIdList_, List<String> clientNameList_,
+    singlten_assigned_trip_class_t(Context c, List<Integer> tripIdList_, List<String> clientNameList_,
                                List<String> pickupLocationList_, List<String> dropoffLocationList_,
                                List<String> milageList_, List<String> dateList_, List<String> pickupTimeList_,
                                List<String> aptList_, List<String> statusList_, List<String> tripTypeList_) {
@@ -83,7 +77,6 @@ public class singlten_trip_status_class extends BaseAdapter {
         progressDialog.setCancelable(false);
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         sharedpreferences = context.getSharedPreferences("login_data", MODE_PRIVATE);
-        chaeckActivity = sharedpreferences.getInt("flagLogin",0);
 
     }
 
@@ -101,7 +94,7 @@ public class singlten_trip_status_class extends BaseAdapter {
     }
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        convertView = LayoutInflater.from(context).inflate(R.layout.singlten_trip_status_layout, null, false);
+        convertView = LayoutInflater.from(context).inflate(R.layout.singlten_assigned_trip_layout_t, null, false);
         t1 = convertView.findViewById(R.id.singlten_tripStatus_customerName);
         t2 = convertView.findViewById(R.id.singlten_tripStatus_Date);
         t3 = convertView.findViewById(R.id.singlten_tripStatus_Id);
@@ -116,15 +109,9 @@ public class singlten_trip_status_class extends BaseAdapter {
         cancel_layout = convertView.findViewById(R.id.singlten_tripStatus_layout_cancel);
         edit_b = convertView.findViewById(R.id.singlten_tripStatus_edit);
         cancel_b = convertView.findViewById(R.id.singlten_tripStatus_cancel_b);
-        forward_b = convertView.findViewById(R.id.singlten_tripStatus_forward_b);
         start_b = convertView.findViewById(R.id.singlten_tripStatus_start);
 
-        if (statusList.get(position).equals("UNASSIGNED")) {
-            start_b.setVisibility(View.GONE);
-        }
-        if (statusList.get(position).equals("NOT_STARTED")) {
-            forward_b.setVisibility(View.GONE);
-        }
+
         t1.setText(clientNameList.get(position));
         t2.setText(dateList.get(position));
         t3.setText(tripTypeList.get(position));
@@ -137,52 +124,36 @@ public class singlten_trip_status_class extends BaseAdapter {
         t10.setText(statusList.get(position));
         //cancel_reason.setText("Reason: ");
 
-
-        forward_b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, ActiveDriversActivity.class);
-                intent.putExtra("trip_Id", tripIdList.get(position));
-                ((AppCompatActivity) context).startActivity(intent);
-                ((AppCompatActivity) context).finish();
-            }
-        });
         start_b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (statusList.get(position).equals("NOT_STARTED")) {
-                   startTrips(tripIdList.get(position),clientNameList.get(position),pickupTimeList.get(position),aptList.get(position));
-                }
+                Toast.makeText(context, "Accpect", Toast.LENGTH_SHORT).show();
+                accept_trip(tripIdList.get(position));
             }
         });
         cancel_b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             cencel_trip(tripIdList.get(position),"CANCELLED");
+                Toast.makeText(context, "Reject", Toast.LENGTH_SHORT).show();
+                cencel_trip(tripIdList.get(position));
             }
         });
         return convertView;
     }
 
-    private void cencel_trip(final int mid,String status) {
-        String url_ = String.format("https://lynxdispatch-api.herokuapp.com/api/update/trip-status?tripId="+mid+"&tripStatus="+status);
+    private void cencel_trip(final int mid) {
+        String url_ = String.format("https://lynxdispatch-api.herokuapp.com/api/update/trip-status?tripId="+mid+"&tripStatus=CANCELLED");
         progressDialog.show();
         StringRequest stringRequest = new StringRequest(Request.Method.PUT, url_, new com.android.volley.Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
                 progressDialog.dismiss();
-              if(!response.equals("")){
-                  if(chaeckActivity == 1) {
-                      Intent intent = new Intent(context, DriverHomeActivity.class);
-                      intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                      context.startActivity(intent);
-                  }else if(chaeckActivity == 2) {
-                      Intent intent = new Intent(context, DispatchHomeActivity.class);
-                      intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                      context.startActivity(intent);
-                  }
-
-              }
+//                if (response.equals("Success")) {
+//
+//                } else {
+//                    Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
+//                }
             }
         }, new com.android.volley.Response.ErrorListener() {
             @Override
@@ -206,73 +177,19 @@ public class singlten_trip_status_class extends BaseAdapter {
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(stringRequest);
     }
-    private void sendRequest(final int id, final String customerName, final String pickuptime, final String appTime) {
-        String url = "https://api.thingspeak.com/channels/1287872/feeds.json?api_key=78B9OSG42R4R0PNM&results=2";
-        progressDialog.show();
-        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET,
-                url, new JSONObject(),
-                new Response.Listener<JSONObject>() {
-
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        progressDialog.dismiss();
-                        JSONArray jsonArray = null;
-                        try {
-                            jsonArray = response.getJSONArray("feeds");
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                        for (int i = 0; i < 1; i++) {
-                            try {
-                                JSONObject jsonObject = jsonArray.getJSONObject(i);
-                                f1 = jsonObject.getString("field1");
-                                f2 = jsonObject.getString("field2");
-                                if (!f1.equals("") && !f2.equals("")) {
-                                    Intent intent = new Intent(context, TripStarted.class);
-                                    intent.putExtra("F1", f1);
-                                    intent.putExtra("F2", f2);
-                                    intent.putExtra("Tripid", id);
-                                    intent.putExtra("customerName", customerName);
-                                    intent.putExtra("pickuptime", pickuptime);
-                                    intent.putExtra("appTime", appTime);
-                                    context.startActivity(intent);
-                                } else {
-
-                                }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-
-
-                        }
-
-                    }
-                }, new Response.ErrorListener() {
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                progressDialog.dismiss();
-                Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show();
-            }
-        }) {
-
-        };
-        requestQueue = Volley.newRequestQueue(context);
-        requestQueue.add(jsonObjReq);
-
-    }
-    private void startTrips(final int id, final String customerName, final String pickuptime, final String appTime) {
-        String url_ = String.format("https://lynxdispatch-api.herokuapp.com/api/start-trip?tripId=" + id);
+    private void accept_trip(final int mid) {
+        String url_ = String.format("https://lynxdispatch-api.herokuapp.com/api/update/trip-status?tripId="+mid+"&tripStatus=NOT_STARTED");
         progressDialog.show();
         StringRequest stringRequest = new StringRequest(Request.Method.PUT, url_, new com.android.volley.Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
                 progressDialog.dismiss();
-                if (response.equals("Success")) {
-                    sendRequest(id,customerName,pickuptime,appTime);
-                } else {
-                    Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
-                }
+//                if (response.equals("Success")) {
+//
+//                } else {
+//                    Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
+//                }
             }
         }, new com.android.volley.Response.ErrorListener() {
             @Override
@@ -296,6 +213,9 @@ public class singlten_trip_status_class extends BaseAdapter {
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(stringRequest);
     }
+
+
+
 
     private void checkInternetConnection(VolleyError error) {
         String message = null;
@@ -334,6 +254,4 @@ public class singlten_trip_status_class extends BaseAdapter {
         });
         b.show();
     }
-
-
 }

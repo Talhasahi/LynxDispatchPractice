@@ -131,6 +131,24 @@ public class DriverHomeActivity extends FragmentActivity implements OnMapReadyCa
                 overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                 drawerLayout.closeDrawer(Gravity.LEFT);
                 break;
+            case R.id.notstarted:
+                Intent intent1 = new Intent(DriverHomeActivity.this, NotStartedTrips.class);
+                startActivity(intent1);
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+                drawerLayout.closeDrawer(Gravity.LEFT);
+                break;
+            case R.id.noshowup:
+                Intent intent2 = new Intent(DriverHomeActivity.this, NoShowUp.class);
+                startActivity(intent2);
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+                drawerLayout.closeDrawer(Gravity.LEFT);
+                break;
+            case R.id.compleated:
+                Intent intent3 = new Intent(DriverHomeActivity.this, CompletedTrips.class);
+                startActivity(intent3);
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+                drawerLayout.closeDrawer(Gravity.LEFT);
+                break;
             case R.id.dispatch_item3:
                 Toast.makeText(this, "Trip History", Toast.LENGTH_SHORT).show();
                 break;
